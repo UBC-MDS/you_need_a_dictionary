@@ -27,6 +27,13 @@ To use you-need-a-dictionary in your code:
 >>> you-need-a-dictionary.hello_world()
 ```
 
+## Contributors
+- Eric Wong
+- Mailys Guedon
+- Godsgift Braimah
+- Mara Sanchez
+
+
 ## Copyright
 
 - Copyright © 2026 Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong.
