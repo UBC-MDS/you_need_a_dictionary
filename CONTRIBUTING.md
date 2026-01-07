@@ -76,12 +76,7 @@ local development.
 
     Now you can make your changes locally.
 
-5. When you're done making changes, apply the quality assurance tools and check
-   that your changes pass our test suite. This is all included with tox
-
-    ```shell
-    hatch run test:run
-    ```
+5. When you're done making changes, check that your changes conform to any code formatting requirements and pass any tests.
 
 6. Commit your changes and push your branch to GitHub. Please use [semantic
    commit messages](https://www.conventionalcommits.org/).
