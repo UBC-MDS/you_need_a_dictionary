@@ -1,9 +1,13 @@
 """
-A module that creates wordclouds of antanonyms or synonyms of a word .
+A module that creates wordclouds of antanonyms and/or synonyms of a given word .
+
+This module contains functions to:
+- create the wordclouds
+- find 
 
 """
 
-def create_wordcloud(word, sentence, type='both'):
+def create_wordcloud(word, type='both'):
     """
     This function creates a wordcloud of either antonyms, synonyms or both for a given word.
 
@@ -12,8 +16,6 @@ def create_wordcloud(word, sentence, type='both'):
     ----------
     word : string
         The word that we want the synonyms and antonyms.
-    sentence : string
-        The sentence that the word comes from.
     type : string
         Either 'antonym', 'synonym', or 'both'. Default is 'both'
 
@@ -25,5 +27,30 @@ def create_wordcloud(word, sentence, type='both'):
     Examples
     --------
     
-
     """
+    ...
+
+def find_strength(word, other_word):
+    """
+    This function finds the strength of the similarity between 2 words.
+
+    Parameters
+    ----------
+    word : string
+        The word that we want the synonyms and antonyms.
+    other_word : string
+        The antonym or synonym that we want to compare.
+
+    Returns
+    -------
+    float
+        The strength of the similarity of the 2 words. It ranges between 0 and 1 where 1 means 
+        strong similarity between words and 0 means weak similarity.
+
+    Examples
+    --------
+    
+
+    
+    """
+    ...
