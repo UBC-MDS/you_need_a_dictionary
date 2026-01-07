@@ -7,8 +7,18 @@
 
 *TODO: the above badges that indicate python version and package version will only work if your package is on PyPI.
 If you don't plan to publish to PyPI, you can remove them.*
+## Summary
 
-You Need a Dictionary is a project that (describe what it does here).
+You Need a Dictionary is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. 
+
+## List of Functions
+
+- Process user input: Users input sentence and a word related to the sentence preprocessing happens (This is dependent on the input to the API)
+- Analyze sentiment of the sentence: Use NLP to derive sentiment based on preprocessed user input
+- Return definitions: Function returns the definition of the word(s)
+- Analysis of replacement: If user opts to use this function then replace the word in the sentence with another word from the dictionary and then sentiment analysis function is called again on new sentence
+- Whole sentence translation: User is also able to translate the entire sentence.
+- Word cloud: Word Cloud for Antonyms/Synonyms
 
 ## Get started
 
