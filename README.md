@@ -5,11 +5,10 @@
 | Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/you-need-a-dictionary.svg)](https://pypi.org/project/you-need-a-dictionary/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/you-need-a-dictionary.svg)](https://pypi.org/project/you-need-a-dictionary/)  |
 | Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
 
-*TODO: the above badges that indicate python version and package version will only work if your package is on PyPI.
-If you don't plan to publish to PyPI, you can remove them.*
+
 ## Summary
 
-You Need a Dictionary is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
+**You Need a Dictionary** is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
 
 ## List of Functions (A Reminder to replace this section with OUR ACTUAL FUNCTION NAMES)
 
