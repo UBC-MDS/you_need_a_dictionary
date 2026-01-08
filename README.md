@@ -13,14 +13,15 @@ You Need a Dictionary is a project that goes beyond simple translation and word 
 
 ## List of Functions (A Reminder to replace this section with OUR ACTUAL FUNCTION NAMES)
 
-- Process user input: Users input sentence and a word related to the sentence preprocessing happens (This is dependent on the input to the API)
-- Analyze sentiment of the sentence: Use NLP to derive sentiment based on preprocessed user input
-- Return definitions: Function returns the definition of the word(s)
-- Analysis of replacement: If user opts to use this function then replace the word in the sentence with another word from the dictionary and then sentiment analysis function is called again on new sentence
-- Whole sentence translation: User is also able to translate the entire sentence.
-- Word cloud: Word Cloud for Antonyms/Synonyms
+- `clean_text`: Accepts a raw string and a target word, performs necessary preprocessing to prepare the text for NLP analysis.
+- `get_sentiment_score`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
+- `fetch_definition`: Queries a dictionary API to return the standard definition of a specified word, providing antonyms and synonyms.
+- `word_replacement`: Replaces a specific word in the user's sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.
+- `translate_sentence`: Translates the entire input sentence into a target language, allowing users.
+- `generate_wordcloud`: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.
 
 ## `You Need a Dictionary's` Relevance to the Python Ecosystem:
+
 There are several existing Python packages for NLP and dictionary lookups, such as [`PyDictionary`](https://pypi.org/project/PyDictionary/) for definitions and [`TextBlob`](https://textblob.readthedocs.io/en/dev/) or `NLTK` for sentiment analysis. However, **You Need a Dictionary** fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from [`TextBlob`](https://textblob.readthedocs.io/en/dev/) or a standalone definition from [`PyDictionary`](https://pypi.org/project/PyDictionary/), our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. **You Need a Dictionary** also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text.
 
 
@@ -31,8 +32,6 @@ You can install this package into your preferred Python environment using pip:
 ```bash
 $ pip install you-need-a-dictionary
 ```
-
-TODO: Add a brief example of how to use the package to this section
 
 To use you-need-a-dictionary in your code:
 
