@@ -1,8 +1,16 @@
 """
+Replaces target word and computes sentiment score.
 
-Author: 
+This script initializes the function for word substitution.
+It ensures users can make comparisons based off word impact.
+
+Author: Godsgift Braimah
+Date: 2026-01-08
 """
 
+##################################################
+# Import statements
+##################################################
 
 
 def word_replacement(sentence, target_word, replacement_word):
