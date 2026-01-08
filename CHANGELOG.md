@@ -7,8 +7,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Upcoming features and fixes
+- Added first two functions (only docstrings): get_usr_input and sentiment_analysis
 
-## [0.1.0] - (1979-01-01)
-
-- First release
