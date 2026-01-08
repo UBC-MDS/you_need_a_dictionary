@@ -2,7 +2,6 @@
 Module to get user input based on a given sentence and word; then preprocess the input for proper API formatting.
 """
 
-
 def get_user_input(sentence: str, word: str) -> str:
     """
     Get user input with the given sentence and word.
