@@ -9,3 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added first two functions (only docstrings): get_usr_input and sentiment_analysis
 
+- Added fifth function (only docstring): translate_sentence.py
