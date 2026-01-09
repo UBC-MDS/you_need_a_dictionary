@@ -8,4 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Added first two functions (only docstrings): get_usr_input and sentiment_analysis
-
+- Added third function (only docstring): fetch_definition.py
