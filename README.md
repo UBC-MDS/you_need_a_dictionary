@@ -10,14 +10,14 @@
 
 **You Need a Dictionary** is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
 
-## List of Functions (A Reminder to replace this section with OUR ACTUAL FUNCTION NAMES)
+## List of Functions
 
 - `get_user_input`: Accepts a raw string and a target word as input from the user.
 - `preprocess_user_input`: Preprocessing of user input to prepare the text for NLP analysis and API integration.
 - `analyze_sentiment`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
-- `fetch_definition`: Queries a dictionary API to return the standard definition of a specified word, providing antonyms and synonyms.
+- `fetch_definition`: Module that fetches the definition, synonyms and antonyms of a given word using WordNet
 - `word_replacement`: Replaces a specific word in the user's sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.
-- `translate_sentence`: Translates the entire input sentence into a target language, allowing users.
+- `translate_sentence`: Translates the entire input sentence into a target language using LibreTranslate.
 - `create_wordcloud`: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.
 
 ## `You Need a Dictionary's` Relevance to the Python Ecosystem:
