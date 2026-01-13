@@ -2,6 +2,9 @@
 A module that creates wordclouds of antonyms and/or synonyms for a given word.
 
 """
+import nltk
+from nltk.corpus import wordnet as wn
+
 def create_wordcloud(word, type='both'):
     """
     This function creates a wordcloud of either antonyms, 
@@ -37,3 +40,4 @@ def create_wordcloud(word, type='both'):
     
     """
     ...
+    
