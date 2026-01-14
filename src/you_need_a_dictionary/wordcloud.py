@@ -59,3 +59,30 @@ def create_wordcloud(word, sentence, type='both'):
     
     print(synonyms, antonyms)
     
+
+def similarity_score(word,set):
+    """
+    This function finds the score of similarity strength between two words.
+
+    The similarity score can be found using the NLTK wordnet 
+    package and ranges between 0 and 1 with 1 meaning strong similarity and 0 means weak similarity.
+
+    Parameters
+    ----------
+    word : string
+        The word we are comparing to.
+    set : set
+        A set of words we want to compare the word to.
+
+    Returns
+    -------
+    Dictionary
+        A dictionary with the words and their corresponding score.
+
+    Examples
+    --------
+    >>> similarity_score('car', {'door','cat','wheel','automobile'})
+        {'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0}
+
+    """
+    ...
