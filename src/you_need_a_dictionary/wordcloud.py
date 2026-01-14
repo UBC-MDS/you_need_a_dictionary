@@ -43,6 +43,14 @@ def create_wordcloud(word, sentence, type='both'):
     >>> create_wordcloud('happy')
     
     """
+    if not isinstance(word, str):
+        raise TypeError("word argument must be a string.")
+    
+    if not isinstance(sentence, str):
+        raise TypeError("sentence argument must be a string.")
+    
+    if not isinstance(type, str):
+        raise TypeError("type argument must be a string.")
 
     # Get the correct meaning for the word based on sentence context
     sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
@@ -57,7 +65,11 @@ def create_wordcloud(word, sentence, type='both'):
             for antonym in lemma.antonyms():
                 antonyms.add(antonym)
     
-    print(synonyms, antonyms)
+    # Get the similarity scores
+    syn_scores = similarity_score(word_with_context,synonyms)
+    ant_scores = similarity_score(word_with_context,antonyms)
+    print(syn_scores)
+    print(ant_scores)
     
 
 def similarity_score(basis,lemmas):
