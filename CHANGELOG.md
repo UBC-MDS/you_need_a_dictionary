@@ -12,3 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added third function (only docstring): fetch_definition.py
 - Added sixth function (only docstring): wordcloud.py
 - Added fourth function (only docstring): word_replacement.py
+
+
+
+
+- Added definition fetch code and unit tests: test_fetch_definition.py and fetch_definition.py
