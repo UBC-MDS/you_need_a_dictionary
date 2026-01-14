@@ -8,7 +8,7 @@ import os
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src"))
 )
-
+from libretranslatepy import LibreTranslateAPI
 import pytest
 from you_need_a_dictionary.translate_sentence import translate_sentence
 
@@ -114,19 +114,17 @@ def assert_raises_or_returns_error(*args, **kwargs):
 
 # 1) Verifying the inputs/outputs are valid
 def test_output_has_expected_schema(monkeypatch):
-    # Mock success response so we don't call the real API
-    import requests
-
-    class DummyResponse:
-        status_code = 200
-
-        def json(self):
-            return {
-                "translatedText": "Hola mundo",
-                "detectedLanguage": {"language": "en"},
-            }
-
-    monkeypatch.setattr(requests, "post", lambda *a, **k: DummyResponse())
+    # Mock LibreTranslateAPI methods so we don't call the real API
+    monkeypatch.setattr(
+        LibreTranslateAPI,
+        "detect",
+        lambda self, text: [{"language": "en", "confidence": 0.9}],
+    )
+    monkeypatch.setattr(
+        LibreTranslateAPI,
+        "translate",
+        lambda self, text, src, tgt: "Hola mundo",
+    )
 
     out = translate_sentence("Hello world", "es")
     assert_valid_schema(out)
@@ -135,18 +133,16 @@ def test_output_has_expected_schema(monkeypatch):
 
 # 2) "Hello world" -> "Hola mundo"
 def test_translates_hello_world_to_hola_mundo(monkeypatch):
-    import requests
-
-    class DummyResponse:
-        status_code = 200
-
-        def json(self):
-            return {
-                "translatedText": "Hola mundo",
-                "detectedLanguage": {"language": "en"},
-            }
-
-    monkeypatch.setattr(requests, "post", lambda *a, **k: DummyResponse())
+    monkeypatch.setattr(
+        LibreTranslateAPI,
+        "detect",
+        lambda self, text: [{"language": "en", "confidence": 0.9}],
+    )
+    monkeypatch.setattr(
+        LibreTranslateAPI,
+        "translate",
+        lambda self, text, src, tgt: "Hola mundo",
+    )
 
     out = translate_sentence("Hello world", "es")
     assert_valid_schema(out)
