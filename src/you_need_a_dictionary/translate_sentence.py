@@ -37,8 +37,6 @@ def translate_sentence(sentence, target_language, source_language=None):
           The target language code used for translation.
         - 'confidence' : float or None
           A confidence score provided by the translation service, if available.
-        - 'provider' : string
-          The translation provider used ('LibreTranslate').
         - 'error' : string or None
           An error message if the translation failed; otherwise None.
 
@@ -50,3 +48,50 @@ def translate_sentence(sentence, target_language, source_language=None):
 
     >>> translate_sentence("Hello world", "fr", source_language="en")
     """
+
+    from libretranslatepy import LibreTranslateAPI
+
+    lt = LibreTranslateAPI("https://libretranslate.com/")
+
+    try:
+        confidence = None
+
+        # Basic validation
+        if not isinstance(sentence, str):
+            raise TypeError("sentence must be a string")
+        if not isinstance(target_language, str):
+            raise TypeError("target_language must be a string")
+        if source_language is not None and not isinstance(source_language, str):
+            raise TypeError("source_language must be a string or None")
+
+        # Auto-detect source language if not provided
+        if source_language is None:
+            detection = lt.detect(sentence)
+
+            if detection:
+                source_language = detection[0].get("language")
+                confidence = detection[0].get("confidence")
+
+            # If detection didn't give us a language, fallback to "auto"
+            if not source_language:
+                source_language = "auto"
+
+        # Perform translation
+        translated_text = lt.translate(sentence, source_language, target_language)
+
+        return {
+            "translated_text": translated_text,
+            "source_language": source_language,
+            "target_language": target_language,
+            "confidence": confidence,
+            "error": None,
+        }
+
+    except Exception as e:
+        return {
+            "translated_text": sentence,
+            "source_language": source_language,
+            "target_language": target_language,
+            "confidence": None,
+            "error": str(e),
+        }
