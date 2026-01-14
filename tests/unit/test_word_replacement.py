@@ -16,5 +16,11 @@ def test_word_replacement():
     new_function_sentence = word_replacement(sentence, target_word, replacement_word)['New Sentence']
     expected_new_sentence = "I love Vancouver MDS is so intense"
     
+    
+    # update this function to handle punctuations removed
+    assert type(replacement_word) == str, f"Expected str, new sentence returned {type(replacement_word)} be a string."
     assert new_function_sentence == expected_new_sentence, f"Expected {expected_new_sentence} but got {new_function_sentence}"
-
+    assert isinstance(word_replacement(sentence, target_word, replacement_word), dict), "The output should be a dictionary."
+    
+    
+    # you must add an invalid type test

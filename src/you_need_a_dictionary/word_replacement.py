@@ -80,3 +80,10 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str) 
     }
     
     return results
+
+
+#changes to make
+# Word must be found in the sentence
+# Type checks for inputs
+# How does the function handle punctuations after removing them to do the replacement?
+## remember to update this function to handle punctuations removed.
