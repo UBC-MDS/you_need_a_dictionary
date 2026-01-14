@@ -5,7 +5,7 @@ A module that creates wordclouds of antonyms and/or synonyms for a given word.
 import nltk
 from nltk.corpus import wordnet as wn
 
-def create_wordcloud(word, type='both'):
+def create_wordcloud(word, sentence, type='both'):
     """
     This function creates a wordcloud of either antonyms, 
     synonyms or both for a given word.
@@ -22,6 +22,8 @@ def create_wordcloud(word, type='both'):
     word : string
         The central word in the wordcloud for which we 
         want to find the synonyms/antonyms.
+    sentence : string
+        The sentence that contains the word we are interested in.
     type : string
         This determines whether the wordcloud contains antonyms or synonyms or whether 
         the function outputs two wordclouds (one for antonyms and one for synonyms).
@@ -39,5 +41,7 @@ def create_wordcloud(word, type='both'):
     >>> create_wordcloud('happy')
     
     """
-    ...
+    synonyms = wn.synset('good.a.01')
+    antonyms = wn.antonyms(word)
+    print(synonyms, antonyms)
     
