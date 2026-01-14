@@ -60,29 +60,34 @@ def create_wordcloud(word, sentence, type='both'):
     print(synonyms, antonyms)
     
 
-def similarity_score(word,set):
+def similarity_score(basis,lemmas):
     """
     This function finds the score of similarity strength between two words.
 
     The similarity score can be found using the NLTK wordnet 
-    package and ranges between 0 and 1 with 1 meaning strong similarity and 0 means weak similarity.
+    package and ranges between 0 and 1 where:
+     - 1 : strong similarity 
+     - 0 : weak similarity.
 
     Parameters
     ----------
-    word : string
+    basis : nltk.corpus.reader.wordnet.Synset
         The word we are comparing to.
-    set : set
-        A set of words we want to compare the word to.
+    lemmas : set
+        A set of lemmas we want to compare the word to. The values in the set must have nltk.corpus.reader.wordnet.Lemma data type
 
     Returns
     -------
     Dictionary
-        A dictionary with the words and their corresponding score.
+        A dictionary with the words and their corresponding score. 
 
     Examples
     --------
-    >>> similarity_score('car', {'door','cat','wheel','automobile'})
+    >>> similarity_score(wn.synset('car.n.01'),{wn.lemma('door.n.01.door'), wn.lemma('cat.n.01.cat'), wn.lemma('wheel.n.01.wheel'), wn.lemma('car.n.01.automobile')})
         {'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0}
 
     """
-    ...
+    scores = {}
+    for word in lemmas:
+        scores[word]=basis.path_similarity(word.synset())
+    return scores
