@@ -4,6 +4,8 @@ A module that creates wordclouds of antonyms and/or synonyms for a given word.
 """
 import nltk
 from nltk.corpus import wordnet as wn
+from nltk.wsd import lesk
+import string
 
 def create_wordcloud(word, sentence, type='both'):
     """
@@ -41,7 +43,13 @@ def create_wordcloud(word, sentence, type='both'):
     >>> create_wordcloud('happy')
     
     """
-    synonyms = wn.synset('good.a.01')
-    antonyms = wn.antonyms(word)
-    print(synonyms, antonyms)
+
+    # Get the correct meaning for the word based on sentence context
+    sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
+    word_with_context = lesk(sentence_list, word)
+    print(sentence_list,word_with_context)
+
+    # # Get the synonyms and antonyms
+    # synonyms = wn.synonyms(wn.synsets(word))
+    # print(synonyms)
     
