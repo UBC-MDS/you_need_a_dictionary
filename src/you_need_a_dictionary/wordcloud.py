@@ -87,6 +87,15 @@ def similarity_score(basis,lemmas):
         {'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0}
 
     """
+    if not isinstance(basis, nltk.corpus.reader.wordnet.Synset):
+        raise TypeError("Basis must be a wordnet synset.")
+    
+    if not isinstance(lemmas, set):
+        raise TypeError("Lemmas must be a set")
+    
+    if not all(isinstance(value, nltk.corpus.reader.wordnet.Lemma) for value in lemmas):
+        raise TypeError("All the values in lemmas must be a wordnet lemma")
+    
     scores = {}
     for word in lemmas:
         scores[word]=basis.path_similarity(word.synset())
