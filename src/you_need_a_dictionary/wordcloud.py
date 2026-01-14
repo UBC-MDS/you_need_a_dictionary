@@ -47,9 +47,15 @@ def create_wordcloud(word, sentence, type='both'):
     # Get the correct meaning for the word based on sentence context
     sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
     word_with_context = lesk(sentence_list, word)
-    print(sentence_list,word_with_context)
 
-    # # Get the synonyms and antonyms
-    # synonyms = wn.synonyms(wn.synsets(word))
-    # print(synonyms)
+    # Get the antonyms and synonyms
+    synonyms = set()
+    antonyms = set() 
+    for synset in wn.synsets('open'):
+        for lemma in synset.lemmas():
+            synonyms.add(lemma)
+            for antonym in lemma.antonyms():
+                antonyms.add(antonym)
+    
+    print(synonyms, antonyms)
     
