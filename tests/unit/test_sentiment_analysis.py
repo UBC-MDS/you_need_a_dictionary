@@ -6,7 +6,7 @@ from you_need_a_dictionary.sentiment_analysis import analyze_sentiment
 
 def test_empty_string():
     """Test that an empty string raises an Exception."""
-    with pytest.raises(Exception):
+    with pytest.raises(ValueError, match="cannot be empty"):
         analyze_sentiment("")
 
 
@@ -34,7 +34,7 @@ def test_neutral_sentiment():
 
 def test_exception_message():
     """Test that the exception message is correct for empty input."""
-    with pytest.raises(Exception, match="Input sentence is empty."):
+    with pytest.raises(Exception, match="Input sentence cannot be empty or whitespace only."):
         analyze_sentiment("")
 
 def test_return_type():
@@ -43,7 +43,14 @@ def test_return_type():
     assert isinstance(result, dict)
 
 def test_whitespace_input():
-    """Check behavior for whitespace-only strings (VADER usually handles this, returning neutral 0s)."""
-    result = analyze_sentiment("   ")
-    assert result['neu'] == 0.0 or result['neu'] == 1.0
-    assert result['compound'] == 0.0
+    """Check behavior for whitespace-only strings."""
+    with pytest.raises(ValueError, match="cannot be empty"):
+        analyze_sentiment("     ")
+
+    
+# Additional test for invalid input type from prompt "What other tests should I perform (use pytest) to ensure that my function performs as expected?"
+def test_invalid_type():
+    """Test that a non-string input raises a TypeError."""
+    with pytest.raises(TypeError, match="Input must be a string."):
+        analyze_sentiment(123)
+        analyze_sentiment(None)
