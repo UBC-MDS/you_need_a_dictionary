@@ -8,6 +8,7 @@ from nltk.wsd import lesk
 import string
 import numpy as np
 import matplotlib.pyplot as plt
+from collections import Counter, defaultdict
 
 def create_wordcloud(word, sentence, type='both'):
     """
@@ -61,18 +62,32 @@ def create_wordcloud(word, sentence, type='both'):
     # Get the antonyms and synonyms
     synonyms = set()
     antonyms = set() 
-    for synset in wn.synsets('open'):
+    for synset in wn.synsets(word):
         for lemma in synset.lemmas():
             synonyms.add(lemma)
             for antonym in lemma.antonyms():
                 antonyms.add(antonym)
+
+
     
     # Get the similarity scores
     syn_scores = similarity_score(word_with_context,synonyms)
     ant_scores = similarity_score(word_with_context,antonyms)
     
     # Plot the wordclouds
-    wordcloud_plotter(word,word_dic)
+    if type == 'synonym':
+        fig, ax = plt.subplots(figsize=(7,7))
+        wordcloud_plotter(ax, word, syn_scores)
+        return fig
+    elif type == 'antonym' :
+        fig, ax = plt.subplots(figsize=(7,7))
+        wordcloud_plotter(ax, word, ant_scores)
+        return fig
+    elif type == 'both':
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
+        wordcloud_plotter(ax1, word, syn_scores)
+        wordcloud_plotter(ax2, word, ant_scores)
+        return fig
 
     
 
@@ -114,10 +129,12 @@ def similarity_score(basis,lemmas):
     
     scores = {}
     for word in lemmas:
-        scores[word]=basis.path_similarity(word.synset())
+        if word.name() == basis.name().split(".")[0].replace('_',' '):
+            continue   
+        scores[word.name()]=basis.path_similarity(word.synset())
     return scores
 
-def wordcloud_plotter(central_word,word_dic):
+def wordcloud_plotter(ax,central_word,word_dic):
     """
     This function plots a wordcloud.
 
@@ -153,35 +170,39 @@ def wordcloud_plotter(central_word,word_dic):
     'tan', 'brown', 'chocolate', 'gray', 'grey', 'khaki'
     ]
 
-    fig = plt.figure()
-    ax = fig.add_subplot()
+    
     ax.axis('off')
     ax.set_aspect('equal')
 
     # Create central point
     ax.text(0, 0, central_word , fontsize=50, va='center', ha='center',
-            bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})
+            bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
 
+    min_radius = len(word_dic.items())/19
+
+    score_counts = Counter(word_dic.values())
+    score_positions = defaultdict(int)
     
-    min_radius = 1
-    max_radius = 3
+    for word, score in word_dic.items():
 
-    rank = 0
-
-    for rank, (word, score) in enumerate(word_dic.items()):
 
         # Map similarity to radius: higher similarity -> closer to center 
-        radius = min_radius + (1 - score) * (max_radius - min_radius)
+        rank = score_set.index(score)+1
+        radius = min_radius + rank * 0.4
 
-        # Assign an angle (evenly spaced around the circle)  
-        angle = 2 * np.pi * rank / len(list(word_dic.keys()))
+        # Assign an angle (evenly spaced around the circle)
+        i = score_positions[score]
+        score_positions[score] += 1  
+        angle = 2 * np.pi * i / score_counts[score]
+
          
         # Convert polar coordinates to Cartesian
         x = radius * np.cos(angle)
         y = radius * np.sin(angle)
 
         # Adjust the fontsize based on similarity
-        fontsize = 10 + 30 * score
+        fontsize = 18 - rank * 2 / (len(score_set) )
+        
 
         # Adjust the colour based on similarity (words with same score have the same colour)
         colour_index = min(score_set.index(score), len(colour_list)-1)
@@ -189,7 +210,6 @@ def wordcloud_plotter(central_word,word_dic):
 
         
         ax.text(x, y, word ,fontsize=fontsize, va='center', ha='center',
-            bbox={'facecolor': colour, 'alpha': 0.5, 'pad': 10})
-        
-    plt.show()    
-    return fig
+            bbox={'facecolor': colour, 'alpha': 0.5, 'pad': 2})
+          
+    
