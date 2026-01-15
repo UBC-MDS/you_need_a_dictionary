@@ -6,6 +6,8 @@ import nltk
 from nltk.corpus import wordnet as wn
 from nltk.wsd import lesk
 import string
+import numpy as np
+import matplotlib.pyplot as plt
 
 def create_wordcloud(word, sentence, type='both'):
     """
@@ -135,4 +137,57 @@ def wordcloud_plotter(word_dic):
     >>> wordcloud_plotter({'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0})
         
     """
-    ...
+    # Set of scores 
+    score_set = sorted(set(word_dic.values()), reverse=True)
+
+    # List of colours that can be used by matplotlib
+    colour_list = [
+        'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown',
+        'gray', 'grey', 'cyan', 'magenta', 'lime', 'teal', 'navy', 'olive',
+        'maroon', 'gold', 'violet', 'indigo', 'salmon', 'turquoise', 'orchid',
+        'coral', 'khaki', 'crimson', 'plum', 'tan', 'chocolate', 'skyblue'
+    ]
+
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    ax.axis('off')
+    ax.set_aspect('equal')
+
+    # Create central point
+    ax.text(0, 0, 'open' , fontsize=50, va='center', ha='center',
+            bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})
+    
+
+    
+    min_radius = 1
+    max_radius = 3
+
+    rank = 0
+
+    for word,score in word_dic.items():
+
+        # Map similarity to radius: higher similarity -> closer to center 
+        radius = min_radius + (1 - score) * (max_radius - min_radius)
+
+        # Assign an angle (evenly spaced around the circle)  
+        angle = 2 * np.pi * rank / len(list(word_dic.keys()))
+         
+        # Convert polar coordinates to Cartesian
+        x = radius * np.cos(angle)
+        y = radius * np.sin(angle)
+
+        # Adjust the fontsize based on similarity
+        fontsize = 10 + 30 * score
+
+        # Adjust the colour based on similarity (words with same score have the same colour)
+        if score_set.index(score) >= 29:
+            colour = 'red'
+        else:
+            colour = colour_list[score_set.index(score)]
+
+        
+        ax.text(x, y, word ,fontsize=fontsize, va='center', ha='center',
+            bbox={'facecolor': colour, 'alpha': 0.5, 'pad': 10})
+        
+        rank +=1
+    return fig
