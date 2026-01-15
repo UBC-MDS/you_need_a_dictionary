@@ -6,9 +6,8 @@ import nltk
 from nltk.corpus import wordnet as wn
 from nltk.wsd import lesk
 import string
-import numpy as np
 import matplotlib.pyplot as plt
-from collections import Counter, defaultdict
+from wordcloud import WordCloud
 
 def create_wordcloud(word, sentence, type='both'):
     """
@@ -134,7 +133,7 @@ def similarity_score(basis,lemmas):
         scores[word.name()]=basis.path_similarity(word.synset())
     return scores
 
-def wordcloud_plotter(ax,central_word,word_dic):
+def wordcloud_plotter(central_word,word_dic,type):
     """
     This function plots a wordcloud.
 
@@ -146,6 +145,8 @@ def wordcloud_plotter(ax,central_word,word_dic):
         The central word in the wordcloud.
     word_dic : dictionary
         A dictionary mapping words (str) to their similarity scores (float, range 0–1)
+    type : str
+        Defines what type of wordcloud it is
     
 
     Returns
@@ -161,55 +162,23 @@ def wordcloud_plotter(ax,central_word,word_dic):
     # Set of scores 
     score_set = sorted(set(word_dic.values()), reverse=True)
 
-    # List of colours that can be used by matplotlib
-    colour_list = [
-    'navy', 'blue', 'skyblue', 'cyan', 'teal', 'turquoise',
-    'green', 'lime', 'olive',
-    'yellow', 'gold', 'orange', 'coral', 'salmon', 'red', 'crimson', 'maroon',
-    'violet', 'indigo', 'purple', 'plum', 'orchid', 'pink',
-    'tan', 'brown', 'chocolate', 'gray', 'grey', 'khaki'
-    ]
 
-    
-    ax.axis('off')
-    ax.set_aspect('equal')
+    max_size = 100
+    min_size = 10
 
-    # Create central point
-    ax.text(0, 0, central_word , fontsize=50, va='center', ha='center',
-            bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
+    # The difference in size between words is based on the score rank 
+    step = (max_size - min_size)/max(1,len(score_set)-1)
 
-    min_radius = len(word_dic.items())/19
+    score_dic = {}
 
-    score_counts = Counter(word_dic.values())
-    score_positions = defaultdict(int)
-    
-    for word, score in word_dic.items():
+    # Assign a score based on score rank (i.e words with same score have same size)
+    for syn in word_dic:
+        score_dic[syn]=max_size-score_set.index(word_dic[syn])*step
 
+    # Plot wordcloud
+    wordcloud = WordCloud(width=1000, height=700, background_color='white', random_state=8).generate_from_frequencies(score_dic)
 
-        # Map similarity to radius: higher similarity -> closer to center 
-        rank = score_set.index(score)+1
-        radius = min_radius + rank * 0.4
-
-        # Assign an angle (evenly spaced around the circle)
-        i = score_positions[score]
-        score_positions[score] += 1  
-        angle = 2 * np.pi * i / score_counts[score]
-
-         
-        # Convert polar coordinates to Cartesian
-        x = radius * np.cos(angle)
-        y = radius * np.sin(angle)
-
-        # Adjust the fontsize based on similarity
-        fontsize = 18 - rank * 2 / (len(score_set) )
-        
-
-        # Adjust the colour based on similarity (words with same score have the same colour)
-        colour_index = min(score_set.index(score), len(colour_list)-1)
-        colour = colour_list[colour_index]
-
-        
-        ax.text(x, y, word ,fontsize=fontsize, va='center', ha='center',
-            bbox={'facecolor': colour, 'alpha': 0.5, 'pad': 2})
-          
-    
+    plt.title(f'{type} Wordcloud for {central_word} ',pad=10, fontweight='bold')
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis("off") 
+    plt.show()
