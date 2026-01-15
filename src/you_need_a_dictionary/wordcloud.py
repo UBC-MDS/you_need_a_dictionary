@@ -38,7 +38,7 @@ def create_wordcloud(word, sentence, type='both'):
 
     Examples
     --------
-    >>> create_wordcloud('car', 'antonym')
+    >>> create_wordcloud('car', 'The car is on the road', 'antonym')
 
     >>> create_wordcloud('happy')
     
@@ -112,3 +112,27 @@ def similarity_score(basis,lemmas):
     for word in lemmas:
         scores[word]=basis.path_similarity(word.synset())
     return scores
+
+def wordcloud_plotter(word_dic):
+    """
+    This function plots a wordcloud.
+
+    This function was developed with the help of ChatGPT to determine how to position the points to reduce overlap.
+
+    Parameters
+    ----------
+    word_dic : dictionary
+        A dictionary containing words and their scores.
+    
+
+    Returns
+    -------
+    plt.Figure
+        A Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word. 
+
+    Examples
+    --------
+    >>> wordcloud_plotter({'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0})
+        
+    """
+    ...
