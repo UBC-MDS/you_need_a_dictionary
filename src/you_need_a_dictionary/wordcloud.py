@@ -70,8 +70,10 @@ def create_wordcloud(word, sentence, type='both'):
     # Get the similarity scores
     syn_scores = similarity_score(word_with_context,synonyms)
     ant_scores = similarity_score(word_with_context,antonyms)
-    print(syn_scores)
-    print(ant_scores)
+    
+    # Plot the wordclouds
+    wordcloud_plotter(word,word_dic)
+
     
 
 def similarity_score(basis,lemmas):
@@ -93,7 +95,7 @@ def similarity_score(basis,lemmas):
     Returns
     -------
     Dictionary
-        A dictionary with the words and their corresponding score. 
+        A dictionary mapping words (str) to their similarity scores (float, range 0–1)
 
     Examples
     --------
@@ -115,7 +117,7 @@ def similarity_score(basis,lemmas):
         scores[word]=basis.path_similarity(word.synset())
     return scores
 
-def wordcloud_plotter(word_dic):
+def wordcloud_plotter(central_word,word_dic):
     """
     This function plots a wordcloud.
 
@@ -123,8 +125,10 @@ def wordcloud_plotter(word_dic):
 
     Parameters
     ----------
+    central_word : str
+        The central word in the wordcloud.
     word_dic : dictionary
-        A dictionary containing words and their scores.
+        A dictionary mapping words (str) to their similarity scores (float, range 0–1)
     
 
     Returns
@@ -134,7 +138,7 @@ def wordcloud_plotter(word_dic):
 
     Examples
     --------
-    >>> wordcloud_plotter({'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0})
+    >>> wordcloud_plotter('car',{'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0})
         
     """
     # Set of scores 
@@ -142,10 +146,11 @@ def wordcloud_plotter(word_dic):
 
     # List of colours that can be used by matplotlib
     colour_list = [
-        'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown',
-        'gray', 'grey', 'cyan', 'magenta', 'lime', 'teal', 'navy', 'olive',
-        'maroon', 'gold', 'violet', 'indigo', 'salmon', 'turquoise', 'orchid',
-        'coral', 'khaki', 'crimson', 'plum', 'tan', 'chocolate', 'skyblue'
+    'navy', 'blue', 'skyblue', 'cyan', 'teal', 'turquoise',
+    'green', 'lime', 'olive',
+    'yellow', 'gold', 'orange', 'coral', 'salmon', 'red', 'crimson', 'maroon',
+    'violet', 'indigo', 'purple', 'plum', 'orchid', 'pink',
+    'tan', 'brown', 'chocolate', 'gray', 'grey', 'khaki'
     ]
 
     fig = plt.figure()
@@ -154,9 +159,8 @@ def wordcloud_plotter(word_dic):
     ax.set_aspect('equal')
 
     # Create central point
-    ax.text(0, 0, 'open' , fontsize=50, va='center', ha='center',
+    ax.text(0, 0, central_word , fontsize=50, va='center', ha='center',
             bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 10})
-    
 
     
     min_radius = 1
@@ -164,7 +168,7 @@ def wordcloud_plotter(word_dic):
 
     rank = 0
 
-    for word,score in word_dic.items():
+    for rank, (word, score) in enumerate(word_dic.items()):
 
         # Map similarity to radius: higher similarity -> closer to center 
         radius = min_radius + (1 - score) * (max_radius - min_radius)
@@ -180,14 +184,12 @@ def wordcloud_plotter(word_dic):
         fontsize = 10 + 30 * score
 
         # Adjust the colour based on similarity (words with same score have the same colour)
-        if score_set.index(score) >= 29:
-            colour = 'red'
-        else:
-            colour = colour_list[score_set.index(score)]
+        colour_index = min(score_set.index(score), len(colour_list)-1)
+        colour = colour_list[colour_index]
 
         
         ax.text(x, y, word ,fontsize=fontsize, va='center', ha='center',
             bbox={'facecolor': colour, 'alpha': 0.5, 'pad': 10})
         
-        rank +=1
+    plt.show()    
     return fig
