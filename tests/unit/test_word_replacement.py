@@ -1,4 +1,8 @@
-
+"""
+Unit tests for the word_replacement function in you_need_a_dictionary module.
+Author: Godsgift Braimah
+Date: 2026-01-15
+"""
 import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
