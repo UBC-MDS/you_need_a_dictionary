@@ -48,10 +48,12 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str, 
     -------
     dict
         A dictionary containing the results of the simulation with the keys:
-        - 'new_sentence' (str): The modified sentence after replacement.
-        - 'previous_sentiment' (float): The sentiment score of the original sentence.
-        - 'new_sentiment' (float): The sentiment score of the modified sentence.
-        - 'score_diff' (float): The difference between new and original scores.
+        - 'New Sentence' (str): The modified sentence after replacement.
+        - 'Previous Sentiment Type' (str): The type of sentiment obtained from the 
+            previous sentence(Positive/Neutral/Negative).
+        - 'Previous Sentiment Score' (float): The sentiment score of the original sentence.
+        - 'New Sentiment Type' (str): The type of sentiment obtained from the new sentence.
+        - 'New Sentiment Score' (float): The sentiment score of the new sentence.
 
     Raises
     ------
@@ -69,9 +71,7 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str, 
     # uses regex to find all matched of the target word
     pattern = r'\b' + re.escape(target_word) + r'\b'
     matches = list(re.finditer(pattern, sentence))
-    print("---------\\\\\\\\\\----------")
-    print(matches)
-    
+
     if not matches:
         raise ValueError(f"The target word '{target_word}' not found in the sentence.")
     
@@ -96,15 +96,13 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str, 
     new_sentiment = analyze_sentiment(new_sentence)
     prev_type, prev_score = sentiment_specifics(previous_sentiment)
     new_type, new_score = sentiment_specifics(new_sentiment)
-    score_diff = new_score - prev_score
     
     results = {
         'New Sentence': new_sentence,
         'Previous Sentiment Type': prev_type,
         'Previous Sentiment Score': prev_score,
         'New Sentiment Type': new_type,
-        'New Sentiment Score': new_score,
-        'Score Difference': round(score_diff, 4)
+        'New Sentiment Score': new_score
     }
     
     return results

@@ -17,7 +17,6 @@ def test_word_replacement():
     
     assert result['New Sentence'] == "MDS is so intense"
     assert isinstance(result, dict)
-    assert 'Score Difference' in result
 
 def test_word_replacement_punctuation_preservation():
     """

@@ -1,10 +1,10 @@
 """
-    Helper to find the highest score among pos, neg, and neu
-    returned from analyze_sentiment.
-    
-    Author: Godsgift Braimah
-"""
+Helper to find the highest score among pos, neg, and neu
+returned from analyze_sentiment.
 
+Author: Godsgift Braimah
+Date: 2026-01-15
+"""
 
 def sentiment_specifics(sentiment_dict: dict) -> tuple:
     """
