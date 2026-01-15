@@ -1,13 +1,13 @@
 """
-Module that fetches a sentence's translation and metadata through the LibreTranslate API.
+Module that fetches a sentence's translation and metadata through Google Translate.
 """
 
 
 def translate_sentence(sentence, target_language, source_language=None):
     """
-    Translate an input sentence into a target language using LibreTranslate.
+    Translate an input sentence into a target language using Google Translate.
 
-    This function sends the input sentence to the LibreTranslate API and returns
+    This function sends the input sentence to Google Translate and returns
     the translated text along with additional metadata. By default, the source
     language is automatically detected by the translation service. If an error
     occurs during translation, the original sentence is returned and error
@@ -21,7 +21,7 @@ def translate_sentence(sentence, target_language, source_language=None):
         The target language code (e.g., 'es' for Spanish, 'fr' for French).
     source_language : string, optional
         The source language code of the input sentence. If None, the source
-        language is automatically detected by LibreTranslate. Default is None.
+        language is automatically detected. Default is None.
 
     Returns
     -------
@@ -35,27 +35,18 @@ def translate_sentence(sentence, target_language, source_language=None):
           The detected or specified source language code.
         - 'target_language' : string
           The target language code used for translation.
-        - 'confidence' : float or None
-          A confidence score provided by the translation service, if available.
         - 'error' : string or None
           An error message if the translation failed; otherwise None.
 
     Examples
     --------
     >>> translate_sentence("Hello world", "es")
-
     >>> translate_sentence("Bonjour tout le monde", "en")
-
     >>> translate_sentence("Hello world", "fr", source_language="en")
     """
-
-    from libretranslatepy import LibreTranslateAPI
-
-    lt = LibreTranslateAPI("https://libretranslate.com/")
+    from deep_translator import GoogleTranslator
 
     try:
-        confidence = None
-
         # Basic validation
         if not isinstance(sentence, str):
             raise TypeError("sentence must be a string")
@@ -64,26 +55,18 @@ def translate_sentence(sentence, target_language, source_language=None):
         if source_language is not None and not isinstance(source_language, str):
             raise TypeError("source_language must be a string or None")
 
-        # Auto-detect source language if not provided
-        if source_language is None:
-            detection = lt.detect(sentence)
-
-            if detection:
-                source_language = detection[0].get("language")
-                confidence = detection[0].get("confidence")
-
-            # If detection didn't give us a language, fallback to "auto"
-            if not source_language:
-                source_language = "auto"
+        # Use 'auto' for automatic detection if source_language is None
+        source = source_language if source_language else "auto"
 
         # Perform translation
-        translated_text = lt.translate(sentence, source_language, target_language)
+        translated_text = GoogleTranslator(
+            source=source, target=target_language
+        ).translate(sentence)
 
         return {
             "translated_text": translated_text,
-            "source_language": source_language,
+            "source_language": source,
             "target_language": target_language,
-            "confidence": confidence,
             "error": None,
         }
 
@@ -92,6 +75,5 @@ def translate_sentence(sentence, target_language, source_language=None):
             "translated_text": sentence,
             "source_language": source_language,
             "target_language": target_language,
-            "confidence": None,
             "error": str(e),
         }
