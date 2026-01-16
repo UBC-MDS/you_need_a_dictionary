@@ -30,3 +30,4 @@ def analyze_sentiment(sentence: str) -> dict:
     sia = SentimentIntensityAnalyzer()
     scores = sia.polarity_scores(sentence)
     return scores
+
