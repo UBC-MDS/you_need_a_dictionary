@@ -29,4 +29,6 @@ its purpose, and any important notes.
 """
 from you_need_a_dictionary.word_replacement import word_replacement
 from you_need_a_dictionary.wordcloud import create_wordcloud
-__all__ = ['word_replacement','create_wordcloud']
+from you_need_a_dictionary.sentiment_analysis import analyze_sentiment
+from you_need_a_dictionary.fetch_definition import fetch_definition
+__all__ = ['word_replacement','create_wordcloud','analyze_sentiment','fetch_definition']
