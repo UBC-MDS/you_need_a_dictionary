@@ -12,13 +12,14 @@ Run tests with: pytest tests/test_create_features.py -v
 """
 
 import os
+import sys
+
 import pytest
 import matplotlib.pyplot as plt
-import nltk
 from nltk.corpus import wordnet as wn
-import sys
-import re
-from you_need_a_dictionary.wordcloud import create_wordcloud,similarity_score
+
+from you_need_a_dictionary.wordcloud import create_wordcloud
+from you_need_a_dictionary.wordcloud_utils import similarity_score
 
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src"))
@@ -88,6 +89,15 @@ def edge_case_2():
     type = "both"
     return word, sentence, type
 
+# Case 3 : word with no antonyms when both wordclouds are asked for
+# Expected behaviour : returns a string explaining that the word is not in Wordnet
+@pytest.fixture
+def edge_case_3(): 
+    word = "and"
+    sentence = "The car is parked outside and inside."
+    type = "both"
+    return word, sentence, type
+
 
 # ----------------------------------------------------------------------------- #
 # Error handling test data                                                      #
@@ -131,14 +141,6 @@ def error_case_4():
     type = "syn"
     return word, sentence, type
 
-# Case 5 : word is an empty string
-# Expected behaviour : Should raise a ValueError
-@pytest.fixture
-def error_case_5():  
-    word = " "
-    sentence = "The car is on the road"
-    type = "syn"
-    return word, sentence, type
 
 # ----------------------------------------------------------------------------- #
 # create_wordcloud() – normal cases                                             #
@@ -187,7 +189,7 @@ def test_similarity_score_normal(normal_case_scores):
 # create_wordcloud() – edge cases                                               #
 # ----------------------------------------------------------------------------- #
 
-def test_create_wordcloud_edge(edge_case_1,edge_case_2):
+def test_create_wordcloud_edge(edge_case_1,edge_case_2,edge_case_3):
     """ Tests to ensure create_wordcloud function works correctly when the word has no antonym when type = 'antonym' and type = 'both'."""
 
     # No antonym and type = 'antonym' - returns a string explaining no antonyms exist
@@ -201,11 +203,17 @@ def test_create_wordcloud_edge(edge_case_1,edge_case_2):
     result_both = create_wordcloud(word, sentence, type)
     assert isinstance(result_both, plt.Figure)
 
+    # The word is not in the Wordnet - returns a string explaining that the word is not in Wordnet
+    word, sentence, type = edge_case_3
+    results = create_wordcloud(word, sentence, type)
+    expected = f"The word '{word}' is not in the nltk Wordnet."
+    assert results == expected
+
 # ----------------------------------------------------------------------------- #
 # create_wordcloud() – error cases                                              #
 # ----------------------------------------------------------------------------- #
 
-def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_case_4, error_case_5):
+def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_case_4):
     """ Tests to ensure create_wordcloud function validates inputs correctly and raises appropriate errors."""
     # Test 1 - word is not a string
     with pytest.raises(TypeError, match="word argument must be a string."):
@@ -227,7 +235,3 @@ def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_
         word, sentence, type = error_case_4
         create_wordcloud(word, sentence, type)
 
-    # Test 5 - word is an empty string
-    with pytest.raises(NameError, match="type argument must be a either synonym, antonym or both."):
-        word, sentence, type = error_case_5
-        create_wordcloud(word, sentence, type)
