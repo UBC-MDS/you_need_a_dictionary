@@ -40,6 +40,62 @@ To use you-need-a-dictionary in your code:
 >>> you-need-a-dictionary.hello_world()
 ```
 
+## Language codes
+
+The following language codes are used:
+
+| Language              | Code |
+|-----------------------|------|
+| Albanian              | sq   |
+| Arabic                | ar   |
+| Azerbaijani           | az   |
+| Basque                | eu   |
+| Bengali               | bn   |
+| Bulgarian             | bg   |
+| Catalan               | ca   |
+| Chinese (traditional) | zt   |
+| Chinese               | zh   |
+| Czech                 | cs   |
+| Danish                | da   |
+| Dutch                 | nl   |
+| English               | en   |
+| Esperanto             | eo   |
+| Estonian              | et   |
+| Finnish               | fi   |
+| French                | fr   |
+| Galician              | gl   |
+| German                | de   |
+| Greek                 | el   |
+| Hebrew                | he   |
+| Hindi                 | hi   |
+| Hungarian             | hu   |
+| Indonesian            | id   |
+| Irish                 | ga   |
+| Italian               | it   |
+| Japanese              | ja   |
+| Korean                | ko   |
+| Kyrgyz                | ky   |
+| Latvian               | lv   |
+| Lithuanian            | lt   |
+| Malay                 | ms   |
+| Norwegian             | nb   |
+| Persian               | fa   |
+| Polish                | pl   |
+| Portuguese            | pt   |
+| Portuguese (Brazil)   | pb   |
+| Romanian              | ro   |
+| Russian               | ru   |
+| Slovak                | sk   |
+| Slovenian             | sl   |
+| Spanish               | es   |
+| Swedish               | sv   |
+| Tagalog               | tl   |
+| Thai                  | th   |
+| Turkish               | tr   |
+| Ukranian              | uk   |
+| Urdu                  | ur   |
+| Vietnamese            | vi   |
+
 ## Contributors
 - Eric Wong
 - Mailys Guedon
@@ -51,3 +107,5 @@ To use you-need-a-dictionary in your code:
 
 - Copyright © 2026 Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong.
 - Free software distributed under the [MIT License](./LICENSE).
+
+
