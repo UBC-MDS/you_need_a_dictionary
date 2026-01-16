@@ -79,7 +79,6 @@ def edge_case_1():
     return word, sentence, type
 
 
-
 # Case 2 : word with no antonyms when both wordclouds are asked for
 # Expected behaviour : returns just the synonym wordcloud
 @pytest.fixture
@@ -88,6 +87,7 @@ def edge_case_2():
     sentence = "The car is parked outside"
     type = "both"
     return word, sentence, type
+
 
 # ----------------------------------------------------------------------------- #
 # Error handling test data                                                      #
@@ -127,6 +127,15 @@ def error_case_3():
 @pytest.fixture
 def error_case_4():  
     word = "car"
+    sentence = "The car is on the road"
+    type = "syn"
+    return word, sentence, type
+
+# Case 5 : word is an empty string
+# Expected behaviour : Should raise a ValueError
+@pytest.fixture
+def error_case_5():  
+    word = " "
     sentence = "The car is on the road"
     type = "syn"
     return word, sentence, type
@@ -196,7 +205,7 @@ def test_create_wordcloud_edge(edge_case_1,edge_case_2):
 # create_wordcloud() – error cases                                              #
 # ----------------------------------------------------------------------------- #
 
-def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_case_4):
+def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_case_4, error_case_5):
     """ Tests to ensure create_wordcloud function validates inputs correctly and raises appropriate errors."""
     # Test 1 - word is not a string
     with pytest.raises(TypeError, match="word argument must be a string."):
@@ -216,4 +225,9 @@ def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_
     # Test 4 - type is not one of the correct options
     with pytest.raises(NameError, match="type argument must be a either synonym, antonym or both."):
         word, sentence, type = error_case_4
+        create_wordcloud(word, sentence, type)
+
+    # Test 5 - word is an empty string
+    with pytest.raises(NameError, match="type argument must be a either synonym, antonym or both."):
+        word, sentence, type = error_case_5
         create_wordcloud(word, sentence, type)

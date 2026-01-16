@@ -68,6 +68,9 @@ def create_wordcloud(word, sentence, type='both'):
     if not (type=='synonym' or type=='antonym' or type=='both'):
         raise NameError("type argument must be a either synonym, antonym or both.")
     
+    # Check that word or sentence are not empty
+    if not (len(word)>0 and len(sentence)>0) :
+        raise ValueError("word and sentence cannot be empty.")
 
     # Get the correct meaning for the word based on sentence context
     sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
