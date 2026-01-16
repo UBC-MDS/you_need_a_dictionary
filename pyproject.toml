@@ -49,6 +49,8 @@ Download = "https://pypi.org/project/you-need-a-dictionary/#files"
 dev = [
     "hatch",
     "pre-commit",
+    "deep-translator",
+    "nltk"
 ]
 
 docs = [
