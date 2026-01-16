@@ -8,6 +8,17 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../.
 import pytest
 from you_need_a_dictionary.sentiment_analysis import analyze_sentiment
 
+
+@pytest.fixture
+def sample_sentences():
+    """Fixture to provide sample sentences for sentiment analysis."""
+    return {
+        "positive": "I absolutely love Kpop",
+        "negative": "I absolutely hate this terrible experience",
+        "neutral": "The bag is on the table."
+    }
+
+
 def test_empty_string():
     """Test that an empty string raises an Exception."""
     with pytest.raises(ValueError, match="cannot be empty"):
@@ -15,24 +26,24 @@ def test_empty_string():
 
 
 # Below code based on prompt: What other tests should I perform (use pytest) to ensure that my function performs as expected?
-def test_sentiment_values():
+def test_sentiment_values(sample_sentences):
     """Test that sentiment scores are returned for a positive sentence."""
-    result = analyze_sentiment("I absolutely love Kpop")
+    result = analyze_sentiment(sample_sentences["positive"])
     assert 'neg' in result
     assert 'neu' in result
     assert 'pos' in result
     assert 'compound' in result
     assert result['pos'] > result['neg']
 
-def test_negative_sentiment():
+def test_negative_sentiment(sample_sentences):
     """Test that a negative sentence results in a higher negative score."""
-    result = analyze_sentiment("I absolutely hate this terrible experience")
+    result = analyze_sentiment(sample_sentences["negative"])
     assert result['neg'] > result['pos']
     assert result['compound'] < 0
 
-def test_neutral_sentiment():
+def test_neutral_sentiment(sample_sentences):
     """Test that a neutral statement has a high neutral score."""
-    result = analyze_sentiment("The bag is on the table.")
+    result = analyze_sentiment(sample_sentences["neutral"])
     assert result['neu'] > 0.5
     assert abs(result['compound']) < 0.1
 
