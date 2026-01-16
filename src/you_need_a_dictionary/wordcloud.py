@@ -204,6 +204,30 @@ def wordcloud_plotter(given_word,word_dic,type):
         
     """
     
+    # Check that given_word input is a string
+    if not isinstance(given_word, str):
+        raise TypeError("given_word argument must be a string.")
+    
+    # Check that word_dic input is a string
+    if not isinstance(word_dic, dict):
+        raise TypeError("word_dic argument must be a dictionary.")
+    
+    # Check that values in word_dic are floats
+    if not all(isinstance(value, float) for value in word_dic.values()):
+        raise TypeError("values in word_dic argument must be floats.")
+    
+    # Check that keys in word_dic are strings
+    if not all(isinstance(keys, str) for keys in word_dic):
+        raise TypeError("keys in word_dic argument must be strings.")
+    
+    # Check that values in word_dic are between 0 and 1
+    if not all(value in range(0,2) for value in word_dic.values()):
+        raise TypeError("values in word_dic argument must be between 0 and 1.")
+    
+    # Check that type input is a string
+    if not isinstance(type, str):
+        raise TypeError("type argument must be a string.")
+    
     # Set of scores 
     score_set = sorted(set(word_dic.values()), reverse=True)
 
