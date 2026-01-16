@@ -64,6 +64,10 @@ def create_wordcloud(word, sentence, type='both'):
     if not isinstance(type, str):
         raise TypeError("type argument must be a string.")
     
+    # Check that type input is one of the options
+    if not (type=='synonym' or type=='antonym' or type=='both'):
+        raise NameError("type argument must be a either synonym, antonym or both.")
+    
 
     # Get the correct meaning for the word based on sentence context
     sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
@@ -84,48 +88,33 @@ def create_wordcloud(word, sentence, type='both'):
     syn_scores = similarity_score(word_with_context,synonyms)
     ant_scores = similarity_score(word_with_context,antonyms)
 
+
     # If there are no synonyms/antonyms for the word, ask the user if they want to try another type 
     if (len(syn_scores)==0 and (type=='synonym' or type=='both')) or (len(ant_scores)==0 and (type=='antonym' or type=='both')) :
         if type=='synonym' :
             print(f"There are no synonyms for {word} in this context.")
-            question = input("Would you like to see the antonym wordcloud instead? (Answer yes or no)")
-            if question == 'yes':
-                type='antonym'
-            else:
-                return f"You can try again with another word or try another meaning of {word}."
+            return f"You can try again with another word, try another meaning of {word} or get the antonym wordcloud."
         elif type=='antonym':
             print(f"There are no antonyms for {word} in this context.")
-            question = input("Would you like to see the synonym wordcloud instead? (Answer yes or no)")
-            if question == 'yes':
-                type='synonym'
-            else:
-                return f"You can try again with another word or try another meaning of {word}."
+            return f"You can try again with another word, try another meaning of {word} or get the synonym wordcloud."
         elif type=='both':
             if len(syn_scores)==0:
                 print(f"There are no synonyms for {word} in this context.")
-                question = input("Would you like to see the antonym wordcloud instead? (Answer yes or no)")
-                if question == 'yes':
-                    type='antonym'
-                else:
-                    return f"You can try again with another word or try another meaning of {word}."
+                type='antonym'
             if len(ant_scores)==0:
                 print(f"There are no antonyms for {word} in this context.")
-                question = input("Would you like to see the synonym wordcloud instead? (Answer yes or no)")
-                if question == 'yes':
-                    type='synonym'
-                else:
-                    return f"You can try again with another word or try another meaning of {word}."
+                type='synonym'
                     
     
     # Plot the wordclouds
     if type == 'synonym':
-        wordcloud_plotter(word, syn_scores,'synonym')
+        return wordcloud_plotter(word, syn_scores,'synonym')
     elif type == 'antonym' :
-        wordcloud_plotter(word, ant_scores,'antonym')
+        return wordcloud_plotter(word, ant_scores,'antonym')
     elif type == 'both':
-        wordcloud_plotter(word, syn_scores,'synonym')
-        wordcloud_plotter(word, ant_scores,'antonym')
-
+        syn_wc = wordcloud_plotter(word, syn_scores,'synonym')
+        ant_wc = wordcloud_plotter(word, ant_scores,'antonym')
+        return syn_wc,ant_wc
     
 
 def similarity_score(basis,lemmas):
@@ -221,7 +210,7 @@ def wordcloud_plotter(given_word,word_dic,type):
         raise TypeError("keys in word_dic argument must be strings.")
     
     # Check that values in word_dic are between 0 and 1
-    if not all(value in range(0,2) for value in word_dic.values()):
+    if not all(0 <= value <= 1 for value in word_dic.values()):
         raise TypeError("values in word_dic argument must be between 0 and 1.")
     
     # Check that type input is a string
@@ -251,5 +240,7 @@ def wordcloud_plotter(given_word,word_dic,type):
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off") 
     plt.show()
+
+    return plt.gcf()
 
  

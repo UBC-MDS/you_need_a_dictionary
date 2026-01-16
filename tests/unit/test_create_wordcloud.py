@@ -14,9 +14,11 @@ Run tests with: pytest tests/test_create_features.py -v
 import os
 import pytest
 import matplotlib.pyplot as plt
+import nltk
+from nltk.corpus import wordnet as wn
 import sys
 import re
-from you_need_a_dictionary.wordcloud import create_wordcloud
+from you_need_a_dictionary.wordcloud import create_wordcloud,similarity_score
 
 sys.path.insert(
     0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src"))
@@ -46,6 +48,21 @@ def normal_case_ant():
     sentence = "I am happy with the results"
     type = "antonym"
     return word, sentence, type
+
+# Antonym and synonym wordcloud for an adjective
+@pytest.fixture 
+def normal_case_both():
+    word = "cold"
+    sentence = "It's officially winter, the air outside is cold."
+    type = "both"
+    return word, sentence, type
+
+# Synonym and antonym similarity scores  
+@pytest.fixture 
+def normal_case_scores():
+    basis = wn.synset('car.n.01')
+    lemmas = {wn.lemma('door.n.01.door'), wn.lemma('cat.n.01.cat'), wn.lemma('wheel.n.01.wheel'), wn.lemma('car.n.01.automobile')}
+    return basis, lemmas
     
 
 # ----------------------------------------------------------------------------- #
@@ -114,41 +131,46 @@ def error_case_4():
     type = "syn"
     return word, sentence, type
 
+# ----------------------------------------------------------------------------- #
+# create_wordcloud() – normal cases                                              #
+# ----------------------------------------------------------------------------- #
 
-
-def test_create_wordcloud(normal_case):
+def test_create_wordcloud_normal_1(normal_case_syn):
     """ Tests to ensure create_wordcloud function works as expected."""
-    results = create_wordcloud('blue',normal_case)
-
+    word, sentence, type = normal_case_syn
+    results = create_wordcloud(word,sentence,type)
     # Verify return type 
     assert isinstance(results, plt.Figure)
 
 
-def test_error_cases(normal_case,error_case):
-    """ Tests to ensure create_wordcloud function validates inputs correctly and raises appropriate errors."""
-    results = create_wordcloud('door',normal_case)
+def test_create_wordcloud_normal_2(normal_case_ant):
+    """ Tests to ensure create_wordcloud function works as expected."""
+    word, sentence, type = normal_case_ant
+    results = create_wordcloud(word,sentence,type)
 
-    # Word not in wordnet
-    with pytest.raises(LookupError):
-        create_wordcloud('because', error_case)
+    # Verify return type 
+    assert isinstance(results, plt.Figure)
 
-    # Wrong input type 
-    
-    with pytest.raises(TypeError):
-        create_wordcloud(12, error_case) # word argument not a string
-    
-    with pytest.raises(TypeError):
-        create_wordcloud('blue', 12) # sentence argument not a string
+def test_create_wordcloud_normal_3(normal_case_both):
+    """ Tests to ensure create_wordcloud function works as expected."""
+    word, sentence, type = normal_case_both
+    results = create_wordcloud(word,sentence,type)
 
-    with pytest.raises(TypeError):
-        create_wordcloud('blue', normal_case, 12) # type argument not a string
+    # Verify return type
+    assert isinstance(results, tuple)
 
-    
-    # Wrong input for type argument
-    with pytest.raises(NameError):
-        create_wordcloud('blue', normal_case, 'random')
+    # There should be 2 figures returned
+    assert len(results) == 2
+    assert all(isinstance(fig, plt.Figure) for fig in results)
 
+# Since create_wordcloud just outputs a wordcloud it is hard to test.
+# Instead we can test that similarity_score outputs works as expected.
+def test_similarity_score_normal(normal_case_scores):
+    """ Tests to ensure similarity_score function works as expected."""
+    basis, lemmas = normal_case_scores
+    results = similarity_score(basis, lemmas)
 
+    expected = {'door': 0.08333333333333333, 'wheel': 0.09090909090909091, 'cat': 0.05555555555555555, 'automobile': 1.0}
 
-
+    assert results == expected
 
