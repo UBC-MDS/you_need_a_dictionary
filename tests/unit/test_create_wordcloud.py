@@ -8,7 +8,7 @@ Test categories:
 2. Edge cases - No antonyms 
 3. Error cases - Invalid inputs
 
-Run tests with: pytest tests/test_create_features.py -v
+
 """
 
 import os
