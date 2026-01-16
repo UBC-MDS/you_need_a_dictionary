@@ -1,7 +1,8 @@
 """
-Tests for the create_wordcloud() function in wordcloud module.
+Tests for the create_wordcloud() and similarity_score() functions in wordcloud module.
 
-The create_wordcloud() is used to create a wordcloud of synonyms and/or antonyms for a given word.
+The function create_wordcloud() is used to create a wordcloud of synonyms and/or antonyms for a given word.
+The function similarity_score() is used to find the similarity strength between two words using nltk path_similarity().
 
 Test categories:
 1. Normal cases - Normal inputs
@@ -11,19 +12,13 @@ Test categories:
 
 """
 
-import os
-import sys
 
 import pytest
+import you_need_a_dictionary as ynd
 import matplotlib.pyplot as plt
 from nltk.corpus import wordnet as wn
-
-from you_need_a_dictionary.wordcloud import create_wordcloud
 from you_need_a_dictionary.wordcloud_utils import similarity_score
 
-sys.path.insert(
-    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src"))
-)
 
 # Test cases were found using the following ChatGPT prompt: 
 # Hi, here is the docstring for my function <insert create_wordcloud() docstring>, 
@@ -89,7 +84,7 @@ def edge_case_2():
     type = "both"
     return word, sentence, type
 
-# Case 3 : word with no antonyms when both wordclouds are asked for
+# Case 3 : word that is not in Wordnet 
 # Expected behaviour : returns a string explaining that the word is not in Wordnet
 @pytest.fixture
 def edge_case_3(): 
@@ -149,7 +144,7 @@ def error_case_4():
 def test_create_wordcloud_normal_1(normal_case_syn):
     """ Tests to ensure create_wordcloud function works as expected."""
     word, sentence, type = normal_case_syn
-    results = create_wordcloud(word,sentence,type)
+    results = ynd.create_wordcloud(word,sentence,type)
     # Verify return type 
     assert isinstance(results, plt.Figure)
 
@@ -157,7 +152,7 @@ def test_create_wordcloud_normal_1(normal_case_syn):
 def test_create_wordcloud_normal_2(normal_case_ant):
     """ Tests to ensure create_wordcloud function works as expected."""
     word, sentence, type = normal_case_ant
-    results = create_wordcloud(word,sentence,type)
+    results = ynd.create_wordcloud(word,sentence,type)
 
     # Verify return type 
     assert isinstance(results, plt.Figure)
@@ -165,7 +160,7 @@ def test_create_wordcloud_normal_2(normal_case_ant):
 def test_create_wordcloud_normal_3(normal_case_both):
     """ Tests to ensure create_wordcloud function works as expected."""
     word, sentence, type = normal_case_both
-    results = create_wordcloud(word,sentence,type)
+    results = ynd.create_wordcloud(word,sentence,type)
 
     # Verify return type
     assert isinstance(results, tuple)
@@ -194,18 +189,18 @@ def test_create_wordcloud_edge(edge_case_1,edge_case_2,edge_case_3):
 
     # No antonym and type = 'antonym' - returns a string explaining no antonyms exist
     word, sentence, type = edge_case_1
-    result_ant = create_wordcloud(word, sentence, type)
+    result_ant = ynd.create_wordcloud(word, sentence, type)
     expected = "You can try again with another word, try another meaning or get the synonym wordcloud."
     assert result_ant == expected
     
     # No antonym and type = 'both' - returns just the synonym wordcloud
     word, sentence, type = edge_case_2
-    result_both = create_wordcloud(word, sentence, type)
+    result_both = ynd.create_wordcloud(word, sentence, type)
     assert isinstance(result_both, plt.Figure)
 
     # The word is not in the Wordnet - returns a string explaining that the word is not in Wordnet
     word, sentence, type = edge_case_3
-    results = create_wordcloud(word, sentence, type)
+    results = ynd.create_wordcloud(word, sentence, type)
     expected = f"The word '{word}' is not in the nltk Wordnet."
     assert results == expected
 
@@ -218,20 +213,20 @@ def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_
     # Test 1 - word is not a string
     with pytest.raises(TypeError, match="word argument must be a string."):
         word, sentence, type = error_case_1
-        create_wordcloud(word, sentence, type)
+        ynd.create_wordcloud(word, sentence, type)
 
     # Test 2 - sentence is not a string
     with pytest.raises(TypeError, match="sentence argument must be a string."):
         word, sentence, type = error_case_2
-        create_wordcloud(word, sentence, type)
+        ynd.create_wordcloud(word, sentence, type)
 
     # Test 3 - type is not a string
     with pytest.raises(TypeError, match="type argument must be a string."):
         word, sentence, type = error_case_3
-        create_wordcloud(word, sentence, type)
+        ynd.create_wordcloud(word, sentence, type)
 
     # Test 4 - type is not one of the correct options
     with pytest.raises(NameError, match="type argument must be a either synonym, antonym or both."):
         word, sentence, type = error_case_4
-        create_wordcloud(word, sentence, type)
+        ynd.create_wordcloud(word, sentence, type)
 
