@@ -14,9 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added fourth function (only docstring): word_replacement.py
 
 
-
-
-
 ## [1.0.0]
+
 - Added definition fetch code and unit tests: test_fetch_definition.py and fetch_definition.py
 - Added sentiment analysis code and unit tests: test_sentiment_analysis.py and sentiment_analysis.py
+- Added function logic to replace a word in a sentence and compute the sentiment in word_replacement.py
+- Added helper function sentiment_specifics in utils.py to provide detailed sentiment analysis results.

@@ -27,3 +27,5 @@ Add a docstring here for the init module.
 This might include a very brief description of the package,
 its purpose, and any important notes.
 """
+from you_need_a_dictionary.word_replacement import word_replacement
+__all__ = ['word_replacement']
