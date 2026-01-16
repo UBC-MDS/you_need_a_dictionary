@@ -5,7 +5,7 @@ The create_wordcloud() is used to create a wordcloud of synonyms and/or antonyms
 
 Test categories:
 1. Normal cases - Normal inputs
-2. Edge cases - ...
+2. Edge cases - No antonyms 
 3. Error cases - Invalid inputs
 
 Run tests with: pytest tests/test_create_features.py -v
@@ -30,7 +30,7 @@ sys.path.insert(
 # I would like 2 normal cases, a couple edge cases and a couple error cases. 
 
 # ----------------------------------------------------------------------------- #
-# Normal case test data
+# Normal case test data                                                         #
 # ----------------------------------------------------------------------------- #
 
 # Synonym wordcloud for a common noun
@@ -66,7 +66,7 @@ def normal_case_scores():
     
 
 # ----------------------------------------------------------------------------- #
-# Edge case test data
+# Edge case test data                                                           #
 # ----------------------------------------------------------------------------- #
 
 # Case 1 : word with no antonyms
@@ -90,7 +90,7 @@ def edge_case_2():
     return word, sentence, type
 
 # ----------------------------------------------------------------------------- #
-# Error handling test data 
+# Error handling test data                                                      #
 # ----------------------------------------------------------------------------- #
 
 # Case 1 : word is not a string
@@ -132,7 +132,7 @@ def error_case_4():
     return word, sentence, type
 
 # ----------------------------------------------------------------------------- #
-# create_wordcloud() – normal cases                                              #
+# create_wordcloud() – normal cases                                             #
 # ----------------------------------------------------------------------------- #
 
 def test_create_wordcloud_normal_1(normal_case_syn):
@@ -175,7 +175,7 @@ def test_similarity_score_normal(normal_case_scores):
     assert results == expected
 
 # ----------------------------------------------------------------------------- #
-# create_wordcloud() – edge cases                                                #
+# create_wordcloud() – edge cases                                               #
 # ----------------------------------------------------------------------------- #
 
 def test_create_wordcloud_edge(edge_case_1,edge_case_2):
@@ -191,3 +191,29 @@ def test_create_wordcloud_edge(edge_case_1,edge_case_2):
     word, sentence, type = edge_case_2
     result_both = create_wordcloud(word, sentence, type)
     assert isinstance(result_both, plt.Figure)
+
+# ----------------------------------------------------------------------------- #
+# create_wordcloud() – error cases                                              #
+# ----------------------------------------------------------------------------- #
+
+def test_create_wordcloud_error(error_case_1, error_case_2, error_case_3, error_case_4):
+    """ Tests to ensure create_wordcloud function validates inputs correctly and raises appropriate errors."""
+    # Test 1 - word is not a string
+    with pytest.raises(TypeError, match="word argument must be a string."):
+        word, sentence, type = error_case_1
+        create_wordcloud(word, sentence, type)
+
+    # Test 2 - sentence is not a string
+    with pytest.raises(TypeError, match="sentence argument must be a string."):
+        word, sentence, type = error_case_2
+        create_wordcloud(word, sentence, type)
+
+    # Test 3 - type is not a string
+    with pytest.raises(TypeError, match="type argument must be a string."):
+        word, sentence, type = error_case_3
+        create_wordcloud(word, sentence, type)
+
+    # Test 4 - type is not one of the correct options
+    with pytest.raises(NameError, match="type argument must be a either synonym, antonym or both."):
+        word, sentence, type = error_case_4
+        create_wordcloud(word, sentence, type)
