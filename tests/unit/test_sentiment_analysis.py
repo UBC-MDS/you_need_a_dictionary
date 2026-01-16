@@ -15,7 +15,11 @@ def sample_sentences():
     return {
         "positive": "I absolutely love Kpop",
         "negative": "I absolutely hate this terrible experience",
-        "neutral": "The bag is on the table."
+        "neutral": "The bag is on the table.",
+        "mixed": "The food was delicious but the service was terrible.",
+        "emoji": "I am so happy today! 😄",
+        "special_chars": "@#$%^&*",
+        "caps": "THIS IS AMAZING"
     }
 
 
@@ -69,3 +73,29 @@ def test_invalid_type():
     with pytest.raises(TypeError, match="Input must be a string."):
         analyze_sentiment(123)
         analyze_sentiment(None)
+
+# Additional edge cases based on prompt "What are some edge cases that I would need to test for now? Maybe expand on the fixture if needed."
+def test_mixed_sentiment(sample_sentences):
+    """Test that a sentence with mixed feelings has both pos and neg scores."""
+    result = analyze_sentiment(sample_sentences["mixed"])
+    assert result['pos'] > 0
+    assert result['neg'] > 0
+
+
+def test_emoji_sentiment(sample_sentences):
+    """Test that inputting emojis raises a ValueError."""
+    with pytest.raises(ValueError, match="Input cannot contain emojis"):
+        analyze_sentiment(sample_sentences["emoji"])
+
+
+def test_special_characters(sample_sentences):
+    """Test that special characters only input raises a ValueError."""
+    with pytest.raises(ValueError, match="Input must contain at least one alphanumeric character"):
+        analyze_sentiment(sample_sentences["special_chars"])
+
+
+def test_caps_intensity(sample_sentences):
+    """Test that all caps input is handled (usually indicates intensity)."""
+    result = analyze_sentiment(sample_sentences["caps"])
+    assert result['pos'] > 0
+    assert result['compound'] > 0.5
