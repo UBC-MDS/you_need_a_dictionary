@@ -3,11 +3,9 @@ Unit tests for the word_replacement function in you_need_a_dictionary module.
 Author: Godsgift Braimah
 Date: 2026-01-15
 """
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
+
 import pytest
-from you_need_a_dictionary.word_replacement import word_replacement
+import you_need_a_dictionary as ynd
 
 def test_word_replacement():
     """
@@ -17,7 +15,7 @@ def test_word_replacement():
     target_word = "fun"
     replacement_word = "intense"
     
-    result = word_replacement(sentence, target_word, replacement_word)
+    result = ynd.word_replacement(sentence, target_word, replacement_word)
     
     assert result['New Sentence'] == "MDS is so intense"
     assert isinstance(result, dict)
@@ -31,7 +29,7 @@ def test_word_replacement_punctuation_preservation():
     target = "fun"
     replacement = "okay"
     
-    result = word_replacement(sentence, target, replacement)
+    result = ynd.word_replacement(sentence, target, replacement)
     expected =  "I love Vancouver! MDS is so okay."
     assert result['New Sentence'] == expected
     
@@ -44,7 +42,7 @@ def test_word_replacement_multiple_occurrences():
     target = "bad"
     replacement = "good"
     
-    result = word_replacement(sentence, target, replacement)
+    result = ynd.word_replacement(sentence, target, replacement)
     
     expected ="Today is a good day, really good day."
     assert result['New Sentence'] == expected
@@ -57,7 +55,7 @@ def test_replace_specific_occurrence_first():
     target = "bad"
     replacement = "good"
 
-    result = word_replacement(sentence, target, replacement, occurrence=1)
+    result = ynd.word_replacement(sentence, target, replacement, occurrence=1)
     
     assert result['New Sentence'] == "Today is a good day, really bad day."
     
@@ -67,7 +65,7 @@ def test_word_replacement_type_error():
     Tests if the function raises TypeError when integers are passed.
     """
     with pytest.raises(TypeError):
-        word_replacement(123, "fun", "bad")
+        ynd.word_replacement(123, "fun", "bad")
 
 def test_word_replacement_value_error():
     """
@@ -79,4 +77,4 @@ def test_word_replacement_value_error():
     replacement = "day"
     
     with pytest.raises(ValueError):
-        word_replacement(sentence, target, replacement)
+        ynd.word_replacement(sentence, target, replacement)
