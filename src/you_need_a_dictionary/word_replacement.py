@@ -14,8 +14,7 @@ Date: 2026-01-08
 import re
 import sys
 import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../src')))
-from sentiment_analysis import analyze_sentiment
+from you_need_a_dictionary.sentiment_analysis import analyze_sentiment
 from you_need_a_dictionary.utils import sentiment_specifics
 
 

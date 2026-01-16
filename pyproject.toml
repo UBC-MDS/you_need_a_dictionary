@@ -78,6 +78,7 @@ tests = [
     "pytest-raises",
     "pytest-randomly",
     "pytest-xdist",
+    "pytest-mpl",
 ]
 
 

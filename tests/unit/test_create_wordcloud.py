@@ -15,6 +15,8 @@ import os
 import sys
 
 import pytest
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from nltk.corpus import wordnet as wn
 
