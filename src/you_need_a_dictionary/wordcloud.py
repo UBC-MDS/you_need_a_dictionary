@@ -93,10 +93,10 @@ def create_wordcloud(word, sentence, type='both'):
     if (len(syn_scores)==0 and (type=='synonym' or type=='both')) or (len(ant_scores)==0 and (type=='antonym' or type=='both')) :
         if type=='synonym' :
             print(f"There are no synonyms for {word} in this context.")
-            return f"You can try again with another word, try another meaning of {word} or get the antonym wordcloud."
+            return "You can try again with another word, try another meaning or get the antonym wordcloud."
         elif type=='antonym':
             print(f"There are no antonyms for {word} in this context.")
-            return f"You can try again with another word, try another meaning of {word} or get the synonym wordcloud."
+            return "You can try again with another word, try another meaning or get the synonym wordcloud."
         elif type=='both':
             if len(syn_scores)==0:
                 print(f"There are no synonyms for {word} in this context.")

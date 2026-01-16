@@ -174,3 +174,20 @@ def test_similarity_score_normal(normal_case_scores):
 
     assert results == expected
 
+# ----------------------------------------------------------------------------- #
+# create_wordcloud() – edge cases                                                #
+# ----------------------------------------------------------------------------- #
+
+def test_create_wordcloud_edge(edge_case_1,edge_case_2):
+    """ Tests to ensure create_wordcloud function works correctly when the word has no antonym when type = 'antonym' and type = 'both'."""
+
+    # No antonym and type = 'antonym' - returns a string explaining no antonyms exist
+    word, sentence, type = edge_case_1
+    result_ant = create_wordcloud(word, sentence, type)
+    expected = "You can try again with another word, try another meaning or get the synonym wordcloud."
+    assert result_ant == expected
+    
+    # No antonym and type = 'both' - returns just the synonym wordcloud
+    word, sentence, type = edge_case_2
+    result_both = create_wordcloud(word, sentence, type)
+    assert isinstance(result_both, plt.Figure)
