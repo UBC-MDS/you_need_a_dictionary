@@ -20,3 +20,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added sentiment analysis code and unit tests: test_sentiment_analysis.py and sentiment_analysis.py
 - Added function logic to replace a word in a sentence and compute the sentiment in word_replacement.py
 - Added helper function sentiment_specifics in utils.py to provide detailed sentiment analysis results.
+- Added wordcloud plotter code and unit tests: test_create_wordcloud.py and wordcloud.py
+- Added helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py
