@@ -14,10 +14,8 @@ def create_wordcloud(word, sentence, type='both'):
     This function creates a wordcloud of either antonyms, 
     synonyms or both for a given word.
 
-    The word in the middle of the wordcloud is the word 
-    we want the antonyms/synonyms for.
     The size of the words in the wordcloud are determined 
-    by the strength of the similarity between the given word and its antonym/synonym. 
+    by the strength of the similarity between the given word and its antonym or synonym. 
     The similarity score can be found using the NLTK wordnet 
     package and ranges between 0 and 1 with 1 meaning strong similarity and 0 means weak similarity.
 
@@ -42,17 +40,30 @@ def create_wordcloud(word, sentence, type='both'):
     --------
     >>> create_wordcloud('car', 'The car is on the road', 'antonym')
 
-    >>> create_wordcloud('happy')
+    >>> create_wordcloud('happy', 'I am glad this trip made you happy')
     
     """
+    # Check that Wordnet works as expected
+    try:
+        wn.synsets("test")
+    except LookupError :
+        raise LookupError(
+            "The function was not able to access Wordnet. Ensure the nltk package is installed and imported. \
+            If needed run the following commands: from nltk.corpus import wordnet as wn "
+        ) 
+    
+    # Check that word input is a string
     if not isinstance(word, str):
         raise TypeError("word argument must be a string.")
     
+    # Check that sentence input is a string
     if not isinstance(sentence, str):
         raise TypeError("sentence argument must be a string.")
     
+    # Check that type input is a string
     if not isinstance(type, str):
         raise TypeError("type argument must be a string.")
+    
 
     # Get the correct meaning for the word based on sentence context
     sentence_list = str.split(sentence.translate(str.maketrans('', '', string.punctuation))) # Inspiration drawn from Stack Overflow : https://stackoverflow.com/questions/265960/best-way-to-strip-punctuation-from-a-string
@@ -72,21 +83,48 @@ def create_wordcloud(word, sentence, type='both'):
     # Get the similarity scores
     syn_scores = similarity_score(word_with_context,synonyms)
     ant_scores = similarity_score(word_with_context,antonyms)
+
+    # If there are no synonyms/antonyms for the word, ask the user if they want to try another type 
+    if (len(syn_scores)==0 and (type=='synonym' or type=='both')) or (len(ant_scores)==0 and (type=='antonym' or type=='both')) :
+        if type=='synonym' :
+            print(f"There are no synonyms for {word} in this context.")
+            question = input("Would you like to see the antonym wordcloud instead? (Answer yes or no)")
+            if question == 'yes':
+                type='antonym'
+            else:
+                return f"You can try again with another word or try another meaning of {word}."
+        elif type=='antonym':
+            print(f"There are no antonyms for {word} in this context.")
+            question = input("Would you like to see the synonym wordcloud instead? (Answer yes or no)")
+            if question == 'yes':
+                type='synonym'
+            else:
+                return f"You can try again with another word or try another meaning of {word}."
+        elif type=='both':
+            if len(syn_scores)==0:
+                print(f"There are no synonyms for {word} in this context.")
+                question = input("Would you like to see the antonym wordcloud instead? (Answer yes or no)")
+                if question == 'yes':
+                    type='antonym'
+                else:
+                    return f"You can try again with another word or try another meaning of {word}."
+            if len(ant_scores)==0:
+                print(f"There are no antonyms for {word} in this context.")
+                question = input("Would you like to see the synonym wordcloud instead? (Answer yes or no)")
+                if question == 'yes':
+                    type='synonym'
+                else:
+                    return f"You can try again with another word or try another meaning of {word}."
+                    
     
     # Plot the wordclouds
     if type == 'synonym':
-        fig, ax = plt.subplots(figsize=(7,7))
-        wordcloud_plotter(ax, word, syn_scores)
-        return fig
+        wordcloud_plotter(word, syn_scores,'synonym')
     elif type == 'antonym' :
-        fig, ax = plt.subplots(figsize=(7,7))
-        wordcloud_plotter(ax, word, ant_scores)
-        return fig
+        wordcloud_plotter(word, ant_scores,'antonym')
     elif type == 'both':
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
-        wordcloud_plotter(ax1, word, syn_scores)
-        wordcloud_plotter(ax2, word, ant_scores)
-        return fig
+        wordcloud_plotter(word, syn_scores,'synonym')
+        wordcloud_plotter(word, ant_scores,'antonym')
 
     
 
@@ -117,12 +155,16 @@ def similarity_score(basis,lemmas):
         {'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0}
 
     """
+
+    # Check that basis input has correct type
     if not isinstance(basis, nltk.corpus.reader.wordnet.Synset):
         raise TypeError("Basis must be a wordnet synset.")
     
+    # Check that lemmas input is a set
     if not isinstance(lemmas, set):
         raise TypeError("Lemmas must be a set")
     
+    # Check that the values in lemmas set have correct type
     if not all(isinstance(value, nltk.corpus.reader.wordnet.Lemma) for value in lemmas):
         raise TypeError("All the values in lemmas must be a wordnet lemma")
     
@@ -133,32 +175,35 @@ def similarity_score(basis,lemmas):
         scores[word.name()]=basis.path_similarity(word.synset())
     return scores
 
-def wordcloud_plotter(central_word,word_dic,type):
+def wordcloud_plotter(given_word,word_dic,type):
     """
     This function plots a wordcloud.
 
-    This function was developed with the help of ChatGPT to determine how to position the points to reduce overlap.
+    The size of the word indicate how similar it is to our given word.
+    This means that the larger the word, the more similar it is.
+    Colour is also used to indicate words with same scores.
 
     Parameters
     ----------
-    central_word : str
-        The central word in the wordcloud.
+    given_word : str
+        The given word that we want to plot the wordcloud for.
     word_dic : dictionary
         A dictionary mapping words (str) to their similarity scores (float, range 0–1)
     type : str
-        Defines what type of wordcloud it is
+        Defines what type of wordcloud it is. Either 'synonym' or 'antonym'.
     
 
     Returns
     -------
     plt.Figure
-        A Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word. 
+        A Matplotlib figure of a wordcloud containing antonyms or synonyms for a given word. 
 
     Examples
     --------
-    >>> wordcloud_plotter('car',{'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0})
+    >>> wordcloud_plotter('car',{'door':0.083, 'cat': 0.056,'wheel': 0.091,'automobile':1.0},'antonym')
         
     """
+    
     # Set of scores 
     score_set = sorted(set(word_dic.values()), reverse=True)
 
@@ -178,7 +223,9 @@ def wordcloud_plotter(central_word,word_dic,type):
     # Plot wordcloud
     wordcloud = WordCloud(width=1000, height=700, background_color='white', random_state=8).generate_from_frequencies(score_dic)
 
-    plt.title(f'{type} Wordcloud for {central_word} ',pad=10, fontweight='bold')
+    plt.title(f'{type} Wordcloud for {given_word} ',pad=10, fontweight='bold')
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off") 
     plt.show()
+
+ 
