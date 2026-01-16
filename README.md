@@ -96,6 +96,15 @@ The following language codes are used:
 | Urdu                  | ur   |
 | Vietnamese            | vi   |
 
+## Dev notes
+
+To test the package locally, clone the repository and run the following command in the root directory:
+
+```bash
+$ pip install -e .
+$ pytest
+```
+
 ## Contributors
 - Eric Wong
 - Mailys Guedon

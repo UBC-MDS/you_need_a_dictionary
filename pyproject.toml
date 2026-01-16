@@ -38,7 +38,9 @@ keywords = []
 # TODO: add dependencies
 dependencies = [
     "deep-translator",
-    "nltk"]
+    "nltk",
+    "matplotlib",
+    "wordcloud"]
 
 [project.urls]
 Homepage = "https://github.com/eric-wong97/you-need-a-dictionary"
@@ -76,6 +78,7 @@ tests = [
     "pytest-raises",
     "pytest-randomly",
     "pytest-xdist",
+    "pytest-mpl",
 ]
 
 
