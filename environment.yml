@@ -1,0 +1,6 @@
+name: you_need_a_dictionary
+channels:
+  - conda-forge
+dependencies:
+  - python
+
