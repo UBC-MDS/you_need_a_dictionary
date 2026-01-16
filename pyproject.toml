@@ -17,7 +17,10 @@ version = "0.1.0"
 
 description = "A package which provides translation and dictionary look-up functionality"
 authors = [
-    { name = "Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong", email = "mai.guedon@gmail.com, marasanchezrom@gmail.com, seoghenabraimah@gmail.com, eric_wong01@hotmail.com" },
+    { name = "Mailys Guedon", email = "mai.guedon@gmail.com" },
+    { name = "Mara Sanchez", email = "marasanchezrom@gmail.com" },
+    { name = "Godsgift Braimah", email = "seoghenabraimah@gmail.com" },
+    { name = "Eric Wong", email = "eric_wong01@hotmail.com" },
 ]
 license = "MIT"
 requires-python = ">= 3.10" # Adjust based on the minimum version of Python that you support
@@ -33,7 +36,9 @@ classifiers = [
 # TODO: add keywords
 keywords = []
 # TODO: add dependencies
-dependencies = []
+dependencies = [
+    "deep-translator",
+    "nltk"]
 
 [project.urls]
 Homepage = "https://github.com/eric-wong97/you-need-a-dictionary"
@@ -48,9 +53,7 @@ Download = "https://pypi.org/project/you-need-a-dictionary/#files"
 # in Mid November 2025.
 dev = [
     "hatch",
-    "pre-commit",
-    "deep-translator",
-    "nltk"
+    "pre-commit"
 ]
 
 docs = [
