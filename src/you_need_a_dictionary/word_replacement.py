@@ -12,9 +12,9 @@ Date: 2026-01-08
 # Import statements
 ##################################################
 import re
-import sys
-import os
-from you_need_a_dictionary.sentiment_analysis import analyze_sentiment
+
+import you_need_a_dictionary as ynd
+
 from you_need_a_dictionary.utils import sentiment_specifics
 
 
@@ -91,8 +91,8 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str, 
         end_index = target_match.end()
         new_sentence = sentence[: start_index] + replacement_word + sentence[end_index:]
     
-    previous_sentiment = analyze_sentiment(sentence)
-    new_sentiment = analyze_sentiment(new_sentence)
+    previous_sentiment = ynd.analyze_sentiment(sentence)
+    new_sentiment = ynd.analyze_sentiment(new_sentence)
     prev_type, prev_score = sentiment_specifics(previous_sentiment)
     new_type, new_score = sentiment_specifics(new_sentiment)
     
