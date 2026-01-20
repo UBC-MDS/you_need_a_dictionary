@@ -39,11 +39,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e .[tests]
 
-      # Install nltk wordnet 
-      - name: Install nltk wordnet 
+      # Download nltk wordnet - ChatGPT was used to find the correct command to ensure the action runs
+      - name: Download nltk wordnet 
         run: |
-          python -m pip install --upgrade pip
-          pip install nltk
+          python -m nltk.downloader wordnet omw-1.4 
 
       # Run pytest with coverage
       - name: Run tests with coverage
