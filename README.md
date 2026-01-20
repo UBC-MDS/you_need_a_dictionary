@@ -98,12 +98,30 @@ The following language codes are used:
 
 ## Dev notes
 
-To test the package locally, clone the repository and run the following command in the root directory:
+To contribute to the development of this package, please follow these steps after cloning the repository:
+Set up a virtual environment using conda:
 
+```bash
+$ conda create -n environment.yml
+$ conda activate you-need-a-dictionary
+``` 
+
+To install the package locally:
+```bash
+$ pip install -e .
+``` 
+
+To test the package locally:
 ```bash
 $ pip install -e .
 $ pytest
 ```
+
+To build documentation locally:
+TO BE ADDED
+
+To deploy the documentation (automated):
+TO BE ADDED
 
 ## Contributors
 - Eric Wong
