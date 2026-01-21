@@ -5,6 +5,16 @@ project:
 metadata-files:
   - reference/_sidebar.yml
 
+website:
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: Reference
+        file: reference/index.qmd
+
 # tell quarto to read the generated styles
 format:
   html:

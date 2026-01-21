@@ -6,6 +6,7 @@
     "section": "",
     "text": "This package is for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions.\n\n\n\nword_replacement\nReplaces target word and computes sentiment score.\n\n\ncreate_wordcloud\nThis function creates a wordcloud of either antonyms,\n\n\nfetch_definition\nModule that fetches the definition, synonyms and antonyms of a given word using WordNet.\n\n\nanalyze_sentiment\nAnalyze the sentiment of the preprocessed user input.\n\n\ntranslate_sentence\nModule that fetches a sentence’s translation and metadata through Google Translate.",
     "crumbs": [
+      "Reference",
       "Function reference"
     ]
   },
@@ -236,6 +237,7 @@
     "section": "",
     "text": "word_replacement\nReplaces target word and computes sentiment score.\nThis script initializes the function for word substitution. It ensures users can make comparisons based off word impact.\n\n\n\n\n\nName\nDescription\n\n\n\n\nword_replacement\nSubstitutes a target word in a sentence with a replacement word and calculates\n\n\n\n\n\nword_replacement.word_replacement(\n    sentence,\n    target_word,\n    replacement_word,\n    occurrence=None,\n)\nSubstitutes a target word in a sentence with a replacement word and calculates the new sentiment score.\nThis function identifies all occurrences of a specified target word within the input sentence: - Can replace ALL occurrences of the target word, - Or replace a SPECIFIC occurrence if specified. The function then performs sentiment analysis on the newly modified sentence. This allows users to quantifiably measure how specific vocabulary choices impact the emotional tone of their text.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsentence\nstr\nThe original input sentence or text to be analyzed.\nrequired\n\n\ntarget_word\nstr\nThe specific word within the sentence that needs to be replaced.\nrequired\n\n\nreplacement_word\nstr\nThe new word that will substitute the target_word.\nrequired\n\n\noccurrence\nint\nIf provided, only the nth occurrence of the target_word will be replaced. Defaults to None, and all occurrences will be replaced.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nA dictionary containing the results of the simulation with the keys: - ‘New Sentence’ (str): The modified sentence after replacement. - ‘Previous Sentiment Type’ (str): The type of sentiment obtained from the previous sentence(Positive/Neutral/Negative). - ‘Previous Sentiment Score’ (float): The sentiment score of the original sentence. - ‘New Sentiment Type’ (str): The type of sentiment obtained from the new sentence. - ‘New Sentiment Score’ (float): The sentiment score of the new sentence.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the target_word is not present in the input sentence.\n\n\n\nTypeError\nIf sentence, target_word, or replacement_word are not strings.\n\n\n\n\n\n\n&gt;&gt;&gt; word_replacement(\"I Love MDS\", \"enjoy\", occurrence=1)",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "word_replacement"
     ]
@@ -247,6 +249,7 @@
     "section": "",
     "text": "Name\nDescription\n\n\n\n\nword_replacement\nSubstitutes a target word in a sentence with a replacement word and calculates\n\n\n\n\n\nword_replacement.word_replacement(\n    sentence,\n    target_word,\n    replacement_word,\n    occurrence=None,\n)\nSubstitutes a target word in a sentence with a replacement word and calculates the new sentiment score.\nThis function identifies all occurrences of a specified target word within the input sentence: - Can replace ALL occurrences of the target word, - Or replace a SPECIFIC occurrence if specified. The function then performs sentiment analysis on the newly modified sentence. This allows users to quantifiably measure how specific vocabulary choices impact the emotional tone of their text.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsentence\nstr\nThe original input sentence or text to be analyzed.\nrequired\n\n\ntarget_word\nstr\nThe specific word within the sentence that needs to be replaced.\nrequired\n\n\nreplacement_word\nstr\nThe new word that will substitute the target_word.\nrequired\n\n\noccurrence\nint\nIf provided, only the nth occurrence of the target_word will be replaced. Defaults to None, and all occurrences will be replaced.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nA dictionary containing the results of the simulation with the keys: - ‘New Sentence’ (str): The modified sentence after replacement. - ‘Previous Sentiment Type’ (str): The type of sentiment obtained from the previous sentence(Positive/Neutral/Negative). - ‘Previous Sentiment Score’ (float): The sentiment score of the original sentence. - ‘New Sentiment Type’ (str): The type of sentiment obtained from the new sentence. - ‘New Sentiment Score’ (float): The sentiment score of the new sentence.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the target_word is not present in the input sentence.\n\n\n\nTypeError\nIf sentence, target_word, or replacement_word are not strings.\n\n\n\n\n\n\n&gt;&gt;&gt; word_replacement(\"I Love MDS\", \"enjoy\", occurrence=1)",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "word_replacement"
     ]
@@ -258,6 +261,7 @@
     "section": "",
     "text": "create_wordcloud(word, sentence, type='both')\nThis function creates a wordcloud of either antonyms, synonyms or both for a given word.\nThe size of the words in the wordcloud are determined by the strength of the similarity between the given word and its antonym or synonym. The similarity score can be found using the NLTK wordnet package and ranges between 0 and 1 with 1 meaning strong similarity and 0 means weak similarity.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nword\nstring\nThe central word in the wordcloud for which we want to find the synonyms/antonyms.\nrequired\n\n\nsentence\nstring\nThe sentence that contains the word we are interested in.\nrequired\n\n\ntype\nstring\nThis determines whether the wordcloud contains antonyms or synonyms or whether the function outputs two wordclouds (one for antonyms and one for synonyms). Either ‘antonym’, ‘synonym’, or ‘both’. Default is ‘both’\n'both'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nplt.Figure\nA Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word.\n\n\n\n\n\n\n&gt;&gt;&gt; create_wordcloud('car', 'The car is on the road', 'antonym')\n&gt;&gt;&gt; create_wordcloud('happy', 'I am glad this trip made you happy')",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "create_wordcloud"
     ]
@@ -269,6 +273,7 @@
     "section": "",
     "text": "Name\nType\nDescription\nDefault\n\n\n\n\nword\nstring\nThe central word in the wordcloud for which we want to find the synonyms/antonyms.\nrequired\n\n\nsentence\nstring\nThe sentence that contains the word we are interested in.\nrequired\n\n\ntype\nstring\nThis determines whether the wordcloud contains antonyms or synonyms or whether the function outputs two wordclouds (one for antonyms and one for synonyms). Either ‘antonym’, ‘synonym’, or ‘both’. Default is ‘both’\n'both'",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "create_wordcloud"
     ]
@@ -280,6 +285,7 @@
     "section": "",
     "text": "Name\nType\nDescription\n\n\n\n\n\nplt.Figure\nA Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word.",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "create_wordcloud"
     ]
@@ -291,6 +297,7 @@
     "section": "",
     "text": "&gt;&gt;&gt; create_wordcloud('car', 'The car is on the road', 'antonym')\n&gt;&gt;&gt; create_wordcloud('happy', 'I am glad this trip made you happy')",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "create_wordcloud"
     ]
@@ -302,6 +309,7 @@
     "section": "",
     "text": "translate_sentence\nModule that fetches a sentence’s translation and metadata through Google Translate.\n\n\n\n\n\nName\nDescription\n\n\n\n\ntranslate_sentence\nTranslate an input sentence into a target language using Google Translate.\n\n\n\n\n\ntranslate_sentence.translate_sentence(\n    sentence,\n    target_language,\n    source_language=None,\n)\nTranslate an input sentence into a target language using Google Translate.\nThis function sends the input sentence to Google Translate and returns the translated text along with additional metadata. By default, the source language is automatically detected by the translation service. If an error occurs during translation, the original sentence is returned and error information is included in the output.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsentence\nstring\nThe input sentence to be translated.\nrequired\n\n\ntarget_language\nstring\nThe target language code (e.g., ‘es’ for Spanish, ‘fr’ for French).\nrequired\n\n\nsource_language\nstring\nThe source language code of the input sentence. If None, the source language is automatically detected. Default is None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nA dictionary containing the translation result and metadata with the following keys: - ‘translated_text’ : string The translated sentence. - ‘source_language’ : string The detected or specified source language code. - ‘target_language’ : string The target language code used for translation. - ‘error’ : string or None An error message if the translation failed; otherwise None.\n\n\n\n\n\n\n&gt;&gt;&gt; translate_sentence(\"Hello world\", \"es\")\n&gt;&gt;&gt; translate_sentence(\"Bonjour tout le monde\", \"en\")\n&gt;&gt;&gt; translate_sentence(\"Hello world\", \"fr\", source_language=\"en\")",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "translate_sentence"
     ]
@@ -313,6 +321,7 @@
     "section": "",
     "text": "Name\nDescription\n\n\n\n\ntranslate_sentence\nTranslate an input sentence into a target language using Google Translate.\n\n\n\n\n\ntranslate_sentence.translate_sentence(\n    sentence,\n    target_language,\n    source_language=None,\n)\nTranslate an input sentence into a target language using Google Translate.\nThis function sends the input sentence to Google Translate and returns the translated text along with additional metadata. By default, the source language is automatically detected by the translation service. If an error occurs during translation, the original sentence is returned and error information is included in the output.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsentence\nstring\nThe input sentence to be translated.\nrequired\n\n\ntarget_language\nstring\nThe target language code (e.g., ‘es’ for Spanish, ‘fr’ for French).\nrequired\n\n\nsource_language\nstring\nThe source language code of the input sentence. If None, the source language is automatically detected. Default is None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nA dictionary containing the translation result and metadata with the following keys: - ‘translated_text’ : string The translated sentence. - ‘source_language’ : string The detected or specified source language code. - ‘target_language’ : string The target language code used for translation. - ‘error’ : string or None An error message if the translation failed; otherwise None.\n\n\n\n\n\n\n&gt;&gt;&gt; translate_sentence(\"Hello world\", \"es\")\n&gt;&gt;&gt; translate_sentence(\"Bonjour tout le monde\", \"en\")\n&gt;&gt;&gt; translate_sentence(\"Hello world\", \"fr\", source_language=\"en\")",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "translate_sentence"
     ]
@@ -324,6 +333,7 @@
     "section": "",
     "text": "analyze_sentiment(sentence)\nAnalyze the sentiment of the preprocessed user input.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsentence\nstr\nThe input string to analyze.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nThe sentiment analysis result.\n\n\n\n\n\n\n&gt;&gt;&gt; analyze_sentiment(\"I absolutely love Kpop\")",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "analyze_sentiment"
     ]
@@ -335,6 +345,7 @@
     "section": "",
     "text": "fetch_definition\nModule that fetches the definition, synonyms and antonyms of a given word using WordNet.\n\n\n\n\n\nName\nDescription\n\n\n\n\nfetch_definition\nFetch definitions, synonyms, and antonyms of a word using WordNet.\n\n\n\n\n\nfetch_definition.fetch_definition(\n    word,\n    pos=None,\n    top_n=1,\n    max_synonyms=10,\n    include_examples=False,\n    return_type='str',\n)\nFetch definitions, synonyms, and antonyms of a word using WordNet.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nword\nstr\nThe word to look up.\nrequired\n\n\npos\n(n, v, a, r)\nPart of speech filter: noun, verb, adjective, adverb.\n\"n\",\"v\",\"a\",\"r\"\n\n\ntop_n\nint\nNumber of top-ranked senses to include.\n1\n\n\nmax_synonyms\nint\nMax number of synonyms to show (combined across returned senses).\n10\n\n\ninclude_examples\nbool\nIf True, include example sentences when available.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nstr\nFormatted string of results.",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "fetch_definition"
     ]
@@ -346,6 +357,7 @@
     "section": "",
     "text": "Name\nDescription\n\n\n\n\nfetch_definition\nFetch definitions, synonyms, and antonyms of a word using WordNet.\n\n\n\n\n\nfetch_definition.fetch_definition(\n    word,\n    pos=None,\n    top_n=1,\n    max_synonyms=10,\n    include_examples=False,\n    return_type='str',\n)\nFetch definitions, synonyms, and antonyms of a word using WordNet.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nword\nstr\nThe word to look up.\nrequired\n\n\npos\n(n, v, a, r)\nPart of speech filter: noun, verb, adjective, adverb.\n\"n\",\"v\",\"a\",\"r\"\n\n\ntop_n\nint\nNumber of top-ranked senses to include.\n1\n\n\nmax_synonyms\nint\nMax number of synonyms to show (combined across returned senses).\n10\n\n\ninclude_examples\nbool\nIf True, include example sentences when available.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nstr\nFormatted string of results.",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "fetch_definition"
     ]
@@ -357,6 +369,7 @@
     "section": "",
     "text": "This package is for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions.\n\n\n\nword_replacement\nReplaces target word and computes sentiment score.\n\n\ncreate_wordcloud\nThis function creates a wordcloud of either antonyms,\n\n\nfetch_definition\nModule that fetches the definition, synonyms and antonyms of a given word using WordNet.\n\n\nanalyze_sentiment\nAnalyze the sentiment of the preprocessed user input.\n\n\ntranslate_sentence\nModule that fetches a sentence’s translation and metadata through Google Translate.",
     "crumbs": [
+      "Reference",
       "Function reference"
     ]
   },
@@ -367,6 +380,7 @@
     "section": "",
     "text": "Name\nType\nDescription\nDefault\n\n\n\n\nsentence\nstr\nThe input string to analyze.\nrequired",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "analyze_sentiment"
     ]
@@ -378,6 +392,7 @@
     "section": "",
     "text": "Name\nType\nDescription\n\n\n\n\n\ndict\nThe sentiment analysis result.",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "analyze_sentiment"
     ]
@@ -389,8 +404,37 @@
     "section": "",
     "text": "&gt;&gt;&gt; analyze_sentiment(\"I absolutely love Kpop\")",
     "crumbs": [
+      "Reference",
       "You Need A Dictionary",
       "analyze_sentiment"
     ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "You Need a Dictionary is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.\n\n\n\n\npreprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.\n\n\n\n\nThere are several existing Python packages for NLP and dictionary lookups, such as PyDictionary for definitions and TextBlob or NLTK for sentiment analysis. However, You Need a Dictionary fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from TextBlob or a standalone definition from PyDictionary, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. You Need a Dictionary also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text."
+  },
+  {
+    "objectID": "index.html#summary",
+    "href": "index.html#summary",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "You Need a Dictionary is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text."
+  },
+  {
+    "objectID": "index.html#list-of-functions",
+    "href": "index.html#list-of-functions",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "preprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words."
+  },
+  {
+    "objectID": "index.html#you-need-a-dictionarys-relevance-to-the-python-ecosystem",
+    "href": "index.html#you-need-a-dictionarys-relevance-to-the-python-ecosystem",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "There are several existing Python packages for NLP and dictionary lookups, such as PyDictionary for definitions and TextBlob or NLTK for sentiment analysis. However, You Need a Dictionary fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from TextBlob or a standalone definition from PyDictionary, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. You Need a Dictionary also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text."
   }
 ]
