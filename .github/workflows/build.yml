@@ -5,7 +5,7 @@ on:
   # Triggers the workflow on push or pull request events but only for 
   # the main branch
   push:
-    branches: [ main, dev ]
+    branches: [ main ]
   pull_request:
     branches: [ main, dev ]
 
@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e .[tests]
+          pip install -e .[tests,dev]
 
       # Download nltk wordnet - ChatGPT was used to find the correct command to ensure the action runs
       - name: Download nltk wordnet 
@@ -54,3 +54,8 @@ jobs:
       - name: Run tests with coverage
         run: |
           pytest --cov --cov-report=term --cov-branch
+
+      # Run style checker - ruff
+      - name: Run tests with coverage
+        run: |
+          ruff check .
