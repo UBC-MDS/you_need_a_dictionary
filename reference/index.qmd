@@ -10,4 +10,3 @@ This package is for exploring how language choices shape meaning and sentiment. 
 | [create_wordcloud](create_wordcloud.qmd#you_need_a_dictionary.create_wordcloud) | This function creates a wordcloud of either antonyms,  |
 | [fetch_definition](fetch_definition.qmd#you_need_a_dictionary.fetch_definition) | Module that fetches the definition, synonyms and antonyms of a given word using WordNet. |
 | [analyze_sentiment](analyze_sentiment.qmd#you_need_a_dictionary.analyze_sentiment) | Analyze the sentiment of the preprocessed user input. |
-| [translate_sentence](translate_sentence.qmd#you_need_a_dictionary.translate_sentence) | Module that fetches a sentence's translation and metadata through Google Translate. |

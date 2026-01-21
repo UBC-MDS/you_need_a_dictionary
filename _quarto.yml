@@ -41,5 +41,5 @@ quartodoc:
         - 'create_wordcloud'
         - 'fetch_definition'
         - 'analyze_sentiment'
-        - 'translate_sentence'
+        # - 'translate_sentence'
 
