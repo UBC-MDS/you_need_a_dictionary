@@ -1,0 +1,42 @@
+# fetch_definition { #you_need_a_dictionary.fetch_definition }
+
+`fetch_definition`
+
+Module that fetches the definition, synonyms and antonyms of a given word using WordNet.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [fetch_definition](#you_need_a_dictionary.fetch_definition.fetch_definition) | Fetch definitions, synonyms, and antonyms of a word using WordNet. |
+
+### fetch_definition { #you_need_a_dictionary.fetch_definition.fetch_definition }
+
+```python
+fetch_definition.fetch_definition(
+    word,
+    pos=None,
+    top_n=1,
+    max_synonyms=10,
+    include_examples=False,
+    return_type='str',
+)
+```
+
+Fetch definitions, synonyms, and antonyms of a word using WordNet.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name             | Type         | Description                                                       | Default           |
+|------------------|--------------|-------------------------------------------------------------------|-------------------|
+| word             | str          | The word to look up.                                              | _required_        |
+| pos              | (n, v, a, r) | Part of speech filter: noun, verb, adjective, adverb.             | `"n","v","a","r"` |
+| top_n            | int          | Number of top-ranked senses to include.                           | `1`               |
+| max_synonyms     | int          | Max number of synonyms to show (combined across returned senses). | `10`              |
+| include_examples | bool         | If True, include example sentences when available.                | `False`           |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                  |
+|--------|--------|------------------------------|
+|        | str    | Formatted string of results. |
