@@ -414,7 +414,7 @@
     "href": "index.html",
     "title": "Welcome to You Need a Dictionary",
     "section": "",
-    "text": "You Need a Dictionary is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.\n\n\n\n\npreprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.\n\n\n\n\nThere are several existing Python packages for NLP and dictionary lookups, such as PyDictionary for definitions and TextBlob or NLTK for sentiment analysis. However, You Need a Dictionary fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from TextBlob or a standalone definition from PyDictionary, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. You Need a Dictionary also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text."
+    "text": "Package\n \n\n\nMeta\n\n\n\n\n\n\nYou Need a Dictionary is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.\n\n\n\n\nget_user_input: Accepts a raw string and a target word as input from the user.\npreprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.\n\n\n\n\nThere are several existing Python packages for NLP and dictionary lookups, such as PyDictionary for definitions and TextBlob or NLTK for sentiment analysis. However, You Need a Dictionary fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from TextBlob or a standalone definition from PyDictionary, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. You Need a Dictionary also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text.\n\n\n\nYou can install this package into your preferred Python environment using pip:\n$ pip install you-need-a-dictionary\nTo use you-need-a-dictionary in your code:\n&gt;&gt;&gt; import you-need-a-dictionary\n&gt;&gt;&gt; you-need-a-dictionary.hello_world()\n\n\n\nThe following language codes are used:\n\n\n\nLanguage\nCode\n\n\n\n\nAlbanian\nsq\n\n\nArabic\nar\n\n\nAzerbaijani\naz\n\n\nBasque\neu\n\n\nBengali\nbn\n\n\nBulgarian\nbg\n\n\nCatalan\nca\n\n\nChinese (traditional)\nzt\n\n\nChinese\nzh\n\n\nCzech\ncs\n\n\nDanish\nda\n\n\nDutch\nnl\n\n\nEnglish\nen\n\n\nEsperanto\neo\n\n\nEstonian\net\n\n\nFinnish\nfi\n\n\nFrench\nfr\n\n\nGalician\ngl\n\n\nGerman\nde\n\n\nGreek\nel\n\n\nHebrew\nhe\n\n\nHindi\nhi\n\n\nHungarian\nhu\n\n\nIndonesian\nid\n\n\nIrish\nga\n\n\nItalian\nit\n\n\nJapanese\nja\n\n\nKorean\nko\n\n\nKyrgyz\nky\n\n\nLatvian\nlv\n\n\nLithuanian\nlt\n\n\nMalay\nms\n\n\nNorwegian\nnb\n\n\nPersian\nfa\n\n\nPolish\npl\n\n\nPortuguese\npt\n\n\nPortuguese (Brazil)\npb\n\n\nRomanian\nro\n\n\nRussian\nru\n\n\nSlovak\nsk\n\n\nSlovenian\nsl\n\n\nSpanish\nes\n\n\nSwedish\nsv\n\n\nTagalog\ntl\n\n\nThai\nth\n\n\nTurkish\ntr\n\n\nUkranian\nuk\n\n\nUrdu\nur\n\n\nVietnamese\nvi\n\n\n\n\n\n\nTo test the package locally, clone the repository and run the following command in the root directory:\n$ pip install -e .\n$ pytest\n\n\n\n\nEric Wong\nMailys Guedon\nGodsgift Braimah\nMara Sanchez\n\n\n\n\n\nCopyright © 2026 Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong.\nFree software distributed under the MIT License."
   },
   {
     "objectID": "index.html#summary",
@@ -428,7 +428,7 @@
     "href": "index.html#list-of-functions",
     "title": "Welcome to You Need a Dictionary",
     "section": "",
-    "text": "preprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words."
+    "text": "get_user_input: Accepts a raw string and a target word as input from the user.\npreprocess_user_input: Preprocessing of user input to prepare the text for NLP analysis and API integration.\nanalyze_sentiment: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.\nfetch_definition: Module that fetches the definition, synonyms and antonyms of a given word using WordNet\nword_replacement: Replaces a specific word in the user’s sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.\ntranslate_sentence: Translates the entire input sentence into a target language using LibreTranslate.\ncreate_wordcloud: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words."
   },
   {
     "objectID": "index.html#you-need-a-dictionarys-relevance-to-the-python-ecosystem",
@@ -436,5 +436,40 @@
     "title": "Welcome to You Need a Dictionary",
     "section": "",
     "text": "There are several existing Python packages for NLP and dictionary lookups, such as PyDictionary for definitions and TextBlob or NLTK for sentiment analysis. However, You Need a Dictionary fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from TextBlob or a standalone definition from PyDictionary, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. You Need a Dictionary also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text."
+  },
+  {
+    "objectID": "index.html#get-started",
+    "href": "index.html#get-started",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "You can install this package into your preferred Python environment using pip:\n$ pip install you-need-a-dictionary\nTo use you-need-a-dictionary in your code:\n&gt;&gt;&gt; import you-need-a-dictionary\n&gt;&gt;&gt; you-need-a-dictionary.hello_world()"
+  },
+  {
+    "objectID": "index.html#language-codes",
+    "href": "index.html#language-codes",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "The following language codes are used:\n\n\n\nLanguage\nCode\n\n\n\n\nAlbanian\nsq\n\n\nArabic\nar\n\n\nAzerbaijani\naz\n\n\nBasque\neu\n\n\nBengali\nbn\n\n\nBulgarian\nbg\n\n\nCatalan\nca\n\n\nChinese (traditional)\nzt\n\n\nChinese\nzh\n\n\nCzech\ncs\n\n\nDanish\nda\n\n\nDutch\nnl\n\n\nEnglish\nen\n\n\nEsperanto\neo\n\n\nEstonian\net\n\n\nFinnish\nfi\n\n\nFrench\nfr\n\n\nGalician\ngl\n\n\nGerman\nde\n\n\nGreek\nel\n\n\nHebrew\nhe\n\n\nHindi\nhi\n\n\nHungarian\nhu\n\n\nIndonesian\nid\n\n\nIrish\nga\n\n\nItalian\nit\n\n\nJapanese\nja\n\n\nKorean\nko\n\n\nKyrgyz\nky\n\n\nLatvian\nlv\n\n\nLithuanian\nlt\n\n\nMalay\nms\n\n\nNorwegian\nnb\n\n\nPersian\nfa\n\n\nPolish\npl\n\n\nPortuguese\npt\n\n\nPortuguese (Brazil)\npb\n\n\nRomanian\nro\n\n\nRussian\nru\n\n\nSlovak\nsk\n\n\nSlovenian\nsl\n\n\nSpanish\nes\n\n\nSwedish\nsv\n\n\nTagalog\ntl\n\n\nThai\nth\n\n\nTurkish\ntr\n\n\nUkranian\nuk\n\n\nUrdu\nur\n\n\nVietnamese\nvi"
+  },
+  {
+    "objectID": "index.html#dev-notes",
+    "href": "index.html#dev-notes",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "To test the package locally, clone the repository and run the following command in the root directory:\n$ pip install -e .\n$ pytest"
+  },
+  {
+    "objectID": "index.html#contributors",
+    "href": "index.html#contributors",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "Eric Wong\nMailys Guedon\nGodsgift Braimah\nMara Sanchez"
+  },
+  {
+    "objectID": "index.html#copyright",
+    "href": "index.html#copyright",
+    "title": "Welcome to You Need a Dictionary",
+    "section": "",
+    "text": "Copyright © 2026 Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong.\nFree software distributed under the MIT License."
   }
 ]

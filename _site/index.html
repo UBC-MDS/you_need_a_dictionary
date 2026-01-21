@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -112,6 +147,18 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welcome-to-you-need-a-dictionary" class="level1">
 <h1>Welcome to You Need a Dictionary</h1>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>Package</td>
+<td><a href="https://pypi.org/project/you-need-a-dictionary/"><img src="https://img.shields.io/pypi/v/you-need-a-dictionary.svg" class="img-fluid" alt="Latest PyPI Version"></a> <a href="https://pypi.org/project/you-need-a-dictionary/"><img src="https://img.shields.io/pypi/pyversions/you-need-a-dictionary.svg" class="img-fluid" alt="Supported Python Versions"></a></td>
+</tr>
+<tr class="even">
+<td>Meta</td>
+<td><a href="./CODE_OF_CONDUCT.html"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" class="img-fluid" alt="Code of Conduct"></a></td>
+</tr>
+</tbody>
+</table>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p><strong>You Need a Dictionary</strong> is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.</p>
@@ -119,6 +166,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="list-of-functions" class="level2">
 <h2 class="anchored" data-anchor-id="list-of-functions">List of Functions</h2>
 <ul>
+<li><code>get_user_input</code>: Accepts a raw string and a target word as input from the user.</li>
 <li><code>preprocess_user_input</code>: Preprocessing of user input to prepare the text for NLP analysis and API integration.</li>
 <li><code>analyze_sentiment</code>: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.</li>
 <li><code>fetch_definition</code>: Module that fetches the definition, synonyms and antonyms of a given word using WordNet</li>
@@ -130,6 +178,246 @@ ul.task-list li input[type="checkbox"] {
 <section id="you-need-a-dictionarys-relevance-to-the-python-ecosystem" class="level2">
 <h2 class="anchored" data-anchor-id="you-need-a-dictionarys-relevance-to-the-python-ecosystem"><code>You Need a Dictionary's</code> Relevance to the Python Ecosystem:</h2>
 <p>There are several existing Python packages for NLP and dictionary lookups, such as <a href="https://pypi.org/project/PyDictionary/"><code>PyDictionary</code></a> for definitions and <a href="https://textblob.readthedocs.io/en/dev/"><code>TextBlob</code></a> or <code>NLTK</code> for sentiment analysis. However, <strong>You Need a Dictionary</strong> fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from <a href="https://textblob.readthedocs.io/en/dev/"><code>TextBlob</code></a> or a standalone definition from <a href="https://pypi.org/project/PyDictionary/"><code>PyDictionary</code></a>, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. <strong>You Need a Dictionary</strong> also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text.</p>
+</section>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<p>You can install this package into your preferred Python environment using pip:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install you-need-a-dictionary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To use you-need-a-dictionary in your code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> you<span class="op">-</span>need<span class="op">-</span>a<span class="op">-</span>dictionary</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> you<span class="op">-</span>need<span class="op">-</span>a<span class="op">-</span>dictionary.hello_world()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="language-codes" class="level2">
+<h2 class="anchored" data-anchor-id="language-codes">Language codes</h2>
+<p>The following language codes are used:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Language</th>
+<th>Code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Albanian</td>
+<td>sq</td>
+</tr>
+<tr class="even">
+<td>Arabic</td>
+<td>ar</td>
+</tr>
+<tr class="odd">
+<td>Azerbaijani</td>
+<td>az</td>
+</tr>
+<tr class="even">
+<td>Basque</td>
+<td>eu</td>
+</tr>
+<tr class="odd">
+<td>Bengali</td>
+<td>bn</td>
+</tr>
+<tr class="even">
+<td>Bulgarian</td>
+<td>bg</td>
+</tr>
+<tr class="odd">
+<td>Catalan</td>
+<td>ca</td>
+</tr>
+<tr class="even">
+<td>Chinese (traditional)</td>
+<td>zt</td>
+</tr>
+<tr class="odd">
+<td>Chinese</td>
+<td>zh</td>
+</tr>
+<tr class="even">
+<td>Czech</td>
+<td>cs</td>
+</tr>
+<tr class="odd">
+<td>Danish</td>
+<td>da</td>
+</tr>
+<tr class="even">
+<td>Dutch</td>
+<td>nl</td>
+</tr>
+<tr class="odd">
+<td>English</td>
+<td>en</td>
+</tr>
+<tr class="even">
+<td>Esperanto</td>
+<td>eo</td>
+</tr>
+<tr class="odd">
+<td>Estonian</td>
+<td>et</td>
+</tr>
+<tr class="even">
+<td>Finnish</td>
+<td>fi</td>
+</tr>
+<tr class="odd">
+<td>French</td>
+<td>fr</td>
+</tr>
+<tr class="even">
+<td>Galician</td>
+<td>gl</td>
+</tr>
+<tr class="odd">
+<td>German</td>
+<td>de</td>
+</tr>
+<tr class="even">
+<td>Greek</td>
+<td>el</td>
+</tr>
+<tr class="odd">
+<td>Hebrew</td>
+<td>he</td>
+</tr>
+<tr class="even">
+<td>Hindi</td>
+<td>hi</td>
+</tr>
+<tr class="odd">
+<td>Hungarian</td>
+<td>hu</td>
+</tr>
+<tr class="even">
+<td>Indonesian</td>
+<td>id</td>
+</tr>
+<tr class="odd">
+<td>Irish</td>
+<td>ga</td>
+</tr>
+<tr class="even">
+<td>Italian</td>
+<td>it</td>
+</tr>
+<tr class="odd">
+<td>Japanese</td>
+<td>ja</td>
+</tr>
+<tr class="even">
+<td>Korean</td>
+<td>ko</td>
+</tr>
+<tr class="odd">
+<td>Kyrgyz</td>
+<td>ky</td>
+</tr>
+<tr class="even">
+<td>Latvian</td>
+<td>lv</td>
+</tr>
+<tr class="odd">
+<td>Lithuanian</td>
+<td>lt</td>
+</tr>
+<tr class="even">
+<td>Malay</td>
+<td>ms</td>
+</tr>
+<tr class="odd">
+<td>Norwegian</td>
+<td>nb</td>
+</tr>
+<tr class="even">
+<td>Persian</td>
+<td>fa</td>
+</tr>
+<tr class="odd">
+<td>Polish</td>
+<td>pl</td>
+</tr>
+<tr class="even">
+<td>Portuguese</td>
+<td>pt</td>
+</tr>
+<tr class="odd">
+<td>Portuguese (Brazil)</td>
+<td>pb</td>
+</tr>
+<tr class="even">
+<td>Romanian</td>
+<td>ro</td>
+</tr>
+<tr class="odd">
+<td>Russian</td>
+<td>ru</td>
+</tr>
+<tr class="even">
+<td>Slovak</td>
+<td>sk</td>
+</tr>
+<tr class="odd">
+<td>Slovenian</td>
+<td>sl</td>
+</tr>
+<tr class="even">
+<td>Spanish</td>
+<td>es</td>
+</tr>
+<tr class="odd">
+<td>Swedish</td>
+<td>sv</td>
+</tr>
+<tr class="even">
+<td>Tagalog</td>
+<td>tl</td>
+</tr>
+<tr class="odd">
+<td>Thai</td>
+<td>th</td>
+</tr>
+<tr class="even">
+<td>Turkish</td>
+<td>tr</td>
+</tr>
+<tr class="odd">
+<td>Ukranian</td>
+<td>uk</td>
+</tr>
+<tr class="even">
+<td>Urdu</td>
+<td>ur</td>
+</tr>
+<tr class="odd">
+<td>Vietnamese</td>
+<td>vi</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="dev-notes" class="level2">
+<h2 class="anchored" data-anchor-id="dev-notes">Dev notes</h2>
+<p>To test the package locally, clone the repository and run the following command in the root directory:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="contributors" class="level2">
+<h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
+<ul>
+<li>Eric Wong</li>
+<li>Mailys Guedon</li>
+<li>Godsgift Braimah</li>
+<li>Mara Sanchez</li>
+</ul>
+</section>
+<section id="copyright" class="level2">
+<h2 class="anchored" data-anchor-id="copyright">Copyright</h2>
+<ul>
+<li>Copyright © 2026 Mailys Guedon, Mara Sanchez, Godsgift Braimah, Eric Wong.</li>
+<li>Free software distributed under the <a href="./LICENSE">MIT License</a>.</li>
+</ul>
 
 
 </section>
