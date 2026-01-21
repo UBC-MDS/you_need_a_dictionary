@@ -1,7 +1,7 @@
 """
 A module that creates wordclouds of antonyms and/or synonyms for a given word.
 """
-import nltk
+
 from nltk.corpus import wordnet as wn
 from nltk.wsd import lesk
 import string
