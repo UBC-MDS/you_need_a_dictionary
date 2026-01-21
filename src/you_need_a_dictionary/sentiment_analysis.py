@@ -1,6 +1,8 @@
 """
 Module for performing sentiment analysis on preprocessed user input.
 """
+
+
 import re
 import nltk
 nltk.download('vader_lexicon')
@@ -10,14 +12,19 @@ def analyze_sentiment(sentence: str) -> dict:
     """
     Analyze the sentiment of the preprocessed user input.
 
-    Args:
-        sentence (str): The input string to analyze.
+    Parameters
+    ----------
+    sentence : str
+        The input string to analyze.
 
-    Returns:
-        dict: The sentiment analysis result.
+    Returns
+    ----------
+    dict
+        The sentiment analysis result.
         
-    Examples:
-        >>> analyze_sentiment("I absolutely love Kpop")
+    Examples
+    ----------
+    >>> analyze_sentiment("I absolutely love Kpop")
     """
     # These two checks are from prompt: "What other tests should I perform (use pytest) to ensure that my function performs as expected?"
     # Check for invalid type first

@@ -13,17 +13,23 @@ format:
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
-  package: quartodoc
+  style: pkgdown
+  dir: reference
+  package: you_need_a_dictionary
 
   # write sidebar and style data
   sidebar: reference/_sidebar.yml
   css: reference/_styles-quartodoc.css
 
   sections:
-    - title: Some functions
-      desc: Functions to inspect docstrings.
+    - title: You Need A Dictionary
+      desc: This package is for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions.
       contents:
         # the functions being documented in the package.
         # you can refer to anything: class methods, modules, etc..
-        - get_object
-        - preview
+        - 'word_replacement'
+        - 'create_wordcloud'
+        - 'fetch_definition'
+        - 'analyze_sentiment'
+        - 'translate_sentence'
+
