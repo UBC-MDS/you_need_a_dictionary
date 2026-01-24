@@ -85,3 +85,40 @@ def test_no_examples_when_disabled():
     _skip_if_wordnet_missing()
     result = ynd.fetch_definition("run", include_examples=False)
     assert "e.g.," not in result
+
+# If you could add two impactful unit tests in addition to the tests in test_fetch_definition.py, 
+# what would they be? Apply coding best practices and look for edge cases as well.
+
+def test_antonyms_returned_for_word_with_opposites():
+    """Test that antonyms are returned for words that have them."""
+    _skip_if_wordnet_missing()
+    # "good" has well-known antonyms like "bad", "evil", etc.
+    result = ynd.fetch_definition("good", top_n=1)
+    lines = result.splitlines()
+    
+    antonyms_line = next(
+        (line for line in lines if line.startswith("Antonyms:")), None
+    )
+    assert antonyms_line is not None, "Antonyms line should be present"
+    assert "None found" not in antonyms_line, "Antonyms should not be empty for 'good'"
+    
+    # Verify antonyms are comma-separated and non-empty
+    antonyms_str = antonyms_line.replace("Antonyms:", "").strip()
+    antonyms_list = [a.strip() for a in antonyms_str.split(",")]
+    assert len(antonyms_list) > 0
+    assert all(isinstance(a, str) and len(a) > 0 for a in antonyms_list)
+
+
+def test_pos_filter_restricts_results():
+    """Test that filtering by part-of-speech returns only matching senses."""
+    _skip_if_wordnet_missing()
+    # "run" is both noun and verb; filter to only verbs
+    result_verb = ynd.fetch_definition("run", pos="v", top_n=2)
+    verb_senses = [line for line in result_verb.splitlines() if line.startswith("Sense ")]
+    
+    # All returned senses should show verb POS
+    for sense_line in verb_senses:
+        assert "(v)" in sense_line, f"Expected verb POS in: {sense_line}"
+    
+    # Verify we actually got results
+    assert len(verb_senses) > 0, "Should return at least one verb sense for 'run'"
