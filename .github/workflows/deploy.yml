@@ -13,56 +13,59 @@ on:
 
 jobs:
   # This workflow contains a single job called "deploy"
-  deploy:
+  unit-test-pytest:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python-version: ['3.10', '3.11', '3.12', '3.13','3.14']
-
-
-    # Permissions required for Trusted Publishing (OIDC) to TestPyPI
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
       # Checks-out your repository so your job can access it
       - name: Check-out repository
-        uses: actions/checkout@v3
-
-
-      # Set up Python (MATCH THIS to your pyproject.toml)
+        uses: actions/checkout@v2
+    
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.13" 
 
-      # Install dependencies (tests + lint + build tools)
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -e .[tests]
-          pip install ruff build
 
       # Download nltk wordnet (same as CI so tests don't fail)
       - name: Download nltk wordnet
         run: |
           python -m nltk.downloader wordnet omw-1.4
 
-      # ADD STYLE CHECKS!!!!!!!!!1
-
       # Run pytest with coverage
       - name: Run tests with coverage
         run: |
           pytest --cov --cov-report=term --cov-branch
 
+  pypi-test:
+    needs: unit-test-pytest
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install hatch
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+
+      - name: Build package
+        run: hatch build
+
       # Publish to TestPyPI
       - name: Publish package to TestPyPI
-        uses: pypa/gh-action-pypi-publish@v1.13.0
-        if: steps.release.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://test.pypi.org/legacy/
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -73,3 +76,5 @@ jobs:
           python -m pip uninstall -y you_need_a_dictionary || true
           python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple you_need_a_dictionary
           python -c "import you_need_a_dictionary; print('Installed OK')"
+
+
