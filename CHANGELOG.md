@@ -5,13 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.0.1]
 
-- Added first two functions (only docstrings): get_usr_input.py and sentiment_analysis.py
-- Added fifth function (only docstring): translate_sentence.py
-- Added third function (only docstring): fetch_definition.py
-- Added sixth function (only docstring): wordcloud.py
-- Added fourth function (only docstring): word_replacement.py
+## [Release Number Goes Here]
+
+- Created quarto documentation structure and initial files. Hosted on GitHub Pages.
 
 
 ## [1.0.0]
@@ -24,3 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py
 - Updated README.md to incude instructions on now to test package locally
 - Fixed imports in word_replacement.py to use package structure instead of sys.path
+
+## [0.0.1]
+
+- Added first two functions (only docstrings): get_usr_input.py and sentiment_analysis.py
+- Added fifth function (only docstring): translate_sentence.py
+- Added third function (only docstring): fetch_definition.py
+- Added sixth function (only docstring): wordcloud.py
+- Added fourth function (only docstring): word_replacement.py
