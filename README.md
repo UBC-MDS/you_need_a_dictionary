@@ -112,16 +112,18 @@ $ pip install -e .
 ``` 
 
 To test the package locally:
+Open a terminal in the project root directory and run:
 ```bash
-$ pip install -e .
+$ pip install -e .[tests] # setup test dependencies
 $ pytest
 ```
 
 To build documentation locally:
-TO BE ADDED
-
-To deploy the documentation (automated):
-TO BE ADDED
+```bash
+$ pip install -e .[docs] # setup documentation dependencies
+$ quartodoc --build
+$ quarto render
+```
 
 ## Contributors
 - Eric Wong
