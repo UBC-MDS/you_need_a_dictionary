@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)
 - Created quarto documentation structure and initial files. Hosted on GitHub Pages.
 - Added documentation to the readme.md including installing, running tests, and building docs
+- Developed a workflow for continuous integration/continuous deployment
+- Revised code based on style checker edits
+- Developed a workflow for quarto documentation that automatically builds and deploys documentation pages
+
 
 ## [1.0.0]
 
