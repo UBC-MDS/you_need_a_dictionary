@@ -2,14 +2,8 @@
 Unit tests for the translate_sentence module.
 """
 
-import sys
-import os
 
-sys.path.insert(
-    0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../src"))
-)
-import pytest
-from you_need_a_dictionary.translate_sentence import translate_sentence
+import you_need_a_dictionary as ynd
 
 # Below test cases were obtained with prompt: Hi, based on the following function <insert translate_sentence docstring>
 # create pytest unit tests to validate that it works properly.
@@ -25,14 +19,14 @@ from you_need_a_dictionary.translate_sentence import translate_sentence
 
 def test_empty_string():
     """Test that an empty string can be translated (returns empty result)."""
-    result = translate_sentence("", "es")
+    result = ynd.translate_sentence("", "es")
     assert result["translated_text"] == ""
     assert result["error"] is None
 
 
 def test_basic_translation():
     """Test that 'Hello world' translates to 'Hola Mundo'."""
-    result = translate_sentence("Hello world", "es")
+    result = ynd.translate_sentence("Hello world", "es")
     assert result["translated_text"] == "Hola Mundo"
     assert result["target_language"] == "es"
     assert result["error"] is None
@@ -40,34 +34,34 @@ def test_basic_translation():
 
 def test_language_code_format():
     """Test that language codes must be in string format."""
-    result = translate_sentence("Hello", 123)
+    result = ynd.translate_sentence("Hello", 123)
     assert result["error"] is not None
     assert "target_language must be a string" in result["error"]
 
 
 def test_invalid_source_language_code():
     """Test that invalid source language code is handled gracefully."""
-    result = translate_sentence("Hello", "es", source_language=456)
+    result = ynd.translate_sentence("Hello", "es", source_language=456)
     assert result["error"] is not None
     assert "source_language must be a string or None" in result["error"]
 
 
 def test_unsupported_language():
     """Test that unsupported language codes return an error message."""
-    result = translate_sentence("Hello world", "xyz")
+    result = ynd.translate_sentence("Hello world", "xyz")
     assert result["error"] is not None
     assert result["translated_text"] == "Hello world"  # Returns original text
 
 
 def test_return_type():
     """Ensure the function returns a dictionary."""
-    result = translate_sentence("Hello", "es")
+    result = ynd.translate_sentence("Hello", "es")
     assert isinstance(result, dict)
 
 
 def test_return_structure():
     """Test that the returned dictionary has all required keys."""
-    result = translate_sentence("Hello", "es")
+    result = ynd.translate_sentence("Hello", "es")
     assert "translated_text" in result
     assert "source_language" in result
     assert "target_language" in result
@@ -76,14 +70,14 @@ def test_return_structure():
 
 def test_invalid_input_type():
     """Test that a non-string sentence input raises a TypeError."""
-    result = translate_sentence(123, "es")
+    result = ynd.translate_sentence(123, "es")
     assert result["error"] is not None
     assert "sentence must be a string" in result["error"]
 
 
 def test_with_explicit_source_language():
     """Test translation with explicitly specified source language."""
-    result = translate_sentence("Hello world", "fr", source_language="en")
+    result = ynd.translate_sentence("Hello world", "fr", source_language="en")
     assert result["source_language"] == "en"
     assert result["translated_text"] == "Bonjour le monde"
     assert result["error"] is None
@@ -91,14 +85,14 @@ def test_with_explicit_source_language():
 
 def test_auto_detect_source_language():
     """Test that source language defaults to 'auto' when not specified."""
-    result = translate_sentence("Hello", "es")
+    result = ynd.translate_sentence("Hello", "es")
     assert result["source_language"] == "auto"
     assert result["error"] is None
 
 
 def test_french_to_english():
     """Test translation from French to English."""
-    result = translate_sentence("Bonjour tout le monde", "en")
+    result = ynd.translate_sentence("Bonjour tout le monde", "en")
     assert result["target_language"] == "en"
     assert "Hello" in result["translated_text"] or "Good" in result["translated_text"]
     assert result["error"] is None
@@ -106,21 +100,21 @@ def test_french_to_english():
 
 def test_whitespace_input():
     """Test translation of whitespace-only strings."""
-    result = translate_sentence("   ", "es")
+    result = ynd.translate_sentence("   ", "es")
     # This should either translate to whitespace or handle gracefully
     assert result["error"] is None or result["translated_text"] == "   "
 
 
 def test_special_characters():
     """Test translation of sentence with special characters."""
-    result = translate_sentence("Hello world!", "es")
+    result = ynd.translate_sentence("Hello world!", "es")
     assert result["error"] is None
     assert "Hola" in result["translated_text"]
 
 
 def test_numbers_in_sentence():
     """Test translation of sentence containing numbers."""
-    result = translate_sentence("I have 5 apples", "es")
+    result = ynd.translate_sentence("I have 5 apples", "es")
     assert result["error"] is None
     assert (
         "5" in result["translated_text"] or "cinco" in result["translated_text"].lower()
