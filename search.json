@@ -247,14 +247,14 @@
     "href": "CHANGELOG.html",
     "title": "Changelog",
     "section": "",
-    "text": "All notable changes to this project will be documented in this file.\nThe format is based on Keep a Changelog, and this project adheres to Semantic Versioning.\n\n\n\nAdded four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)\nCreated quarto documentation structure and initial files. Hosted on GitHub Pages.\n\n\n\n\n\nAdded definition fetch code and unit tests: test_fetch_definition.py and fetch_definition.py\nAdded sentiment analysis code and unit tests: test_sentiment_analysis.py and sentiment_analysis.py\nAdded function logic to replace a word in a sentence and compute the sentiment in word_replacement.py\nAdded helper function sentiment_specifics in utils.py to provide detailed sentiment analysis results.\nAdded wordcloud plotter code and unit tests: test_create_wordcloud.py and wordcloud.py\nAdded helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py\nUpdated README.md to incude instructions on now to test package locally\nFixed imports in word_replacement.py to use package structure instead of sys.path\n\n\n\n\n\nAdded documentation to the readme.md including installing, running tests, and building docs"
+    "text": "All notable changes to this project will be documented in this file.\nThe format is based on Keep a Changelog, and this project adheres to Semantic Versioning.\n\n\n\nAdded four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)\nCreated quarto documentation structure and initial files. Hosted on GitHub Pages.\nAdded documentation to the readme.md including installing, running tests, and building docs\n\n\n\n\n\nAdded definition fetch code and unit tests: test_fetch_definition.py and fetch_definition.py\nAdded sentiment analysis code and unit tests: test_sentiment_analysis.py and sentiment_analysis.py\nAdded function logic to replace a word in a sentence and compute the sentiment in word_replacement.py\nAdded helper function sentiment_specifics in utils.py to provide detailed sentiment analysis results.\nAdded wordcloud plotter code and unit tests: test_create_wordcloud.py and wordcloud.py\nAdded helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py\nUpdated README.md to incude instructions on now to test package locally\nFixed imports in word_replacement.py to use package structure instead of sys.path"
   },
   {
     "objectID": "CHANGELOG.html#section",
     "href": "CHANGELOG.html#section",
     "title": "Changelog",
     "section": "",
-    "text": "Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)\nCreated quarto documentation structure and initial files. Hosted on GitHub Pages."
+    "text": "Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)\nCreated quarto documentation structure and initial files. Hosted on GitHub Pages.\nAdded documentation to the readme.md including installing, running tests, and building docs"
   },
   {
     "objectID": "CHANGELOG.html#section-1",
@@ -262,13 +262,6 @@
     "title": "Changelog",
     "section": "",
     "text": "Added definition fetch code and unit tests: test_fetch_definition.py and fetch_definition.py\nAdded sentiment analysis code and unit tests: test_sentiment_analysis.py and sentiment_analysis.py\nAdded function logic to replace a word in a sentence and compute the sentiment in word_replacement.py\nAdded helper function sentiment_specifics in utils.py to provide detailed sentiment analysis results.\nAdded wordcloud plotter code and unit tests: test_create_wordcloud.py and wordcloud.py\nAdded helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py\nUpdated README.md to incude instructions on now to test package locally\nFixed imports in word_replacement.py to use package structure instead of sys.path"
-  },
-  {
-    "objectID": "CHANGELOG.html#section-2",
-    "href": "CHANGELOG.html#section-2",
-    "title": "Changelog",
-    "section": "",
-    "text": "Added documentation to the readme.md including installing, running tests, and building docs"
   },
   {
     "objectID": "CONTRIBUTING.html",
