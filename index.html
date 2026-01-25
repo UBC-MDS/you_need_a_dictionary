@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d521dac1687b568bac4cd80e48eb8185.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ee47912cae73dc7932e3cc93c52697b6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -147,18 +148,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="welcome-to-you-need-a-dictionary" class="level1">
 <h1>Welcome to You Need a Dictionary</h1>
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<td>Package</td>
-<td><a href="https://pypi.org/project/you-need-a-dictionary/"><img src="https://img.shields.io/pypi/v/you-need-a-dictionary.svg" class="img-fluid" alt="Latest PyPI Version"></a> <a href="https://pypi.org/project/you-need-a-dictionary/"><img src="https://img.shields.io/pypi/pyversions/you-need-a-dictionary.svg" class="img-fluid" alt="Supported Python Versions"></a></td>
-</tr>
-<tr class="even">
-<td>Meta</td>
-<td><a href="./CODE_OF_CONDUCT.html"><img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg" class="img-fluid" alt="Code of Conduct"></a></td>
-</tr>
-</tbody>
-</table>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p><strong>You Need a Dictionary</strong> is a project that goes beyond simple translation and word definitions. It’s an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.</p>
@@ -166,7 +155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="list-of-functions" class="level2">
 <h2 class="anchored" data-anchor-id="list-of-functions">List of Functions</h2>
 <ul>
-<li><code>get_user_input</code>: Accepts a raw string and a target word as input from the user.</li>
 <li><code>preprocess_user_input</code>: Preprocessing of user input to prepare the text for NLP analysis and API integration.</li>
 <li><code>analyze_sentiment</code>: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.</li>
 <li><code>fetch_definition</code>: Module that fetches the definition, synonyms and antonyms of a given word using WordNet</li>
@@ -179,17 +167,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="you-need-a-dictionarys-relevance-to-the-python-ecosystem"><code>You Need a Dictionary's</code> Relevance to the Python Ecosystem:</h2>
 <p>There are several existing Python packages for NLP and dictionary lookups, such as <a href="https://pypi.org/project/PyDictionary/"><code>PyDictionary</code></a> for definitions and <a href="https://textblob.readthedocs.io/en/dev/"><code>TextBlob</code></a> or <code>NLTK</code> for sentiment analysis. However, <strong>You Need a Dictionary</strong> fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from <a href="https://textblob.readthedocs.io/en/dev/"><code>TextBlob</code></a> or a standalone definition from <a href="https://pypi.org/project/PyDictionary/"><code>PyDictionary</code></a>, our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. <strong>You Need a Dictionary</strong> also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text.</p>
 </section>
-<section id="get-started" class="level2">
-<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
-<p>You can install this package into your preferred Python environment using pip:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install you-need-a-dictionary</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To use you-need-a-dictionary in your code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> you<span class="op">-</span>need<span class="op">-</span>a<span class="op">-</span>dictionary</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> you<span class="op">-</span>need<span class="op">-</span>a<span class="op">-</span>dictionary.hello_world()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
 <section id="language-codes" class="level2">
-<h2 class="anchored" data-anchor-id="language-codes">Language codes</h2>
-<p>The following language codes are used:</p>
+<h2 class="anchored" data-anchor-id="language-codes">Language Codes</h2>
+The following language codes are supported for translation:
+<details>
+<summary>
+Language codes
+</summary>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -396,12 +380,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+</details>
+</section>
+<section id="get-started" class="level2">
+<h2 class="anchored" data-anchor-id="get-started">Get started</h2>
+<p>You can install this package into your preferred Python environment using pip:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install you_need_a_dictionary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Example usage in Python:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> you_need_a_dictionary <span class="im">as</span> ynd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ynd.analyze_sentiment(<span class="st">"I love programming!"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="dev-notes" class="level2">
 <h2 class="anchored" data-anchor-id="dev-notes">Dev notes</h2>
-<p>To test the package locally, clone the repository and run the following command in the root directory:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To contribute to the development of this package, please follow these steps after cloning the repository: Set up a virtual environment using conda:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda env create <span class="at">-f</span> environment.yml</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> conda activate you_need_a_dictionary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To install the package locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To test the package locally: Open a terminal in the project root directory and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .<span class="pp">[</span><span class="ss">tests</span><span class="pp">]</span> <span class="co"># setup test dependencies</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pytest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To build documentation locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> pip install <span class="at">-e</span> .<span class="pp">[</span><span class="ss">docs</span><span class="pp">]</span> <span class="co"># setup documentation dependencies</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quartodoc <span class="at">--build</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> quarto render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="contributors" class="level2">
 <h2 class="anchored" data-anchor-id="contributors">Contributors</h2>
@@ -475,13 +477,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -496,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/UBC-MDS\.github\.io\/you_need_a_dictionary\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
