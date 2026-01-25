@@ -107,7 +107,7 @@ Set up a virtual environment using conda:
 
 ```bash
 $ conda env create -f environment.yml
-$ conda activate you-need-a-dictionary
+$ conda activate you_need_a_dictionary
 ``` 
 
 To install the package locally:
