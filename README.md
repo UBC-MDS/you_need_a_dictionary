@@ -12,7 +12,6 @@
 
 ## List of Functions
 
-- `get_user_input`: Accepts a raw string and a target word as input from the user.
 - `preprocess_user_input`: Preprocessing of user input to prepare the text for NLP analysis and API integration.
 - `analyze_sentiment`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
 - `fetch_definition`: Module that fetches the definition, synonyms and antonyms of a given word using WordNet
@@ -40,9 +39,8 @@ To use you-need-a-dictionary in your code:
 >>> you-need-a-dictionary.hello_world()
 ```
 
-## Language codes
-
-The following language codes are used:
+<details>
+<summary>Language codes</summary>
 
 | Language              | Code |
 |-----------------------|------|
@@ -96,13 +94,15 @@ The following language codes are used:
 | Urdu                  | ur   |
 | Vietnamese            | vi   |
 
+</details>
+
 ## Dev notes
 
 To contribute to the development of this package, please follow these steps after cloning the repository:
 Set up a virtual environment using conda:
 
 ```bash
-$ conda create -n environment.yml
+$ conda env create -f environment.yml
 $ conda activate you-need-a-dictionary
 ``` 
 
