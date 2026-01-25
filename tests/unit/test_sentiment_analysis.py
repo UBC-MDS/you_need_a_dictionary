@@ -96,3 +96,48 @@ def test_caps_intensity(sample_sentences):
     result = ynd.analyze_sentiment(sample_sentences["caps"])
     assert result['pos'] > 0
     assert result['compound'] > 0.5
+
+
+# If you could add two impactful unit tests in addition to the tests in test_sentiment_analysis.py,
+# what would they be? Apply coding best practices and look for edge cases as well.
+def test_sentiment_scores_within_valid_ranges():
+    """Test that all sentiment scores are within their valid ranges (invariant check)."""
+    test_inputs = [
+        "I love this!",
+        "This is terrible",
+        "The item is blue.",
+        "AMAZING!!!",
+        "not good but not bad either"
+    ]
+    
+    for sentence in test_inputs:
+        result = ynd.analyze_sentiment(sentence)
+        
+        # pos, neu, neg should each be in [0, 1]
+        assert 0 <= result['pos'] <= 1, f"pos score {result['pos']} out of range for: {sentence}"
+        assert 0 <= result['neu'] <= 1, f"neu score {result['neu']} out of range for: {sentence}"
+        assert 0 <= result['neg'] <= 1, f"neg score {result['neg']} out of range for: {sentence}"
+        
+        # compound should be in [-1, 1]
+        assert -1 <= result['compound'] <= 1, f"compound score {result['compound']} out of range for: {sentence}"
+        
+        # Sum of pos, neu, neg should be approximately 1.0 (allowing for floating point precision)
+        total = result['pos'] + result['neu'] + result['neg']
+        assert abs(total - 1.0) < 0.01, f"Scores don't sum to 1.0 for: {sentence}"
+
+
+def test_sentiment_analysis_reproducibility():
+    """Test that sentiment analysis is deterministic (same input always produces same output)."""
+    test_sentence = "The product is amazing but customer service was disappointing."
+    
+    # Call the function multiple times with the same input
+    result1 = ynd.analyze_sentiment(test_sentence)
+    result2 = ynd.analyze_sentiment(test_sentence)
+    result3 = ynd.analyze_sentiment(test_sentence)
+    
+    # All results should be identical
+    assert result1 == result2, "First and second calls returned different results"
+    assert result2 == result3, "Second and third calls returned different results"
+    
+    # Verify the dictionary structure is consistent
+    assert set(result1.keys()) == {'neg', 'neu', 'pos', 'compound'}

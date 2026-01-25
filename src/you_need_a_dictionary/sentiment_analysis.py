@@ -1,12 +1,12 @@
 """
 Module for performing sentiment analysis on preprocessed user input.
 """
-
+from nltk.sentiment import SentimentIntensityAnalyzer
 
 import re
 import nltk
 nltk.download('vader_lexicon')
-from nltk.sentiment import SentimentIntensityAnalyzer
+
 
 def analyze_sentiment(sentence: str) -> dict:
     """
