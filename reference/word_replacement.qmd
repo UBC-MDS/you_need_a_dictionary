@@ -1,0 +1,64 @@
+# word_replacement { #you_need_a_dictionary.word_replacement }
+
+`word_replacement`
+
+Replaces target word and computes sentiment score.
+
+This script initializes the function for word substitution.
+It ensures users can make comparisons based off word impact.
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [word_replacement](#you_need_a_dictionary.word_replacement.word_replacement) | Substitutes a target word in a sentence with a replacement word and calculates  |
+
+### word_replacement { #you_need_a_dictionary.word_replacement.word_replacement }
+
+```python
+word_replacement.word_replacement(
+    sentence,
+    target_word,
+    replacement_word,
+    occurrence=None,
+)
+```
+
+Substitutes a target word in a sentence with a replacement word and calculates 
+the new sentiment score.
+
+This function identifies all occurrences of a specified target word within 
+the input sentence:
+- Can replace ALL occurrences of the target word,
+- Or replace a SPECIFIC occurrence if specified.
+The function then performs sentiment analysis on the newly modified sentence. This allows 
+users to quantifiably measure how specific vocabulary choices impact the 
+emotional tone of their text.
+
+#### Parameters {.doc-section .doc-section-parameters}
+
+| Name             | Type   | Description                                                                                                                        | Default    |
+|------------------|--------|------------------------------------------------------------------------------------------------------------------------------------|------------|
+| sentence         | str    | The original input sentence or text to be analyzed.                                                                                | _required_ |
+| target_word      | str    | The specific word within the sentence that needs to be replaced.                                                                   | _required_ |
+| replacement_word | str    | The new word that will substitute the target_word.                                                                                 | _required_ |
+| occurrence       | int    | If provided, only the nth occurrence of the target_word will be replaced.  Defaults to None, and all occurrences will be replaced. | `None`     |
+
+#### Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|--------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|        | dict   | A dictionary containing the results of the simulation with the keys: - 'New Sentence' (str): The modified sentence after replacement. - 'Previous Sentiment Type' (str): The type of sentiment obtained from the      previous sentence(Positive/Neutral/Negative). - 'Previous Sentiment Score' (float): The sentiment score of the original sentence. - 'New Sentiment Type' (str): The type of sentiment obtained from the new sentence. - 'New Sentiment Score' (float): The sentiment score of the new sentence. |
+
+#### Raises {.doc-section .doc-section-raises}
+
+| Name   | Type       | Description                                                          |
+|--------|------------|----------------------------------------------------------------------|
+|        | ValueError | If the `target_word` is not present in the input `sentence`.         |
+|        | TypeError  | If `sentence`, `target_word`, or `replacement_word` are not strings. |
+
+#### Examples {.doc-section .doc-section-examples}
+
+```python
+>>> word_replacement("I Love MDS", "enjoy", occurrence=1)
+```

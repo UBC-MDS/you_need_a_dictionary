@@ -1,0 +1,45 @@
+project:
+  type: website
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - reference/_sidebar.yml
+
+website:
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: Reference
+        file: reference/index.qmd
+
+# tell quarto to read the generated styles
+format:
+  html:
+    css:
+      - reference/_styles-quartodoc.css
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  style: pkgdown
+  dir: reference
+  package: you_need_a_dictionary
+
+  # write sidebar and style data
+  sidebar: reference/_sidebar.yml
+  css: reference/_styles-quartodoc.css
+
+  sections:
+    - title: You Need A Dictionary
+      desc: This package is for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions.
+      contents:
+        # the functions being documented in the package.
+        # you can refer to anything: class methods, modules, etc..
+        - 'word_replacement'
+        - 'create_wordcloud'
+        - 'fetch_definition'
+        - 'analyze_sentiment'
+        - 'translate_sentence'
+

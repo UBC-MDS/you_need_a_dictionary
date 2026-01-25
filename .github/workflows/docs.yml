@@ -1,27 +1,43 @@
-name: Build Docs
-
 on:
-  pull_request:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+    branches: main
+
+name: Render and Publish Quarto Docs
 
 jobs:
-  build-docs:
+  render-docs:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4.5.2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v5.1.0
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-            python-version: ${{ matrix.python-version }}
+          python-version: '3.13'
 
-      - name: Install hatch
+      # Install dependencies
+      - name: Install dependencies
         run: |
-            python -m pip install --upgrade pip
-            python -m pip install hatch
+          python -m pip install --upgrade pip
+          pip install -e .[docs]
 
-      - name: Build documentation using Hatch
+      # manually call quartodoc build
+      - name: quartodoc build
         run: |
-            hatch run docs:build
+          quartodoc build
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

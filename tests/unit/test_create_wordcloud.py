@@ -16,6 +16,9 @@ Test categories:
 import pytest
 import you_need_a_dictionary as ynd
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+import matplotlib.pyplot as plt
 from nltk.corpus import wordnet as wn
 from you_need_a_dictionary.wordcloud_utils import similarity_score
 

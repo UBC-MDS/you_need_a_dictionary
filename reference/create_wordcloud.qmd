@@ -1,0 +1,37 @@
+# create_wordcloud { #you_need_a_dictionary.create_wordcloud }
+
+```python
+create_wordcloud(word, sentence, type='both')
+```
+
+This function creates a wordcloud of either antonyms, 
+synonyms or both for a given word.
+
+The size of the words in the wordcloud are determined 
+by the strength of the similarity between the given word and its antonym or synonym. 
+The similarity score can be found using the NLTK wordnet 
+package and ranges between 0 and 1 with 1 meaning strong similarity and 0 means weak similarity.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name     | Type   | Description                                                                                                                                                                                                            | Default    |
+|----------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| word     | string | The central word in the wordcloud for which we  want to find the synonyms/antonyms.                                                                                                                                    | _required_ |
+| sentence | string | The sentence that contains the word we are interested in.                                                                                                                                                              | _required_ |
+| type     | string | This determines whether the wordcloud contains antonyms or synonyms or whether  the function outputs two wordclouds (one for antonyms and one for synonyms). Either 'antonym', 'synonym', or 'both'. Default is 'both' | `'both'`   |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type       | Description                                                                              |
+|--------|------------|------------------------------------------------------------------------------------------|
+|        | plt.Figure | A Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word. |
+
+## Examples {.doc-section .doc-section-examples}
+
+```python
+>>> create_wordcloud('car', 'The car is on the road', 'antonym')
+```
+
+```python
+>>> create_wordcloud('happy', 'I am glad this trip made you happy')
+```

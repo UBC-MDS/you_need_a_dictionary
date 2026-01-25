@@ -7,7 +7,6 @@ Functions:
 - wordcloud_plotter
 """
 import nltk
-from nltk.corpus import wordnet as wn
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
