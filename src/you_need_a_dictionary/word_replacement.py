@@ -3,9 +3,6 @@ Replaces target word and computes sentiment score.
 
 This script initializes the function for word substitution.
 It ensures users can make comparisons based off word impact.
-
-Author: Godsgift Braimah
-Date: 2026-01-08
 """
 
 ##################################################
@@ -60,6 +57,10 @@ def word_replacement(sentence : str, target_word : str, replacement_word : str, 
         If the `target_word` is not present in the input `sentence`.
     TypeError
         If `sentence`, `target_word`, or `replacement_word` are not strings.
+        
+    Examples
+    --------
+    >>> word_replacement("I Love MDS", "enjoy", occurrence=1) 
     """
     if not isinstance(sentence, str) or not isinstance(target_word, str) or not isinstance(replacement_word, str):
         raise TypeError(f"Expected the input to be of type str, got {type(sentence)}", f"{type(target_word)}", f"{type(replacement_word)}")

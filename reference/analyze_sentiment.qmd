@@ -1,0 +1,25 @@
+# analyze_sentiment { #you_need_a_dictionary.analyze_sentiment }
+
+```python
+analyze_sentiment(sentence)
+```
+
+Analyze the sentiment of the preprocessed user input.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name     | Type   | Description                  | Default    |
+|----------|--------|------------------------------|------------|
+| sentence | str    | The input string to analyze. | _required_ |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                    |
+|--------|--------|--------------------------------|
+|        | dict   | The sentiment analysis result. |
+
+## Examples {.doc-section .doc-section-examples}
+
+```python
+>>> analyze_sentiment("I absolutely love Kpop")
+```
