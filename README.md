@@ -1,11 +1,5 @@
 # Welcome to You Need a Dictionary
 
-|        |        |
-|--------|--------|
-| Package | [![Latest PyPI Version](https://img.shields.io/pypi/v/you-need-a-dictionary.svg)](https://pypi.org/project/you-need-a-dictionary/) [![Supported Python Versions](https://img.shields.io/pypi/pyversions/you-need-a-dictionary.svg)](https://pypi.org/project/you-need-a-dictionary/)  |
-| Meta   | [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md) |
-
-
 ## Summary
 
 **You Need a Dictionary** is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
@@ -88,14 +82,13 @@ The following language codes are supported for translation:
 You can install this package into your preferred Python environment using pip:
 
 ```bash
-$ pip install you-need-a-dictionary
+$ pip install you_need_a_dictionary
 ```
 
-To use you-need-a-dictionary in your code:
-
+Example usage in Python:
 ```python
->>> import you-need-a-dictionary
->>> you-need-a-dictionary.hello_world()
+import you_need_a_dictionary as ynd
+ynd.analyze_sentiment("I love programming!")
 ```
 
 
