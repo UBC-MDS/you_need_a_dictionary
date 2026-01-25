@@ -12,7 +12,6 @@
 
 ## List of Functions
 
-- `get_user_input`: Accepts a raw string and a target word as input from the user.
 - `preprocess_user_input`: Preprocessing of user input to prepare the text for NLP analysis and API integration.
 - `analyze_sentiment`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
 - `fetch_definition`: Module that fetches the definition, synonyms and antonyms of a given word using WordNet
@@ -24,25 +23,11 @@
 
 There are several existing Python packages for NLP and dictionary lookups, such as [`PyDictionary`](https://pypi.org/project/PyDictionary/) for definitions and [`TextBlob`](https://textblob.readthedocs.io/en/dev/) or `NLTK` for sentiment analysis. However, **You Need a Dictionary** fills a specific gap by integrating these functionalities into a single workflow. Rather than returning isolated outputs like a sentiment score from [`TextBlob`](https://textblob.readthedocs.io/en/dev/) or a standalone definition from [`PyDictionary`](https://pypi.org/project/PyDictionary/), our package provides a cohesive experience providing insight into both the meaning of a word and its impact on the sentiment of a sentence. **You Need a Dictionary** also enables users to experiment how substituting a single word within a sentence can shift the overall sentiment, making it especially valuable for linguists, writers, and developers who need to understand not just what a word means, but how its replacement alters the emotional and semantic impact of text.
 
+## Language Codes
 
-## Get started
-
-You can install this package into your preferred Python environment using pip:
-
-```bash
-$ pip install you-need-a-dictionary
-```
-
-To use you-need-a-dictionary in your code:
-
-```python
->>> import you-need-a-dictionary
->>> you-need-a-dictionary.hello_world()
-```
-
-## Language codes
-
-The following language codes are used:
+The following language codes are supported for translation:
+<details>
+<summary>Language codes</summary>
 
 | Language              | Code |
 |-----------------------|------|
@@ -96,13 +81,52 @@ The following language codes are used:
 | Urdu                  | ur   |
 | Vietnamese            | vi   |
 
-## Dev notes
+</details>
 
-To test the package locally, clone the repository and run the following command in the root directory:
+## Get started
+
+You can install this package into your preferred Python environment using pip:
 
 ```bash
+$ pip install you-need-a-dictionary
+```
+
+To use you-need-a-dictionary in your code:
+
+```python
+>>> import you-need-a-dictionary
+>>> you-need-a-dictionary.hello_world()
+```
+
+
+
+## Dev notes
+
+To contribute to the development of this package, please follow these steps after cloning the repository:
+Set up a virtual environment using conda:
+
+```bash
+$ conda env create -f environment.yml
+$ conda activate you_need_a_dictionary
+``` 
+
+To install the package locally:
+```bash
 $ pip install -e .
+``` 
+
+To test the package locally:
+Open a terminal in the project root directory and run:
+```bash
+$ pip install -e .[tests] # setup test dependencies
 $ pytest
+```
+
+To build documentation locally:
+```bash
+$ pip install -e .[docs] # setup documentation dependencies
+$ quartodoc --build
+$ quarto render
 ```
 
 ## Contributors
