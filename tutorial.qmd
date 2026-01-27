@@ -1,0 +1,46 @@
+---
+title: "Tutorial"
+---
+
+How to use the `you_need_a_dictionary` package: 
+
+
+To use the `analyze_sentiment` function :
+```{python}
+import you_need_a_dictionary as ynd
+ynd.analyze_sentiment("I absolutely love Kpop")
+```
+
+To use the `fetch_definition` function :
+
+```{python}
+import you_need_a_dictionary as ynd
+ynd.fetch_definition("star", pos=n, top_n=2, max_synonyms=3, include_examples=True, return_type="str")
+
+```
+
+To use the `word_replacement` function :
+
+```{python}
+import you_need_a_dictionary as ynd
+ynd.word_replacement("I Love MDS", "enjoy", occurrence=1) 
+
+```
+
+To use the `translate_sentence` function :
+
+```{python}
+import you_need_a_dictionary as ynd
+ynd.translate_sentence("Hello world", "fr", source_language="en")
+```
+
+To use the `create_wordcloud` function :
+
+```{python}
+import you_need_a_dictionary as ynd
+ynd.create_wordcloud('car', 'The car is on the road', 'antonym')
+```
+
+
+
+
