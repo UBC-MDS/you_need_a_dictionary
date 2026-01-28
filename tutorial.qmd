@@ -1,22 +1,28 @@
 ---
 title: "Tutorial"
+toc: true
 ---
+This is a guide on how to use the `you_need_a_dictionary` package.
 
-How to use the `you_need_a_dictionary` package: 
+## When to use functions 
 
-- If you want to analyse the sentiment of a sentence, use the `analyze_sentiment` function.
-- If you want to get the definition of a word, use the `fetch_definition` function.
-- If you want to see if a word changes the meaning of a sentence, use the `word_replacement` function.
-- If you want to translate a sentence, use the `translate_sentence` function.
-- If you want to visualise synonyms or antonyms for a given word, use the `create_wordcloud` function.
+- If you want to analyse the sentiment of a sentence, use the [`analyze_sentiment`](#analyze_sentiment-function) function.
+- If you want to get the definition of a word, use the [`fetch_definition`](#fetch_definition-function) function.
+- If you want to see if a word changes the meaning of a sentence, use the [`word_replacement`](#word_replacement-function) function.
+- If you want to translate a sentence, use the [`translate_sentence`](#translate_sentence-function) function.
+- If you want to visualise synonyms or antonyms for a given word, use the [`create_wordcloud`](#create_wordcloud-function) function.
 
+## How to use functions 
 
+### `analyze_sentiment` function 
 To use the `analyze_sentiment` function :
 ```{python}
+#| collapse: false
 import you_need_a_dictionary as ynd
 ynd.analyze_sentiment("I absolutely love Kpop")
 ```
 
+### `fetch_definition` function 
 To use the `fetch_definition` function :
 
 ```{python}
@@ -25,6 +31,7 @@ ynd.fetch_definition("star", top_n=2, max_synonyms=3, include_examples=True, ret
 
 ```
 
+### `word_replacement` function
 To use the `word_replacement` function :
 
 ```{python}
@@ -33,6 +40,7 @@ ynd.word_replacement("I Love MDS", "Love", "enjoy", occurrence=1)
 
 ```
 
+### `translate_sentence` function
 To use the `translate_sentence` function :
 
 ```{python}
@@ -40,11 +48,12 @@ import you_need_a_dictionary as ynd
 ynd.translate_sentence("Hello world", "fr", source_language="en")
 ```
 
+### `create_wordcloud` function
 To use the `create_wordcloud` function :
 
 ```{python}
 import you_need_a_dictionary as ynd
-ynd.create_wordcloud('car', 'The car is on the road', 'antonym')
+ynd.create_wordcloud('car', 'The car is on the road')
 ```
 
 
