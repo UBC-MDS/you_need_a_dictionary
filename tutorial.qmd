@@ -4,6 +4,12 @@ title: "Tutorial"
 
 How to use the `you_need_a_dictionary` package: 
 
+- If you want to analyse the sentiment of a sentence, use the `analyze_sentiment` function.
+- If you want to get the definition of a word, use the `fetch_definition` function.
+- If you want to see if a word changes the meaning of a sentence, use the `word_replacement` function.
+- If you want to translate a sentence, use the `translate_sentence` function.
+- If you want to visualise synonyms or antonyms for a given word, use the `create_wordcloud` function.
+
 
 To use the `analyze_sentiment` function :
 ```{python}
