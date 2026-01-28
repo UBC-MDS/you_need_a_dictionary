@@ -53,9 +53,15 @@ jobs:
       # Run pytest with coverage
       - name: Run tests with coverage
         run: |
-          pytest --cov --cov-report=term --cov-branch
+          pytest --cov --cov-branch --cov-report=xml
 
       # Run style checker - ruff
-      - name: Run tests with coverage
+      - name: Run style ruff checker
         run: |
           ruff check .
+      
+      # Upload coverage reports to Codecov
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
