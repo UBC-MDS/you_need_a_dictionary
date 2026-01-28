@@ -15,7 +15,7 @@ To use the `fetch_definition` function :
 
 ```{python}
 import you_need_a_dictionary as ynd
-ynd.fetch_definition("star", pos=n, top_n=2, max_synonyms=3, include_examples=True, return_type="str")
+ynd.fetch_definition("star", top_n=2, max_synonyms=3, include_examples=True, return_type="str")
 
 ```
 
@@ -23,7 +23,7 @@ To use the `word_replacement` function :
 
 ```{python}
 import you_need_a_dictionary as ynd
-ynd.word_replacement("I Love MDS", "enjoy", occurrence=1) 
+ynd.word_replacement("I Love MDS", "Love", "enjoy", occurrence=1) 
 
 ```
 
