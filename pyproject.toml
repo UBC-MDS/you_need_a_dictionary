@@ -60,7 +60,8 @@ dev = [
 ]
 
 docs = [
-    "quartodoc"
+    "quartodoc",
+    "jupyter"
 ]
 
 build = [
