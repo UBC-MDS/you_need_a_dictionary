@@ -6,54 +6,88 @@ This is a guide on how to use the `you_need_a_dictionary` package.
 
 ## When to use functions 
 
-- If you want to analyse the sentiment of a sentence, use the [`analyze_sentiment`](#analyze_sentiment-function) function.
-- If you want to get the definition of a word, use the [`fetch_definition`](#fetch_definition-function) function.
-- If you want to see if a word changes the meaning of a sentence, use the [`word_replacement`](#word_replacement-function) function.
-- If you want to translate a sentence, use the [`translate_sentence`](#translate_sentence-function) function.
-- If you want to visualise synonyms or antonyms for a given word, use the [`create_wordcloud`](#create_wordcloud-function) function.
+
+| Function | Use case | 
+|---|---|
+| [`analyze_sentiment`](#analyze_sentiment-function) | Analyse sentiment of sentence | 
+| [`fetch_definition`](#fetch_definition-function) | Get definition of word | 
+| [`word_replacement`](#word_replacement-function) | See if a word changes the meaning of sentence | 
+| [`translate_sentence`](#translate_sentence-function) | Translate sentence | 
+| [`create_wordcloud`](#create_wordcloud-function) | Visualise synonyms or anyonyms | 
 
 ## How to use functions 
 
-### `analyze_sentiment` function 
-To use the `analyze_sentiment` function :
 ```{python}
-#| collapse: false
+#| echo: true
+#| warning: false
+#| message: false
+```
+
+First we need to import the package:
+```{python}
+#| warning: false
+#| message: false
 import you_need_a_dictionary as ynd
+```
+
+<br>
+
+### `analyze_sentiment` function 
+
+The [`analyze_sentiment`](reference/analyze_sentiment.qmd) function uses [nltk VADER module](https://www.nltk.org/api/nltk.sentiment.vader.html) to analyse the sentiment of a sentence. 
+
+It returns a dictionary with 4 sentiment strengths : 
+
+- `neg` : proportion of text that expresses negative sentiment , 
+- `neu` : proportion of text that expresses neutral sentiment ,
+- `pos` : proportion of text that expresses positive sentiment ,
+- `compound` : aggregated sentiment score that ranges from -1 (most negative) to 1 (most positive)
+
+```{python}
 ynd.analyze_sentiment("I absolutely love Kpop")
 ```
 
+<br>
+
 ### `fetch_definition` function 
-To use the `fetch_definition` function :
+
+The [`fetch_definition`](reference/fetch_definition.qmd) function uses [nltk corpus Wordnet module](https://www.nltk.org/api/nltk.corpus.reader.wordnet.html) to find definitions, synonyms and antonyms.
+
 
 ```{python}
-import you_need_a_dictionary as ynd
-ynd.fetch_definition("star", top_n=2, max_synonyms=3, include_examples=True, return_type="str")
+ynd.fetch_definition("star",top_n=2)
 
 ```
 
+<br>
+
 ### `word_replacement` function
-To use the `word_replacement` function :
+
+The [`word_replacement`](reference/word_replacement.qmd) substitutes a target word in a sentence with a replacement word and calculates the new sentiment score
+using the [`analyze_sentiment`](reference/analyze_sentiment.qmd).
 
 ```{python}
-import you_need_a_dictionary as ynd
 ynd.word_replacement("I Love MDS", "Love", "enjoy", occurrence=1) 
 
 ```
 
-### `translate_sentence` function
-To use the `translate_sentence` function :
+<br>
 
+### `translate_sentence` function
+
+The [`translate_sentence`](reference/translate_sentence.qmd) uses the [Google Translate package](https://deep-translator.readthedocs.io/en/latest/usage.html#google-translate) to translate a sentence into another language. The languages supported and their corresponding language codes that can be found [here](index.qmd#language-codes). 
 ```{python}
-import you_need_a_dictionary as ynd
 ynd.translate_sentence("Hello world", "fr", source_language="en")
 ```
 
+<br>
+
 ### `create_wordcloud` function
-To use the `create_wordcloud` function :
+
+The [`create_wordcloud`](reference/create_wordcloud.qmd) function creates a wordcloud of synonyms and or antonyms. It uses the [nltk corpus Wordnet module](https://www.nltk.org/api/nltk.corpus.reader.wordnet.html) to find the similarity strength between the given word and it's synonym/antonym. The larger a word is the more similar it is to the given word. 
 
 ```{python}
-import you_need_a_dictionary as ynd
-ynd.create_wordcloud('car', 'The car is on the road')
+ynd.create_wordcloud("cold", "It's officially winter, the air outside is cold.")
 ```
 
 
