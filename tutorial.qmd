@@ -4,6 +4,12 @@ toc: true
 ---
 This is a guide on how to use the `you_need_a_dictionary` package.
 
+## To install the package
+Run the following command:
+```{bash}
+pip install you-need-a-dictionary
+```
+
 ## When to use functions 
 
 
@@ -23,18 +29,20 @@ This is a guide on how to use the `you_need_a_dictionary` package.
 #| message: false
 ```
 
-First we need to import the package:
+To use any of the functions, you first need to import the package :
 ```{python}
 #| warning: false
 #| message: false
 import you_need_a_dictionary as ynd
 ```
 
-<br>
+---
 
 ### `analyze_sentiment` function 
 
-The [`analyze_sentiment`](reference/analyze_sentiment.qmd) function uses [nltk VADER module](https://www.nltk.org/api/nltk.sentiment.vader.html) to analyse the sentiment of a sentence. 
+The [`analyze_sentiment`](reference/analyze_sentiment.qmd) function uses [nltk VADER module](https://www.nltk.org/api/nltk.sentiment.vader.html) to analyse the sentiment of a sentence. This function only works for sentences in English. 
+
+If you need to analyse the sentiment of a sentence in another language, you can use [`translate_sentence`](reference/translate_sentence.qmd) to translate the sentence into English. 
 
 It returns a dictionary with 4 sentiment strengths : 
 
@@ -43,11 +51,16 @@ It returns a dictionary with 4 sentiment strengths :
 - `pos` : proportion of text that expresses positive sentiment ,
 - `compound` : aggregated sentiment score that ranges from -1 (most negative) to 1 (most positive)
 
+
 ```{python}
+#| warning: false
+#| message: false
+import nltk
+nltk.download("vader_lexicon")
 ynd.analyze_sentiment("I absolutely love Kpop")
 ```
 
-<br>
+---
 
 ### `fetch_definition` function 
 
@@ -59,7 +72,7 @@ ynd.fetch_definition("star",top_n=2)
 
 ```
 
-<br>
+---
 
 ### `word_replacement` function
 
@@ -71,7 +84,7 @@ ynd.word_replacement("I Love MDS", "Love", "enjoy", occurrence=1)
 
 ```
 
-<br>
+---
 
 ### `translate_sentence` function
 
@@ -80,7 +93,7 @@ The [`translate_sentence`](reference/translate_sentence.qmd) uses the [Google Tr
 ynd.translate_sentence("Hello world", "fr", source_language="en")
 ```
 
-<br>
+---
 
 ### `create_wordcloud` function
 
