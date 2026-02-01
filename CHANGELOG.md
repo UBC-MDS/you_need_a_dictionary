@@ -5,10 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0]
+
+
+- Added a tutorial.qmd to describe how to use package.
 ## [2.0.0]
 
 - Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)
 - Created quarto documentation structure and initial files. Hosted on GitHub Pages.
+- Added documentation to the readme.md including installing, running tests, and building docs
+- Developed a workflow for continuous integration/continuous deployment
+- Revised code based on style checker edits
+- Developed a workflow for quarto documentation that automatically builds and deploys documentation pages
 
 
 ## [1.0.0]
@@ -22,6 +30,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated README.md to incude instructions on now to test package locally
 - Fixed imports in word_replacement.py to use package structure instead of sys.path
 
-## [2.0.0]
 
-- Added documentation to the readme.md including installing, running tests, and building docs
