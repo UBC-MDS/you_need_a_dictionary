@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0]
 
-
 - Added a tutorial.qmd to describe how to use package.
+- Added preview documentation feature every pull request using Netlify
+
 ## [2.0.0]
 
 - Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)
@@ -29,5 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added helper functions similarity_score and wordcloud_plotter for plotting wordclouds: wordcloud_utils.py
 - Updated README.md to incude instructions on now to test package locally
 - Fixed imports in word_replacement.py to use package structure instead of sys.path
+
 
 
