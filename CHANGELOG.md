@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.0.0]
 
+- Added a tutorial.qmd to describe how to use package.
 - Added preview documentation feature every pull request using Netlify
 
 ## [2.0.0]
