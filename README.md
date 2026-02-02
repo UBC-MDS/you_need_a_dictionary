@@ -82,8 +82,10 @@ The following language codes are supported for translation:
 You can install this package into your preferred Python environment using pip:
 
 ```bash
-pip install you_need_a_dictionary
+pip install -i https://test.pypi.org/simple/ you-need-a-dictionary
 ```
+
+For more information, you can find the package on Test-PyPi [here](https://test.pypi.org/project/you-need-a-dictionary/).
 
 Example usage in Python:
 ```python
