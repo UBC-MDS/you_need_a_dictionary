@@ -38,6 +38,12 @@ def translate_sentence(sentence, target_language, source_language=None):
         - 'error' : string or None
           An error message if the translation failed; otherwise None.
 
+    Raises
+    ------
+    TypeError
+        If sentence is not a string, target_language is not a string, or
+        source_language is not a string or None.
+
     Examples
     --------
     >>> translate_sentence("Hello world", "es")

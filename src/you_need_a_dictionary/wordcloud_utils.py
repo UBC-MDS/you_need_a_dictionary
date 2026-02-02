@@ -31,6 +31,15 @@ def similarity_score(basis,lemmas):
     Dictionary
         A dictionary mapping words (str) to their similarity scores (float, range 0–1)
 
+    Raises
+    ------
+    TypeError
+        If basis is not a wordnet Synset.
+    TypeError
+        If lemmas is not a set.
+    TypeError
+        If any value in lemmas is not a wordnet Lemma.
+
     Examples
     --------
     >>> similarity_score(wn.synset('car.n.01'),{wn.lemma('door.n.01.door'), wn.lemma('cat.n.01.cat'), wn.lemma('wheel.n.01.wheel'), wn.lemma('car.n.01.automobile')})
@@ -74,11 +83,25 @@ def wordcloud_plotter(given_word,word_dic,type):
     type : str
         Defines what type of wordcloud it is. Either 'synonym' or 'antonym'.
     
-
     Returns
     -------
     plt.Figure
         A Matplotlib figure of a wordcloud containing antonyms or synonyms for a given word. 
+
+    Raises
+    ------
+    TypeError
+        If given_word is not a string.
+    TypeError
+        If word_dic is not a dictionary.
+    TypeError
+        If values in word_dic are not floats.
+    TypeError
+        If keys in word_dic are not strings.
+    TypeError
+        If values in word_dic are not between 0 and 1.
+    TypeError
+        If type is not a string.
 
     Examples
     --------
@@ -113,7 +136,6 @@ def wordcloud_plotter(given_word,word_dic,type):
     # Set of scores 
     score_set = sorted(set(word_dic.values()), reverse=True)
 
-
     max_size = 100
     min_size = 10
 
@@ -135,5 +157,3 @@ def wordcloud_plotter(given_word,word_dic,type):
     plt.show()
 
     return plt.gcf()
-
- 
