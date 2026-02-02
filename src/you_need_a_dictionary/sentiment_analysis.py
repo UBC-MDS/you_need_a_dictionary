@@ -21,6 +21,11 @@ def analyze_sentiment(sentence: str) -> dict:
     ----------
     dict
         The sentiment analysis result.
+        - neg : Negative sentiment score on a scale fro 0 to 1 (1 being the most negative)
+        - neu: Neutral sentiment score on a scale fro 0 to 1 (1 being the most neutral)
+        - pos: Positive sentiment score on a scale fro 0 to 1 (1 being the most positive)
+        - compound: Compound sentiment (How positive or negative the input text is overall) 
+        on a scale from -1 to 1 (-1 being most negative, 1 being most positive)
         
     Examples
     ----------
