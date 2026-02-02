@@ -52,45 +52,49 @@ As can be seen by the workloads, there was a relatively equal division of labor.
 
 ## Development Tools, Infrastructure, and Organizational Practices
 
-- **Git Flow:** We used a development (`documentation_dev`) branch for integrating features before merging to `main`, which improved code quality at the cost of rare merge conflicts.
-- **CI/CD:** GitHub Actions provided automated testing, linting, documentation builds, and Netlify preview deployments for every PR. Test coverage was tracked continuously.
-- **Documentation:** Used `quartodoc` for API docs and Quarto for prose guides—with Netlify/PR preview for real-time feedback.
-- **Code Reviews:** All PRs required peer review, improving team code quality and knowledge sharing.
-- **Communication:** Issues and PRs were our primary communication channels—avoiding fragmented channels like Slack or email.
+- **Git Flow:** Feature development was carried out on a dedicated development branch (`dev`) before being merged into `main`. This workflow helped maintain code quality, with only occasional merge conflicts arising.
+- **CI/CD:** GitHub Actions automated testing, linting, and documentation builds. `Codecov` was integrated into the PR workflow to report test coverage metrics, ensuring that new changes did not reduce overall coverage.
+- **Documentation:** We used `quartodoc` for all of the package documentation and demos for each function.
+- **Code Reviews:** All pull requests underwent peer review, which strengthened code quality and encouraged knowledge sharing across the team.
+- **Communication:** GitHub issues and pull requests served as the main communication channels, reducing reliance on external tools such as Slack.
 
-**Scaling Up Recommendations:** For larger projects, we would use:
-- More advanced project board automations (e.g., epic/dependency tracking),
-- Stricter branch protections and continuous delivery,
-- Wiki/Discussions for persistent technical notes,
-- Enhanced issue templates and changelogs.
+**Scaling Up Recommendations:** For larger projects, we would implement the following:
+
+- Automate releases and versioning using semantic versioning and GitHub Releases to reduce manual overhead.
+- Adopt clearer branching and review practices to reduce merge conflicts and review bottlenecks.
+- Enforce PR quality gates (tests, linting, coverage thresholds) to maintain consistency as contributors increase
 
 ---
 
 ## DAKI Retrospective
 
 **Drop:**  
-- Last-minute "review pileups"—regular, shorter review sessions would improve speed and reduce risk of delay.
-- Creating issues without immediate assignee or milestone tags.
+- Treating documentation and CI work as “secondary” tasks near deadlines.
+
+- Waiting for all members to review a issue before merging it.
 
 **Add:**  
-- Use of GitHub issue templates for fine-grained bug/feature tracking.
-- Routine project board hygiene checks for improved analytics.
+- Smaller, scoped PRs with explicit review goals (e.g., logic, tests, or docs).
+
+- Lightweight milestone kickoffs to clarify scope and dependencies early.
 
 **Keep:**  
-- Project board views (velocity, team workload, milestone progress).
-- PR documentation previews for rapid, peer-driven documentation quality assurance.
+- Project board views with corresponding tags.
+- Issue-driven development for all features and fixes.
+- Automated CI feedback (tests, coverage, previews) in every PR.
 
 **Improve:**  
-- Estimating/documentation and review time as part of every milestone (not just code).
-- Promoting cross-review and responsibility rotation to increase resilience and limit bottlenecks.
+- Earlier identification of blocking tasks and dependencies.
+
+- More consistent review turnaround times through shared ownership.
 
 ---
 
 ## Reflections
 
-- **Successes:** Documentation previews and continuous feedback improved our product quality and reduced integration friction.
-- **Improvements:** Early ambiguity in issue descriptions was resolved by using checklists and clearer acceptance criteria.
-- **Teamwork:** Our data-driven approach and regular check-ins ensured fair workload distribution and collective project ownership.
+- **Successes:** Communication within the group was great and using GitHub issues helped to keep track of tasks and dependencies.
+- **Improvements:**  Standarizing all of our documentation and functions from the beginning to avoid having to make multiple changes by the end.
+- **Teamwork:** Defining a shared schedule for check-ins and reviews would help align team members who tend to work at different times.
 
 ---
 
