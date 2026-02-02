@@ -1,5 +1,6 @@
 _site
 docs
+src/you_need_a_dictionary/__version__.py
 
 ### Linux template
 *~

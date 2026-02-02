@@ -99,6 +99,9 @@ packages = ["src/you_need_a_dictionary"]
 source = "vcs"
 raw-options = { version_scheme = "no-guess-dev", local_scheme = "no-local-version" }
 
+[tool.hatch.build.hooks.vcs]
+version-file = "src/you_need_a_dictionary/__version__.py"
+
 ######## Configure pytest for your test suite ########
 [tool.pytest.ini_options]
 testpaths = ["tests"] # Tells pytest what directory tests are in
