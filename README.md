@@ -82,7 +82,7 @@ The following language codes are supported for translation:
 You can install this package into your preferred Python environment using pip:
 
 ```bash
-$ pip install you_need_a_dictionary
+pip install you_need_a_dictionary
 ```
 
 Example usage in Python:
@@ -99,27 +99,27 @@ To contribute to the development of this package, please follow these steps afte
 Set up a virtual environment using conda:
 
 ```bash
-$ conda env create -f environment.yml
-$ conda activate you_need_a_dictionary
+conda env create -f environment.yml
+conda activate you_need_a_dictionary
 ``` 
 
 To install the package locally:
 ```bash
-$ pip install -e .
+pip install -e .
 ``` 
 
 To test the package locally:
 Open a terminal in the project root directory and run:
 ```bash
-$ pip install -e .[tests] # setup test dependencies
-$ pytest
+pip install -e .[tests] # setup test dependencies
+pytest
 ```
 
 To build documentation locally:
 ```bash
-$ pip install -e .[docs] # setup documentation dependencies
-$ quartodoc --build
-$ quarto render
+pip install -e .[docs] # setup documentation dependencies
+quartodoc --build
+quarto render
 ```
 
 ## Contributors
