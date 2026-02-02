@@ -17,37 +17,36 @@ During these 4 weeks we found really helpful having issues with labels specific 
 ---
 
 ## Analytical Project Board Views & Data-Driven Retrospective
-
-We grounded our reflection in actual project board analytics, supported by saved GitHub Project views.
+We created several tables and views in order to better analyze our project's metrics and how each member contributed.
 
 ### Velocity: How did our scope change over time?
 
 ![Velocity by milestone](/images/milestone_progress.png)
 
-Our velocity view shows the progression of issues per milestone: 20 for Milestone 1, 13 for Milestone 2, 6 for Milestone 3, and 11 for Milestone 4. This indicated that our initial planning cast a very wide net; over time, we streamlined our focus, improved our estimation, and concentrated on key deliverables.
+Based on the milestone breakdown, work velocity increased steadily as the project progressed. Early milestones (Milestones 1 and 2) show a moderate number of completed items, reflecting initial setup, planning, and iteration as the team aligned on workflows and tooling. Milestones 3 and especially Milestone 4 demonstrate higher throughput, with a larger number of tasks completed, indicating improved coordination and efficiency over time. This pattern suggests that the team’s velocity benefited from established processes, clearer issue scoping, and increased familiarity with the project infrastructure.
 
 ---
 
-### Burn-up Chart: Did M2 (writing code) have more issues than M3 (GitHub Actions/documentation)? Were there leftover Todos?
+### Burn-up Chart:What factors contributed to the significant increase in completed work during Milestone 4 compared to earlier milestones?
 
-![Burn-up chart by milestone and status](/images/burnup.png)
+![Burn-up chart by milestone and status](/images/completion_rate.png)
 
-The burn-up data illustrates that Milestone 2 (core code development) had a greater number of issues completed compared to Milestone 3 (GitHub Actions and documentation). This matches our workflow—most complexity happened early.  
-Our chart also shows most items were completed (“Done”), especially for early milestones. However, for Milestone 4, a few items remained in “Backlog” or “In Progress,” suggesting minor over-commitment towards the end.
+The significant increase in completed work during Milestone 4 was largely driven by the need to address peer review feedback and finalize all remaining project components. Incorporating peer suggestions required revisiting earlier design, code, and documentation decisions, which led to additional revisions and new tasks being completed within this milestone. At the same time, Milestone 4 represented the final delivery phase, where unfinished items from previous milestones were resolved, polished, and consolidated. Together, these factors resulted in a noticeable spike in completed work compared to earlier milestones.
 
 ---
 
 ### Team Contributions: Did everyone contribute equally?
 
-![Workload by team member](/images/contributions.png)
+![Workload by team member](/images/team_contributions.png)
 
 The Team Workload view demonstrates our effort towards equitable workload:
-- kessler24: 16 items
-- randallxlee: 15 items
-- raymondww: 15 items
-- sasha-ss: 12 items
+- Braimah: 16 items
+- Eric: 25 items
+- Mailys: 20 items
+- Mara: 20 items
 
-The slight difference is mainly due to division of labor (some members prioritized complex logic, others handled more numerous but smaller docs/tasks). Regular check-ins and proactive redistribution avoided bottlenecks, and workload was kept fair throughout.
+As can be seen by the workloads, there was a relatively equal division of labor. While some of the members might have slightly more or slightly less tasks, this can be attributed to the complexity and amount of time that each task might take. However, the workload was distributed fairly for all members.
+
 
 ---
 
@@ -95,4 +94,4 @@ The slight difference is mainly due to division of labor (some members prioritiz
 
 ---
 
-*Prepared by canadataClean, 2025-26 DSCI-524 Group 02*
+*Prepared by you_need_a_dictionary, 2025-26 DSCI-524 Group 10*
