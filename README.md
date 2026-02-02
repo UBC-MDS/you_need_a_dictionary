@@ -2,6 +2,8 @@
 
 [![codecov](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary/graph/badge.svg?token=IIfAQEEKTp)](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary)
 [![Build Status](https://github.com/UBC-MDS/reportrabbit/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/you_need_a_dictionary/actions/workflows/build.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/UBC-MDS/you_need_a_dictionary/blob/main/LICENSE)
 
 ## Summary
 
