@@ -24,20 +24,13 @@ def analyze_sentiment(sentence: str) -> dict:
     Returns
     -------
     dict
-        A dictionary containing sentiment scores with keys:
-        - 'neg': Negative sentiment score (float between 0 and 1)
-        - 'neu': Neutral sentiment score (float between 0 and 1)
-        - 'pos': Positive sentiment score (float between 0 and 1)
-        - 'compound': Composite sentiment score (float between -1 and 1)
-
-    Raises
-    ------
-    TypeError
-        If the input is not a string.
-    ValueError
-        If the input is empty, contains only whitespace, lacks alphanumeric characters,
-        or contains emojis.
-
+        The sentiment analysis result.
+        - neg : Negative sentiment score on a scale fro 0 to 1 (1 being the most negative)
+        - neu: Neutral sentiment score on a scale fro 0 to 1 (1 being the most neutral)
+        - pos: Positive sentiment score on a scale fro 0 to 1 (1 being the most positive)
+        - compound: Compound sentiment (How positive or negative the input text is overall) 
+        on a scale from -1 to 1 (-1 being most negative, 1 being most positive)
+        
     Examples
     --------
     >>> analyze_sentiment("I absolutely love Kpop")
