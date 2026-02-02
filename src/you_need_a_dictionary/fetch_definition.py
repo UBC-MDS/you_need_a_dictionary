@@ -19,18 +19,45 @@ def fetch_definition(
     word : str
         The word to look up.
     pos : {"n","v","a","r"}, optional
-        Part of speech filter: noun, verb, adjective, adverb.
+        Part of speech filter: noun (n), verb (v), adjective (a), adverb (r).
+        If None, returns results for all parts of speech. Default is None.
     top_n : int, default=1
         Number of top-ranked senses to include.
     max_synonyms : int, default=10
         Max number of synonyms to show (combined across returned senses).
     include_examples : bool, default=False
         If True, include example sentences when available.
+    return_type : str, default="str"
+        Format for returned results (currently supports "str").
 
     Returns
     -------
     str
-        Formatted string of results.
+        Formatted string of word definition, senses, synonyms, and antonyms.
+
+    Raises
+    ------
+    LookupError
+        If WordNet resource is not available.
+    TypeError
+        If word is not a string.
+    ValueError
+        If word is empty or pos is not valid.
+
+    Examples
+    --------
+    >>> fetch_definition("happy")
+    Word: happy
+    Sense 1 (a): feeling or showing pleasure or contentment
+    Synonyms: cheerful, gay, glad, joyful, joyous, lighthearted, pleased
+    Antonyms: sad, unhappy
+
+    >>> fetch_definition("run", pos="v", top_n=2)
+    Word: run
+    Sense 1 (v): move fast by using one's legs
+    Sense 2 (v): flee; take to one's heels; cut and run
+    Synonyms: bolt, dash, escape, flow, gallop, go, hurry, jog, move, operate
+    Antonyms: None found
     """
     from nltk.corpus import wordnet as wn
 
