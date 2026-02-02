@@ -1,6 +1,8 @@
 # Welcome to You Need a Dictionary
 
 [![codecov](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary/graph/badge.svg?token=IIfAQEEKTp)](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary)
+[![Build Status](https://github.com/UBC-MDS/reportrabbit/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/you_need_a_dictionary/actions/workflows/build.yml)
+
 ## Summary
 
 **You Need a Dictionary** is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
