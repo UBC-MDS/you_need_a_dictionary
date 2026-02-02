@@ -91,6 +91,15 @@ import you_need_a_dictionary as ynd
 ynd.analyze_sentiment("I love programming!")
 ```
 
+The model returns a sentiment label and a confidence score. A higher score means the model is more confident in its prediction.
+```python
+{
+  "neg": 0.0,
+  "neu": 0.182,
+  "pos": 0.818,
+  "compound": 0.6696
+}
+```
 
 
 ## Dev notes
