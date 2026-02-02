@@ -7,7 +7,6 @@
 
 ## List of Functions
 
-- `preprocess_user_input`: Preprocessing of user input to prepare the text for NLP analysis and API integration.
 - `analyze_sentiment`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
 - `fetch_definition`: Module that fetches the definition, synonyms and antonyms of a given word using WordNet
 - `word_replacement`: Replaces a specific word in the user's sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.
