@@ -35,6 +35,15 @@ def create_wordcloud(word, sentence, type='both'):
     plt.Figure
         A Matplotlib figure of a wordcloud containing antonyms and/or synonyms for a given word.
 
+    Raises
+    ------
+    LookupError
+        If Wordnet is not accessible.
+    TypeError
+        If word, sentence, or type arguments are not strings.
+    NameError
+        If type argument is not 'synonym', 'antonym', or 'both'.
+
     Examples
     --------
     >>> create_wordcloud('car', 'The car is on the road', 'antonym')
@@ -120,5 +129,3 @@ def create_wordcloud(word, sentence, type='both'):
         syn_wc = wordcloud_plotter(word, syn_scores,'synonym')
         ant_wc = wordcloud_plotter(word, ant_scores,'antonym')
         return syn_wc,ant_wc
-    
-
