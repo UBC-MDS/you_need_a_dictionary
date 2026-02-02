@@ -68,24 +68,25 @@ As can be seen by the workloads, there was a relatively equal division of labor.
 
 ## DAKI Retrospective
 
-**Drop:**  
-- Treating documentation and CI work as “secondary” tasks near deadlines.
+**Drop:** 
 
+- Treating documentation and CI work as “secondary” tasks near deadlines.
 - Waiting for all members to review a issue before merging it.
 
 **Add:**  
-- Smaller, scoped PRs with explicit review goals (e.g., logic, tests, or docs).
 
+- Smaller, scoped PRs with explicit review goals (e.g., logic, tests, or docs).
 - Lightweight milestone kickoffs to clarify scope and dependencies early.
 
 **Keep:**  
+
 - Project board views with corresponding tags.
 - Issue-driven development for all features and fixes.
 - Automated CI feedback (tests, coverage, previews) in every PR.
 
 **Improve:**  
-- Earlier identification of blocking tasks and dependencies.
 
+- Earlier identification of blocking tasks and dependencies.
 - More consistent review turnaround times through shared ownership.
 
 ---
