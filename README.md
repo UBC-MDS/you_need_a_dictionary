@@ -99,6 +99,8 @@ For more information, you can find the package on Test-PyPi [here](https://test.
 Example usage in Python:
 ```python
 import you_need_a_dictionary as ynd
+nltk.download('vader_lexicon')
+nltk.download('wordnet')
 ynd.analyze_sentiment("I love programming!")
 ```
 
