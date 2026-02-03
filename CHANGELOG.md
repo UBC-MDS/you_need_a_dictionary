@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated the ReadMe.md and removed the `$` from code blocks for better readability and so users can efficiently test the package.
 - Updated the example output in ReadMe.md to include the result of the sentiment analysis.
+- Included the badges for CI workflow, python, MIT License and docs.
 
 ## [3.0.0]
 
