@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>preview</title>
+<title>Work Organization and Retrospective</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -133,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Tutorial</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../reference/retrospective.html"> 
+    <a class="nav-link active" href="../reference/retrospective.html" aria-current="page"> 
 <span class="menu-text">Retrospective</span></a>
   </li>  
 </ul>
@@ -149,26 +114,130 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Work Organization and Retrospective</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="quartodoc.preview" class="level1">
-<h1>preview</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>preview(ast, max_depth<span class="op">=</span><span class="dv">999</span>, compact<span class="op">=</span><span class="va">False</span>, as_string<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Print a friendly representation of a griffe object (e.g.&nbsp;function, docstring)</p>
-<section id="examples" class="level2 doc-section doc-section-examples">
-<h2 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> quartodoc <span class="im">import</span> get_object</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> obj <span class="op">=</span> get_object(<span class="st">"quartodoc"</span>, <span class="st">"get_object"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> preview(obj.docstring.parsed)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> preview(obj)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="issue-assignment-milestones-and-project-boards" class="level2">
+<h2 class="anchored" data-anchor-id="issue-assignment-milestones-and-project-boards">Issue Assignment, Milestones, and Project Boards</h2>
+<p>The management of this project relied heavily on GitHub’s collaborative features:</p>
+<ul>
+<li><strong>Issues:</strong> All features, bug fixes, and decisions were first documented as GitHub issues. Issues were then assigned to the appropriate team members and associated with specific milestones, which helped clarify responsibility and made progress easy to track.</li>
+<li><strong>Project Boards:</strong> We organized our work using a GitHub Project Board with columns such as <em>Backlog</em>, <em>Ready</em>, <em>In Progress</em>, <em>In Review</em>, and <em>Done</em>. This dashboard provided a clear overview of task status and individual workloads, and allowed us to evaluate team and individual progress.</li>
+<li><strong>Milestones:</strong> Issues related to each course deliverable were grouped under the corresponding release milestone. This approach enabled us to monitor milestone-level progress and focus on high-priority tasks as deadlines approached.</li>
+</ul>
+<p><strong>Reflection:</strong><br>
+During these 4 weeks we found really helpful having issues with labels specific for its type and milestone. Additionally, the project board gave a nice overview of the team progress. Having pull requests linked to issues also made it easier to keep track of which tasks have been completed and ready to be closed.</p>
+<hr>
 </section>
+<section id="analytical-project-board-views-data-driven-retrospective" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-project-board-views-data-driven-retrospective">Analytical Project Board Views &amp; Data-Driven Retrospective</h2>
+<p>We created several tables and views in order to better analyze our project’s metrics and how each member contributed.</p>
+<section id="velocity-how-did-our-scope-change-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="velocity-how-did-our-scope-change-over-time">Velocity: How did our scope change over time?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/milestone_progress.png" class="img-fluid figure-img"></p>
+<figcaption>Velocity by milestone</figcaption>
+</figure>
+</div>
+<p>Based on the milestone breakdown, work velocity increased steadily as the project progressed. Early milestones (Milestones 1 and 2) show a moderate number of completed items, reflecting initial setup, planning, and iteration as the team aligned on workflows and tooling. Milestones 3 and especially Milestone 4 demonstrate higher throughput, with a larger number of tasks completed, indicating improved coordination and efficiency over time. This pattern suggests that the team’s velocity benefited from established processes, clearer issue scoping, and increased familiarity with the project infrastructure.</p>
+<hr>
+</section>
+<section id="burn-up-chartwhat-factors-contributed-to-the-significant-increase-in-completed-work-during-milestone-4-compared-to-earlier-milestones" class="level3">
+<h3 class="anchored" data-anchor-id="burn-up-chartwhat-factors-contributed-to-the-significant-increase-in-completed-work-during-milestone-4-compared-to-earlier-milestones">Burn-up Chart:What factors contributed to the significant increase in completed work during Milestone 4 compared to earlier milestones?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/completion_rate.png" class="img-fluid figure-img"></p>
+<figcaption>Burn-up chart by milestone and status</figcaption>
+</figure>
+</div>
+<p>The significant increase in completed work during Milestone 4 was largely driven by the need to address peer review feedback and finalize all remaining project components. Incorporating peer suggestions required revisiting earlier design, code, and documentation decisions, which led to additional revisions and new tasks being completed within this milestone. At the same time, Milestone 4 represented the final delivery phase, where unfinished items from previous milestones were resolved, polished, and consolidated. Together, these factors resulted in a noticeable spike in completed work compared to earlier milestones.</p>
+<hr>
+</section>
+<section id="team-contributions-did-everyone-contribute-equally" class="level3">
+<h3 class="anchored" data-anchor-id="team-contributions-did-everyone-contribute-equally">Team Contributions: Did everyone contribute equally?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/team_contributions.png" class="img-fluid figure-img"></p>
+<figcaption>Workload by team member</figcaption>
+</figure>
+</div>
+<p>The Team Workload view demonstrates our effort towards equitable workload: - Braimah: 16 items - Eric: 25 items - Mailys: 20 items - Mara: 20 items</p>
+<p>As can be seen by the workloads, there was a relatively equal division of labor. While some of the members might have slightly more or slightly less tasks, this can be attributed to the complexity and amount of time that each task might take. However, the workload was distributed fairly for all members.</p>
+<hr>
+</section>
+</section>
+<section id="development-tools-infrastructure-and-organizational-practices" class="level2">
+<h2 class="anchored" data-anchor-id="development-tools-infrastructure-and-organizational-practices">Development Tools, Infrastructure, and Organizational Practices</h2>
+<ul>
+<li><strong>Git Flow:</strong> Feature development was carried out on a dedicated development branch (<code>dev</code>) before being merged into <code>main</code>. This workflow helped maintain code quality, with only occasional merge conflicts arising.</li>
+<li><strong>CI/CD:</strong> GitHub Actions automated testing, linting, and documentation builds. <code>Codecov</code> was integrated into the PR workflow to report test coverage metrics, ensuring that new changes did not reduce overall coverage.</li>
+<li><strong>Documentation:</strong> We used <code>quartodoc</code> for all of the package documentation and demos for each function.</li>
+<li><strong>Code Reviews:</strong> All pull requests underwent peer review, which strengthened code quality and encouraged knowledge sharing across the team.</li>
+<li><strong>Communication:</strong> GitHub issues and pull requests served as the main communication channels, reducing reliance on external tools such as Slack.</li>
+</ul>
+<p><strong>Scaling Up Recommendations:</strong> For larger projects, we would implement the following:</p>
+<ul>
+<li>Automate releases and versioning using semantic versioning and GitHub Releases to reduce manual overhead.</li>
+<li>Adopt clearer branching and review practices to reduce merge conflicts and review bottlenecks.</li>
+<li>Enforce PR quality gates (tests, linting, coverage thresholds) to maintain consistency as contributors increase</li>
+</ul>
+<hr>
+</section>
+<section id="daki-retrospective" class="level2">
+<h2 class="anchored" data-anchor-id="daki-retrospective">DAKI Retrospective</h2>
+<p><strong>Drop:</strong></p>
+<ul>
+<li>Treating documentation and CI work as “secondary” tasks near deadlines.</li>
+<li>Waiting for all members to review a issue before merging it.</li>
+</ul>
+<p><strong>Add:</strong></p>
+<ul>
+<li>Smaller, scoped PRs with explicit review goals (e.g., logic, tests, or docs).</li>
+<li>Lightweight milestone kickoffs to clarify scope and dependencies early.</li>
+</ul>
+<p><strong>Keep:</strong></p>
+<ul>
+<li>Project board views with corresponding tags.</li>
+<li>Issue-driven development for all features and fixes.</li>
+<li>Automated CI feedback (tests, coverage, previews) in every PR.</li>
+</ul>
+<p><strong>Improve:</strong></p>
+<ul>
+<li>Earlier identification of blocking tasks and dependencies.</li>
+<li>More consistent review turnaround times through shared ownership.</li>
+</ul>
+<hr>
+</section>
+<section id="reflections" class="level2">
+<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
+<ul>
+<li><strong>Successes:</strong> Communication within the group was great and using GitHub issues helped to keep track of tasks and dependencies.</li>
+<li><strong>Improvements:</strong> Standarizing all of our documentation and functions from the beginning to avoid having to make multiple changes by the end.</li>
+<li><strong>Teamwork:</strong> Defining a shared schedule for check-ins and reviews would help align team members who tend to work at different times.</li>
+</ul>
+<hr>
+<p><em>Prepared by you_need_a_dictionary, 2025-26 DSCI-524 Group 10</em></p>
+
+
 </section>
 
 </main> <!-- /main -->

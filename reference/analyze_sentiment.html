@@ -128,6 +128,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
 <span class="menu-text">Reference</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tutorial.html"> 
+<span class="menu-text">Tutorial</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../reference/retrospective.html"> 
+<span class="menu-text">Retrospective</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -213,10 +221,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="you_need_a_dictionary.analyze_sentiment" class="level1">
 <h1>analyze_sentiment</h1>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>analyze_sentiment(sentence)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Analyze the sentiment of the preprocessed user input.</p>
+<p>Analyze the sentiment of the preprocessed user input using VADER sentiment analysis.</p>
+<p>This function performs sentiment analysis on a given string and returns sentiment scores. It validates the input to ensure it meets specific requirements: must be a non-empty string containing at least one alphanumeric character and no emojis.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 80%">
+<col style="width: 7%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -229,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>sentence</td>
 <td>str</td>
-<td>The input string to analyze.</td>
+<td>The input string to analyze. Must be non-empty, contain at least one alphanumeric character, and cannot contain emojis.</td>
 <td><em>required</em></td>
 </tr>
 </tbody>
@@ -238,6 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 96%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -249,14 +269,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td></td>
 <td>dict</td>
-<td>The sentiment analysis result.</td>
+<td>The sentiment analysis result. - neg : Negative sentiment score on a scale fro 0 to 1 (1 being the most negative) - neu: Neutral sentiment score on a scale fro 0 to 1 (1 being the most neutral) - pos: Positive sentiment score on a scale fro 0 to 1 (1 being the most positive) - compound: Compound sentiment (How positive or negative the input text is overall) on a scale from -1 to 1 (-1 being most negative, 1 being most positive)</td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="examples" class="level2 doc-section doc-section-examples">
 <h2 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> analyze_sentiment(<span class="st">"I absolutely love Kpop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> analyze_sentiment(<span class="st">"I absolutely love Kpop"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>{<span class="st">'neg'</span>: <span class="fl">0.0</span>, <span class="st">'neu'</span>: <span class="fl">0.315</span>, <span class="st">'pos'</span>: <span class="fl">0.685</span>, <span class="st">'compound'</span>: <span class="fl">0.7844</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
