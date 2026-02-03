@@ -137,6 +137,16 @@ quartodoc --build
 quarto render
 ```
 
+
+To determine package version:
+```bash
+pip install -e .[dev]
+hatch build
+python
+import you_need_a_dictionary as ynd
+ynd.__version__
+```
+
 ## Contributors
 - Eric Wong
 - Mailys Guedon
