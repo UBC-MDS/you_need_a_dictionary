@@ -16,6 +16,8 @@ website:
         file: reference/index.qmd
       - text: Tutorial
         file: tutorial.qmd
+      - text: Retrospective
+        file: reference/retrospective.qmd
 
 # tell quarto to read the generated styles
 format:

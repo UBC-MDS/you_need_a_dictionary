@@ -1,0 +1,102 @@
+---
+title: "Work Organization and Retrospective"
+format: html
+---
+
+## Issue Assignment, Milestones, and Project Boards
+
+The management of this project relied heavily on GitHub's collaborative features:
+
+- **Issues:** All features, bug fixes, and decisions were first documented as GitHub issues. Issues were then assigned to the appropriate team members and associated with specific milestones, which helped clarify responsibility and made progress easy to track.
+- **Project Boards:** We organized our work using a GitHub Project Board with columns such as _Backlog_, _Ready_, _In Progress_, _In Review_, and _Done_. This dashboard provided a clear overview of task status and individual workloads, and allowed us to evaluate team and individual progress.
+- **Milestones:** Issues related to each course deliverable were grouped under the corresponding release milestone. This approach enabled us to monitor milestone-level progress and focus on high-priority tasks as deadlines approached.
+
+**Reflection:**  
+During these 4 weeks we found really helpful having issues with labels specific for its type and milestone. Additionally, the project board gave a nice overview of the team progress. Having pull requests linked to issues also made it easier to keep track of which tasks have been completed and ready to be closed.
+
+---
+
+## Analytical Project Board Views & Data-Driven Retrospective
+We created several tables and views in order to better analyze our project's metrics and how each member contributed.
+
+### Velocity: How did our scope change over time?
+
+![Velocity by milestone](/images/milestone_progress.png)
+
+Based on the milestone breakdown, work velocity increased steadily as the project progressed. Early milestones (Milestones 1 and 2) show a moderate number of completed items, reflecting initial setup, planning, and iteration as the team aligned on workflows and tooling. Milestones 3 and especially Milestone 4 demonstrate higher throughput, with a larger number of tasks completed, indicating improved coordination and efficiency over time. This pattern suggests that the team’s velocity benefited from established processes, clearer issue scoping, and increased familiarity with the project infrastructure.
+
+---
+
+### Burn-up Chart:What factors contributed to the significant increase in completed work during Milestone 4 compared to earlier milestones?
+
+![Burn-up chart by milestone and status](/images/completion_rate.png)
+
+The significant increase in completed work during Milestone 4 was largely driven by the need to address peer review feedback and finalize all remaining project components. Incorporating peer suggestions required revisiting earlier design, code, and documentation decisions, which led to additional revisions and new tasks being completed within this milestone. At the same time, Milestone 4 represented the final delivery phase, where unfinished items from previous milestones were resolved, polished, and consolidated. Together, these factors resulted in a noticeable spike in completed work compared to earlier milestones.
+
+---
+
+### Team Contributions: Did everyone contribute equally?
+
+![Workload by team member](/images/team_contributions.png)
+
+The Team Workload view demonstrates our effort towards equitable workload:
+- Braimah: 16 items
+- Eric: 25 items
+- Mailys: 20 items
+- Mara: 20 items
+
+As can be seen by the workloads, there was a relatively equal division of labor. While some of the members might have slightly more or slightly less tasks, this can be attributed to the complexity and amount of time that each task might take. However, the workload was distributed fairly for all members.
+
+
+---
+
+## Development Tools, Infrastructure, and Organizational Practices
+
+- **Git Flow:** Feature development was carried out on a dedicated development branch (`dev`) before being merged into `main`. This workflow helped maintain code quality, with only occasional merge conflicts arising.
+- **CI/CD:** GitHub Actions automated testing, linting, and documentation builds. `Codecov` was integrated into the PR workflow to report test coverage metrics, ensuring that new changes did not reduce overall coverage.
+- **Documentation:** We used `quartodoc` for all of the package documentation and demos for each function.
+- **Code Reviews:** All pull requests underwent peer review, which strengthened code quality and encouraged knowledge sharing across the team.
+- **Communication:** GitHub issues and pull requests served as the main communication channels, reducing reliance on external tools such as Slack.
+
+**Scaling Up Recommendations:** For larger projects, we would implement the following:
+
+- Automate releases and versioning using semantic versioning and GitHub Releases to reduce manual overhead.
+- Adopt clearer branching and review practices to reduce merge conflicts and review bottlenecks.
+- Enforce PR quality gates (tests, linting, coverage thresholds) to maintain consistency as contributors increase
+
+---
+
+## DAKI Retrospective
+
+**Drop:** 
+
+- Treating documentation and CI work as “secondary” tasks near deadlines.
+- Waiting for all members to review a issue before merging it.
+
+**Add:**  
+
+- Smaller, scoped PRs with explicit review goals (e.g., logic, tests, or docs).
+- Lightweight milestone kickoffs to clarify scope and dependencies early.
+
+**Keep:**  
+
+- Project board views with corresponding tags.
+- Issue-driven development for all features and fixes.
+- Automated CI feedback (tests, coverage, previews) in every PR.
+
+**Improve:**  
+
+- Earlier identification of blocking tasks and dependencies.
+- More consistent review turnaround times through shared ownership.
+
+---
+
+## Reflections
+
+- **Successes:** Communication within the group was great and using GitHub issues helped to keep track of tasks and dependencies.
+- **Improvements:**  Standarizing all of our documentation and functions from the beginning to avoid having to make multiple changes by the end.
+- **Teamwork:** Defining a shared schedule for check-ins and reviews would help align team members who tend to work at different times.
+
+---
+
+*Prepared by you_need_a_dictionary, 2025-26 DSCI-524 Group 10*
