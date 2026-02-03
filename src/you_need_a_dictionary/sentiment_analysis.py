@@ -2,7 +2,6 @@
 Module for performing sentiment analysis on preprocessed user input.
 """
 from nltk.sentiment import SentimentIntensityAnalyzer
-
 import re
 import nltk
 nltk.download('vader_lexicon')
@@ -10,21 +9,32 @@ nltk.download('vader_lexicon')
 
 def analyze_sentiment(sentence: str) -> dict:
     """
-    Analyze the sentiment of the preprocessed user input.
+    Analyze the sentiment of the preprocessed user input using VADER sentiment analysis.
+
+    This function performs sentiment analysis on a given string and returns sentiment scores.
+    It validates the input to ensure it meets specific requirements: must be a non-empty string
+    containing at least one alphanumeric character and no emojis.
 
     Parameters
     ----------
     sentence : str
-        The input string to analyze.
+        The input string to analyze. Must be non-empty, contain at least one alphanumeric
+        character, and cannot contain emojis.
 
     Returns
-    ----------
+    -------
     dict
         The sentiment analysis result.
+        - neg : Negative sentiment score on a scale fro 0 to 1 (1 being the most negative)
+        - neu: Neutral sentiment score on a scale fro 0 to 1 (1 being the most neutral)
+        - pos: Positive sentiment score on a scale fro 0 to 1 (1 being the most positive)
+        - compound: Compound sentiment (How positive or negative the input text is overall) 
+        on a scale from -1 to 1 (-1 being most negative, 1 being most positive)
         
     Examples
-    ----------
+    --------
     >>> analyze_sentiment("I absolutely love Kpop")
+    {'neg': 0.0, 'neu': 0.315, 'pos': 0.685, 'compound': 0.7844}
     """
     # These two checks are from prompt: "What other tests should I perform (use pytest) to ensure that my function performs as expected?"
     # Check for invalid type first

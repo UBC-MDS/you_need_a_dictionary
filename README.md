@@ -1,17 +1,26 @@
 # Welcome to You Need a Dictionary
 
+[![codecov](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary/graph/badge.svg?token=IIfAQEEKTp)](https://codecov.io/gh/UBC-MDS/you_need_a_dictionary)
+[![Build Status](https://github.com/UBC-MDS/you_need_a_dictionary/actions/workflows/build.yml/badge.svg)](https://github.com/UBC-MDS/you_need_a_dictionary/actions/workflows/build.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/UBC-MDS/you_need_a_dictionary/blob/main/LICENSE)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://ubc-mds.github.io/you_need_a_dictionary/)
+
 ## Summary
 
 **You Need a Dictionary** is a project that goes beyond simple translation and word definitions. It's an interactive tool for exploring how language choices shape meaning and sentiment. Users can analyze sentences, experiment with word substitutions, and visualize the emotional impact of their linguistic decisions. This tool assists writers and data scientists in understanding how specific vocabulary changes the sentiment and meaning of their text.
 
 ## List of Functions
 
-- `preprocess_user_input`: Preprocessing of user input to prepare the text for NLP analysis and API integration.
 - `analyze_sentiment`: Analyzes the preprocessed text using NLP techniques to derive a sentiment polarity score, helping users understand the emotional tone of their input.
 - `fetch_definition`: Module that fetches the definition, synonyms and antonyms of a given word using WordNet
 - `word_replacement`: Replaces a specific word in the user's sentence with a synonym or antonym specified by the user and automatically re-runs the sentiment analysis to compare the emotional shift in polarity score.
 - `translate_sentence`: Translates the entire input sentence into a target language using LibreTranslate.
 - `create_wordcloud`: Generates a visual word cloud of synonyms and antonyms for a specific word, providing a pictorial representation of related words.
+
+## Documentation
+
+Full documentation, tutorials, and examples are available on the [project website](https://ubc-mds.github.io/you_need_a_dictionary/).
 
 ## `You Need a Dictionary's` Relevance to the Python Ecosystem:
 
@@ -82,15 +91,28 @@ The following language codes are supported for translation:
 You can install this package into your preferred Python environment using pip:
 
 ```bash
-$ pip install you_need_a_dictionary
+pip install -i https://test.pypi.org/simple/ you-need-a-dictionary
 ```
+
+For more information, you can find the package on Test-PyPi [here](https://test.pypi.org/project/you-need-a-dictionary/).
 
 Example usage in Python:
 ```python
 import you_need_a_dictionary as ynd
+nltk.download('vader_lexicon')
+nltk.download('wordnet')
 ynd.analyze_sentiment("I love programming!")
 ```
 
+The model returns a sentiment label and a confidence score. A higher score means the model is more confident in its prediction.
+```python
+{
+  "neg": 0.0,
+  "neu": 0.182,
+  "pos": 0.818,
+  "compound": 0.6696
+}
+```
 
 
 ## Dev notes
@@ -99,27 +121,37 @@ To contribute to the development of this package, please follow these steps afte
 Set up a virtual environment using conda:
 
 ```bash
-$ conda env create -f environment.yml
-$ conda activate you_need_a_dictionary
+conda env create -f environment.yml
+conda activate you_need_a_dictionary
 ``` 
 
 To install the package locally:
 ```bash
-$ pip install -e .
+pip install -e .
 ``` 
 
 To test the package locally:
 Open a terminal in the project root directory and run:
 ```bash
-$ pip install -e .[tests] # setup test dependencies
-$ pytest
+pip install -e .[tests] # setup test dependencies
+pytest
 ```
 
 To build documentation locally:
 ```bash
-$ pip install -e .[docs] # setup documentation dependencies
-$ quartodoc --build
-$ quarto render
+pip install -e .[docs] # setup documentation dependencies
+quartodoc --build
+quarto render
+```
+
+
+To determine package version:
+```bash
+pip install -e .[dev]
+hatch build
+python
+import you_need_a_dictionary as ynd
+ynd.__version__
 ```
 
 ## Contributors

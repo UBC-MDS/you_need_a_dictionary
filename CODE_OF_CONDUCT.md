@@ -84,6 +84,10 @@ permanent ban.
 
 **Consequence**: An instructor will be involved at this point and concequences will be conducted at the instructor's discretion.
 
+## Contact
+
+For inquiries regarding the code of conduct, please contact eric_wong01@hotmail.com
+
 ## Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage],

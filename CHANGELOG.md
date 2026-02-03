@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0]
+
+- Updated the ReadMe.md and removed the `$` from code blocks for better readability and so users can efficiently test the package. (implementing peer feedback [#87](https://github.com/UBC-MDS/you_need_a_dictionary/issues/87))
+- Updated the example output in ReadMe.md to include the result of the sentiment analysis. (implementing peer feedback [#88](https://github.com/UBC-MDS/you_need_a_dictionary/issues/88))
+- Included the badges for CI workflow, python, MIT License and docs. (implementing peer feedback [#99](https://github.com/UBC-MDS/you_need_a_dictionary/issues/99))
+- Fix install instructions in ReadMe.md (implementing peer feedback [#82](https://github.com/UBC-MDS/you_need_a_dictionary/issues/82))
+- Added link to Quarto documentation in ReadMe.md (implementing peer feedback [#93](https://github.com/UBC-MDS/you_need_a_dictionary/issues/93))
+
+## [3.0.0]
+
+- Added a tutorial.qmd to describe how to use package.
+- Added preview documentation feature every pull request using Netlify
+- Fleshed out documentation for functions (implementing peer feedback [#84](https://github.com/UBC-MDS/you_need_a_dictionary/issues/84))
+- Added automatic versioning workflow
+
 ## [2.0.0]
 
 - Added four tests (two tests in test_create_wordcloud.py and two in test_sentiment_analysis.py)
