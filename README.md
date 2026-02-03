@@ -99,6 +99,8 @@ For more information, you can find the package on Test-PyPi [here](https://test.
 Example usage in Python:
 ```python
 import you_need_a_dictionary as ynd
+nltk.download('vader_lexicon')
+nltk.download('wordnet')
 ynd.analyze_sentiment("I love programming!")
 ```
 
@@ -140,6 +142,16 @@ To build documentation locally:
 pip install -e .[docs] # setup documentation dependencies
 quartodoc --build
 quarto render
+```
+
+
+To determine package version:
+```bash
+pip install -e .[dev]
+hatch build
+python
+import you_need_a_dictionary as ynd
+ynd.__version__
 ```
 
 ## Contributors
